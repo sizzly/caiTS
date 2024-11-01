@@ -7,8 +7,6 @@
 	$qr_objects = $o_db->query('SELECT count(*) AS c FROM ca_objects WHERE deleted=0');
 	$qr_objects->nextRow(); // the result has only 1 row.
 	$vn_count = $qr_objects->get('c'); // this should be your count
-
-	mysqli_close($o_db);
 ?>
 
 <div class="row">
