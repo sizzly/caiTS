@@ -2,19 +2,33 @@
 	MetaTagManager::setWindowTitle($this->request->config->get("app_display_name").": About");
 ?>
 
-	<div class="row">
-		<div class="col-sm-12">
-			<H1><?php print _t("About"); ?></H1>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-xl-10">
+			<div class="row">
+				<div class="col-xl-9">
+					<h1 class="page-header">About iToysoldiers
+						<small>Because the content isn't clear enough</small>
+					</h1>
+					<hr class="mb-4" />
+					<div id="topWidget" class="mb-5">
+						<div class="bg-white bg-opacity-25 p-5 rounded-3">
+  							<h1 class="display-4">I'm a Dark Eldar Snob</h1>
+  							<p class="lead">But I also have anger management issues so I play World Eaters too.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3">
+					<!-- BEGIN #sidebar -->
+					<nav class="navbar navbar-sticky d-none d-xl-block">
+						<nav class="nav">
+							<a class="nav-link" href="#topWidget" data-toggle="scroll-to">Top</a>
+						</nav>
+					</nav>
+					<!-- END #sidebar -->
+
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-8">
-			<h2>I'm a Dark Eldar Snob</h2>
-			<p>But I also have anger management issues so I also play World Eaters.</p>
-		</div>
-		<div class="col-sm-3 col-sm-offset-1">
-			<address>iToysoldiers<br>			24 Azar Ave<br>			Tilbury, On, N0P-2L0</address>
-		
-			<address>Rob Tacey, Dork<br>			<span class="info">Email</span> — <a href="#">rob@robtacey.com</a></address>
-		</div>
-	</div>
+</div>
