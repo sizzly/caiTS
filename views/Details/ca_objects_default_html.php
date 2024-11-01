@@ -2,28 +2,6 @@
 /* ----------------------------------------------------------------------
  * themes/default/views/bundles/ca_objects_default_html.php : 
  * ----------------------------------------------------------------------
- * CollectiveAccess
- * Open-source collections management software
- * ----------------------------------------------------------------------
- *
- * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2013-2018 Whirl-i-Gig
- *
- * For more information visit http://www.CollectiveAccess.org
- *
- * This program is free software; you may redistribute it and/or modify it under
- * the terms of the provided license as published by Whirl-i-Gig
- *
- * CollectiveAccess is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTIES whatsoever, including any implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- *
- * This source code is free and modifiable under the terms of 
- * GNU General Public License. (http://www.gnu.org/copyleft/gpl.html). See
- * the "license.txt" file for details, or visit the CollectiveAccess web site at
- * http://www.CollectiveAccess.org
- *
- * ----------------------------------------------------------------------
  */
  
 	$t_object = 			$this->getVar("item");
@@ -34,105 +12,125 @@
 	$vn_pdf_enabled = 		$this->getVar("pdfEnabled");
 	$vn_id =				$t_object->get('ca_objects.object_id');
 ?>
-<div class="row">
-	<div class='col-xs-12 navTop'><!--- only shown at small screen size -->
-		{{{previousLink}}}{{{resultsLink}}}{{{nextLink}}}
-	</div><!-- end detailTop -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgLeft">
-			{{{previousLink}}}{{{resultsLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-	<div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
-		<div class="container"><div class="row">
-			<div class='col-sm-6 col-md-6 col-lg-5 col-lg-offset-1'>
-				{{{representationViewer}}}
-				
-				
-				<div id="detailAnnotations"></div>
-				
-				<?php print caObjectRepresentationThumbnails($this->request, $this->getVar("representation_id"), $t_object, array("returnAs" => "bsCols", "linkTo" => "carousel", "bsColClasses" => "smallpadding col-sm-3 col-md-3 col-xs-4", "primaryOnly" => $this->getVar('representationViewerPrimaryOnly') ? 1 : 0)); ?>
-				
-<?php
-				# Comment and Share Tools
-				if ($vn_comments_enabled | $vn_share_enabled | $vn_pdf_enabled) {
-						
-					print '<div id="detailTools">';
-					if ($vn_comments_enabled) {
-?>				
-						<div class="detailTool"><a href='#' onclick='jQuery("#detailComments").slideToggle(); return false;'><span class="glyphicon glyphicon-comment"></span>Comments and Tags (<?php print sizeof($va_comments) + sizeof($va_tags); ?>)</a></div><!-- end detailTool -->
-						<div id='detailComments'><?php print $this->getVar("itemComments");?></div><!-- end itemComments -->
-<?php				
-					}
-					if ($vn_share_enabled) {
-						print '<div class="detailTool"><span class="glyphicon glyphicon-share-alt"></span>'.$this->getVar("shareLink").'</div><!-- end detailTool -->';
-					}
-					if ($vn_pdf_enabled) {
-						print "<div class='detailTool'><span class='glyphicon glyphicon-file'></span>".caDetailLink($this->request, "Download as PDF", "faDownload", "ca_objects",  $vn_id, array('view' => 'pdf', 'export_format' => '_pdf_ca_objects_summary'))."</div>";
-					}
-					print '</div><!-- end detailTools -->';
-				}				
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-xl-10">
+			<div class="row">
+				<div class="col-xl-9">
+					<h1 class="page-header">{{{ca_objects.preferred_labels.name}}}
+						<small>Alternative title here</small>
+					</h1>
+					<hr class="mb-4" />
 
-?>
-
-			</div><!-- end col -->
-			
-			<div class='col-sm-6 col-md-6 col-lg-5'>
-				<H4>{{{<unit relativeTo="ca_collections" delimiter="<br/>"><l>^ca_collections.preferred_labels.name</l></unit><ifcount min="1" code="ca_collections"> ➔ </ifcount>}}}{{{ca_objects.preferred_labels.name}}}</H4>
-				<H6>{{{<unit>^ca_objects.type_id</unit>}}}</H6>
-				<HR>
-				
-				{{{<ifdef code="ca_objects.measurementSet.measurements">^ca_objects.measurementSet.measurements (^ca_objects.measurementSet.measurementsType)</ifdef><ifdef code="ca_objects.measurementSet.measurements,ca_objects.measurementSet.measurements"> x </ifdef><ifdef code="ca_objects.measurementSet.measurements2">^ca_objects.measurementSet.measurements2 (^ca_objects.measurementSet.measurementsType2)</ifdef>}}}
-				
-				
-				{{{<ifdef code="ca_objects.idno"><H6>Identifier:</H6>^ca_objects.idno<br/></ifdef>}}}
-				{{{<ifdef code="ca_objects.containerID"><H6>Box/series:</H6>^ca_objects.containerID<br/></ifdef>}}}				
-				
-				{{{<ifdef code="ca_objects.work_description">
-					<div class='unit'><h6>Description</h6>
-						<span class="trimText">^ca_objects.work_description</span>
-					</div>
-				</ifdef>}}}
-				
-				
-				{{{<ifdef code="ca_objects.dateSet.setDisplayValue"><H6>Date:</H6>^ca_objects.dateSet.setDisplayValue<br/></ifdef>}}}
-			
-				<hr></hr>
-					<div class="row">
-						<div class="col-sm-6">		
-							{{{<ifcount code="ca_entities" min="1" max="1"><H6>Related person</H6></ifcount>}}}
-							{{{<ifcount code="ca_entities" min="2"><H6>Related people</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_entities" delimiter="<br/>"><l>^ca_entities.preferred_labels</l> (^relationship_typename)</unit>}}}
-							
-							{{{<ifcount code="ca_places" min="1" max="1"><H6>Related place</H6></ifcount>}}}
-							{{{<ifcount code="ca_places" min="2"><H6>Related places</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_places" delimiter="<br/>"><l>^ca_places.preferred_labels</l> (^relationship_typename)</unit>}}}
-							
-							{{{<ifcount code="ca_list_items" min="1" max="1"><H6>Related Term</H6></ifcount>}}}
-							{{{<ifcount code="ca_list_items" min="2"><H6>Related Terms</H6></ifcount>}}}
-							{{{<unit relativeTo="ca_list_items" delimiter="<br/>"><l>^ca_list_items.preferred_labels.name_plural</l> (^relationship_typename)</unit>}}}
-							
-						</div><!-- end col -->				
-						<div class="col-sm-6 colBorderLeft">
-							{{{map}}}
+					<div id="imagesWidget" class="mb-5">
+						<div class="card mb-3">
+							<div class="card-body">
+								{{{representationViewer}}}
+							</div>
+    
+  							<div class="card-arrow">
+    							<div class="card-arrow-top-left"></div>
+    							<div class="card-arrow-top-right"></div>
+    							<div class="card-arrow-bottom-left"></div>
+    							<div class="card-arrow-bottom-right"></div>
+  							</div>
 						</div>
-					</div><!-- end row -->
-						
-			</div><!-- end col -->
-		</div><!-- end row --></div><!-- end container -->
-	</div><!-- end col -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgRight">
-			{{{nextLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-</div><!-- end row -->
+					</div>
 
-<script type='text/javascript'>
-	jQuery(document).ready(function() {
-		$('.trimText').readmore({
-		  speed: 75,
-		  maxHeight: 120
-		});
-	});
-</script>
+					<div id="descriptionWidget" class="mb-5">
+						<h4>Description</h4>
+						{{{<ifdef code="ca_objects.work_description">
+							<p>^ca_objects.work_description</p>
+						</ifdef>}}}
+					</div>
+
+					<div id="metaWidget" class="mb-5">
+						<h4>Meta Data</h4>
+						<div class="card mb-3">
+							<div class="card-body">
+								<div class="list-group">
+									<!--begin Order of Battle -->
+									{{{<unit relativeTo="ca_collections" delimiter="<br/>">
+										<div class="list-group-item d-flex align-items-center">
+											<div class="w-40px h-40px d-flex align-items-center justify-content-center bg-dark text-white rounded-2 ms-n1">
+												<i class="fa fa-shield-alt fa-lg"></i>
+											</div>
+											<div class="flex-fill px-3">
+												<div class="fw-bold"><l>^ca_collections.preferred_labels.name</l></div>
+												<div class="small text-white text-opacity-50">Order of Battle</div>
+											</div>
+										</div>
+									</unit>}}}
+									<!-- end Order of Battle -->
+					
+									<!--begin Identification Number -->
+									{{{<ifdef code="ca_objects.idno">
+										<div class="list-group-item d-flex align-items-center">
+											<div class="w-40px h-40px d-flex align-items-center justify-content-center bg-dark text-white rounded-2 ms-n1">
+												<i class="fa fa-hashtag fa-lg"></i>
+											</div>
+											<div class="flex-fill px-3">
+												<div class="fw-bold">^ca_objects.idno</div>
+												<div class="small text-white text-opacity-50">Identifier</div>
+											</div>
+										</div>
+									</ifdef>}}}
+									<!-- end Identification Number -->
+
+									<!-- begin Workflow -->
+									{{{<ifdef code="ca_objects.status">
+										<div class="list-group-item d-flex align-items-center">
+											<div class="w-40px h-40px d-flex align-items-center justify-content-center bg-dark text-white rounded-2 ms-n1">
+												<i class="fas fa-chart-pie fa-lg"></i>
+											</div>
+											<div class="flex-fill px-3">
+												<div class="fw-bold">^ca_objects.status</div>
+												<div class="small text-white text-opacity-50">State of Muster</div>
+											</div>
+										</div>
+									</ifdef>}}}
+									<!-- end Workflow -->
+					
+									<!-- begin Entities -->
+									{{{<unit relativeTo="ca_entities" delimiter="">
+										<div class="list-group-item d-flex align-items-center">
+											<div class="w-40px h-40px d-flex align-items-center justify-content-center bg-dark text-white rounded-2 ms-n1">
+												<i class="fas fa-building fa-lg"></i>
+											</div>
+											<div class="flex-fill px-3">
+												<div class="fw-bold"><l>^ca_entities.preferred_labels</l></div>
+												<div class="small text-white text-opacity-50">^relationship_typename</div>
+											</div>
+										</div>
+									</unit>}}}
+									<!-- end Entities -->
+								</div>
+								<!-- end LIST GROUP -->
+							</div> 
+    
+  							<div class="card-arrow">
+    							<div class="card-arrow-top-left"></div>
+    							<div class="card-arrow-top-right"></div>
+    							<div class="card-arrow-bottom-left"></div>
+    							<div class="card-arrow-bottom-right"></div>
+  							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-3">
+					<!-- BEGIN #sidebar -->
+					<nav class="navbar navbar-sticky d-none d-xl-block">
+						<nav class="nav">
+							<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Images</a>
+							<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
+							<a class="nav-link" href="#metaWidget" data-toggle="scroll-to">Meta Data</a>
+						</nav>
+					</nav>
+					<!-- END #sidebar -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
