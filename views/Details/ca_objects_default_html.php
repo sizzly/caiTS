@@ -25,7 +25,9 @@
 					<div id="imagesWidget" class="mb-5">
 						<div class="card mb-3">
 							<div class="card-body">
-								{{{representationViewer}}}
+								<div class="d-flex">
+									{{{representationViewer}}}
+								</div>
 							</div>
     
   							<div class="card-arrow">
