@@ -16,7 +16,9 @@
 		<!-- ================== BEGIN core-css ================== -->
 		<link href="/themes/caiTS/assets/pawtucket/css/vendor.min.css" rel="stylesheet" />
 		<link href="/themes/caiTS/assets/pawtucket/css/theme.css" rel="stylesheet" />
+		<link href="/themes/caiTS/assets/pawtucket/css/mods.css" rel="stylesheet" />
 		<link href="/themes/caiTS/assets/pawtucket/plugins//lity/dist/lity.min.css" rel="stylesheet" />
+
 		<!-- ================== END core-css ================== -->
 	
 	</head>
