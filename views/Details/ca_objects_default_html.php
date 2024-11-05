@@ -11,10 +11,10 @@
 	$vn_share_enabled = 		$this->getVar("shareEnabled");
 	$vn_pdf_enabled = 			$this->getVar("pdfEnabled");
 	$vn_id =					$t_object->get('ca_objects.object_id');
-	$o_db = new Db();
-	$qr_objects = $o_db->query('SELECT count(*) AS c FROM ca_objects_x_object_representations WHERE object_id=?', [$vn_id]);
+	$o_db = 					new Db();
+	$qr_objects = 				$o_db->query('SELECT count(*) AS c FROM ca_objects_x_object_representations WHERE object_id=?', [$vn_id]);
 	$qr_objects->nextRow(); // the result has only 1 row.
-	$vn_count = $qr_objects->get('c'); // this should be your count
+	$vn_count = 				$qr_objects->get('c'); // this should be your count
 ?>
 
 <div class="container">
@@ -31,6 +31,7 @@
         								<div class="mb-2"></div>
 										<div>
 											<h1 class="page-header">{{{ca_objects.preferred_labels.name}}}</h1>
+											<div class="fs-14px">{{{ca_objects.nonpreferred_labels.name}}}</div>
 										</div>
 									</div>
 								</div>
