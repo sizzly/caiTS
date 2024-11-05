@@ -62,6 +62,7 @@
 <!-- BEGIN menu -->
  				<div class="menu">
  					<nav class="nav">
+						<a class="nav-link" href="/">Home</a>
   						<a class="nav-link" href="/index.php/About/Index">About</a>
   						<a class="nav-link" href="/index.php/Collections/Index">Order of Battle</a>
   						<a class="nav-link" href="/index.php/Browse/objects">Browse</a>
