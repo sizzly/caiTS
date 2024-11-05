@@ -26,7 +26,8 @@
 						<div class="card">
   							<div class="m-1 bg-white bg-opacity-15">
     							<div class="position-relative overflow-hidden" style="height: 165px">
-      								<div class="card-img-overlay text-white text-center bg-dark-transparent-5">
+									<img src={{{<unit relativeTo="ca_objects_x_object_representations" delimiter="" skipIfExpression="^ca_objects_x_object_representations.is_primary =~ /0/">^ca_object_representations.media.widepreview.url</unit>}}} class="card-img rounded-0" alt="" />
+      								<div class="card-img-overlay text-white text-center bg-gray-700 opacity-8">
         								<div class="mb-2"></div>
 										<div>
 											<h1 class="page-header">{{{ca_objects.preferred_labels.name}}}</h1>
