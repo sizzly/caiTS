@@ -17,7 +17,7 @@
         		<?php
             		$count = 0;
 		    		while($qr_res->nextHit()){
-			    		if($vs_media = $qr_res->getWithTemplate('<l>^ca_object_representations.media.mediumlarge</l>', array("checkAccess" => $va_access_values, "class" => 'd-block w-100'))){
+			    		if($vs_media = $qr_res->getWithTemplate('<l>^ca_object_representations.media.widepreview</l>', array("checkAccess" => $va_access_values, "class" => 'd-block w-100'))){
 							if($count == 0){
                         		print "<div class='carousel-item active'>".$vs_media;
                     		}

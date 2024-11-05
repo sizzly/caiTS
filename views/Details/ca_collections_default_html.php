@@ -21,13 +21,66 @@
 		<div class="col-xl-10">
 			<div class="row">
 				<div class="col-xl-9">
-					<h1 class="page-header">{{{^ca_collections.preferred_labels.name}}}</h1>
-					<hr class="mb-4" />
+					<div id="summaryWidget" class="mb-3">
+						<div class="card">
+  							<div class="m-1 bg-white bg-opacity-15">
+    							<div class="position-relative overflow-hidden" style="height: 165px">
+      								<div class="card-img-overlay text-white text-center bg-dark-transparent-5">
+        								<div class="mb-2"></div>
+										<div>
+											<h1 class="page-header">{{{^ca_collections.preferred_labels.name}}}</h1>
+										</div>
+									</div>
+								</div>
+								<!--
+								<div class="card-body py-2 px-3">
+									<div class="row text-center">
+										<div class="col-4">
+										<div class="fw-bold">415</div>
+										<div class="fs-12px">posts</div>
+										</div>
+										<div class="col-4">
+										<div class="fw-bold">140k</div>
+										<div class="fs-12px">followers</div>
+										</div>
+										<div class="col-4">
+										<div class="fw-bold">697</div>
+										<div class="fs-12px">following</div>
+										</div>
+									</div>
+								</div>
+								-->
+							</div>
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+						</div>
+					</div>
+					<div id="descriptionWidget" class="mb-3">
+						<div class='card'>
+							<div class='card-header fw-bold small'>Description</div>
+							<div class='card-body'>
+								{{{<ifdef code="ca_collections.description">
+									<p>^ca_collections.description</p>
+								</ifdef>}}}
+							</div>
+							<div class='card-arrow'>
+								<div class='card-arrow-top-left'></div>
+								<div class='card-arrow-top-right'></div>
+								<div class='card-arrow-bottom-left'></div>
+								<div class='card-arrow-bottom-right'></div>
+							</div>
+						</div>
+					</div>					
 
-					<div id="imagesWidget" class="mb-5">
-						<h4>Members</h4>
+					<div id="imagesWidget" class="mb-3">
+
 
 						<div class="card">
+							<div class="card-header fw-bold small">Members</div>
   							<div class="card-body">
     							<div class="widget-img-list">
 
@@ -46,18 +99,9 @@
 						</div>
 					</div>
 
-					<div id="descriptionWidget" class="mb-5">
-						<h4>Description</h4>
-						<p>
-							{{{<ifdef code="ca_collections.description">
-								^ca_collections.description
-							</ifdef>}}}
-						</p>
-					</div>
-
 					<div id="metaWidget" class="mb-5">
-					<h4>Meta Data</h4>
 						<div class="card mb-3">
+							<div class="card-header fw-bold small">Meta Data</div>
 							<div class="card-body">
 								<p>Coming soon</p>
 							</div> 
@@ -77,8 +121,9 @@
 					<!-- BEGIN #sidebar -->
 					<nav class="navbar navbar-sticky d-none d-xl-block">
 						<nav class="nav">
-							<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Images</a>
+							<a class="nav-link" href="#summaryWidget" data-toggle="scroll-to">Summary</a>
 							<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
+							<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Members</a>
 							<a class="nav-link" href="#metaWidget" data-toggle="scroll-to">Meta Data</a>
 						</nav>
 					</nav>
