@@ -39,7 +39,7 @@
                     		}
 				   			 $vs_caption = $qr_res->getWithTemplate($vs_caption_template);
 				    		if($vs_caption){
-					    		print "<div class='carousel-caption d-none d-md-block'><h5 class='text-dark'>".$vs_caption."</h5></div>";
+					    		print "<div class='carousel-caption d-none d-md-block bg-gray-600 opacity-8 mb-4'><h5 class='text-dark'>".$vs_caption."</h5></div>";
 				    		}
 				    		print "</div>";
 				    		$vb_item_output = true;
