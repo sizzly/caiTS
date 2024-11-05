@@ -60,6 +60,7 @@
 							</div>
 						</div>
 					</div>
+					
 					{{{<ifdef code="ca_objects.work_description">
 					<div id="descriptionWidget" class="mb-3">
 						<div class='card'>
@@ -76,6 +77,7 @@
 						</div>
 					</div>
 					</ifdef>}}}
+
 					<?php
 						if($vn_count > 0) {
 					?>

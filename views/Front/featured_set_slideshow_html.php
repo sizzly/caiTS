@@ -12,7 +12,20 @@
 	}
 	if($qr_res && $qr_res->numHits()){
 ?>   
-		<div id="carouselExample" class="carousel slide" data-ride="carousel">
+		<div id="carouselFront" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<?php
+					$indcount = 0;
+					while($indcount < $qr_res->numHits()){
+						if($indcount == 0){
+							print '<li data-bs-target="#carouselFront" data-bs-slide-to="'.$indcount.'" class="active"></li>';
+						} else {
+							print '<li data-bs-target="#carouselFront" data-bs-slide-to="'.$indcount.'"></li>';
+						}
+						$indcount++;
+					}
+				?>
+			</ol>
     		<div class="carousel-inner">
         		<?php
             		$count = 0;
@@ -35,11 +48,11 @@
             		}
         		?>
     		</div>
-    		<a class="carousel-control-prev" href="#carouselExample" data-bs-slide="prev">
+    		<a class="carousel-control-prev" href="#carouselFront" data-bs-slide="prev">
         		<span class="carousel-control-prev-icon"></span>
         		<span class="sr-only">Previous</span>
      		</a>
-    		<a class="carousel-control-next" href="#carouselExample" data-bs-slide="next">
+    		<a class="carousel-control-next" href="#carouselFront" data-bs-slide="next">
         		<span class="carousel-control-next-icon"></span>
     		</a>
 		</div>
