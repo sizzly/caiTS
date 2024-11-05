@@ -59,13 +59,13 @@
 							</div>
 						</div>
 					</div>
+
+					{{{<ifdef code="ca_collections.description">
 					<div id="descriptionWidget" class="mb-3">
 						<div class='card'>
 							<div class='card-header fw-bold small'>Description</div>
 							<div class='card-body'>
-								{{{<ifdef code="ca_collections.description">
-									<p>^ca_collections.description</p>
-								</ifdef>}}}
+								<p>^ca_collections.description</p>
 							</div>
 							<div class='card-arrow'>
 								<div class='card-arrow-top-left'></div>
@@ -74,7 +74,8 @@
 								<div class='card-arrow-bottom-right'></div>
 							</div>
 						</div>
-					</div>					
+					</div>
+					</ifdef>}}}				
 
 					<div id="imagesWidget" class="mb-3">
 
@@ -122,7 +123,9 @@
 					<nav class="navbar navbar-sticky d-none d-xl-block">
 						<nav class="nav">
 							<a class="nav-link" href="#summaryWidget" data-toggle="scroll-to">Summary</a>
-							<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
+							{{{<ifdef code="ca_collections.description">
+								<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
+							</ifdef>}}}
 							<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Members</a>
 							<a class="nav-link" href="#metaWidget" data-toggle="scroll-to">Meta Data</a>
 						</nav>

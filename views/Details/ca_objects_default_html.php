@@ -10,18 +10,18 @@
 	$vn_comments_enabled = 		$this->getVar("commentsEnabled");
 	$vn_share_enabled = 		$this->getVar("shareEnabled");
 	$vn_pdf_enabled = 			$this->getVar("pdfEnabled");
-	$vn_representation_count = 	$this->getVar('representation_count');
 	$vn_id =					$t_object->get('ca_objects.object_id');
+	$o_db = new Db();
+	$qr_objects = $o_db->query('SELECT count(*) AS c FROM ca_objects_x_object_representations WHERE object_id=?', [$vn_id]);
+	$qr_objects->nextRow(); // the result has only 1 row.
+	$vn_count = $qr_objects->get('c'); // this should be your count
 ?>
+
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-xl-10">
 			<div class="row">
 				<div class="col-xl-9">
-					<!--
-					<h1 class="page-header">{{{ca_objects.preferred_labels.name}}}</h1>
-					<hr class="mb-4" />
--->
 					<div id="summaryWidget" class="mb-3">
 						<div class="card">
   							<div class="m-1 bg-white bg-opacity-15">
@@ -60,13 +60,12 @@
 							</div>
 						</div>
 					</div>
+					{{{<ifdef code="ca_objects.work_description">
 					<div id="descriptionWidget" class="mb-3">
 						<div class='card'>
 							<div class='card-header fw-bold small'>Description</div>
 							<div class='card-body'>
-								{{{<ifdef code="ca_objects.work_description">
-									<p>^ca_objects.work_description</p>
-								</ifdef>}}}
+								<p>^ca_objects.work_description</p>
 							</div>
 							<div class='card-arrow'>
 								<div class='card-arrow-top-left'></div>
@@ -76,7 +75,10 @@
 							</div>
 						</div>
 					</div>
-
+					</ifdef>}}}
+					<?php
+						if($vn_count > 0) {
+					?>
 					<div id="imagesWidget" class="mb-3">
 						<div class="card mb-3">
 							<div class="card-header fw-bold small">Images</div>
@@ -97,6 +99,9 @@
   							</div>
 						</div>
 					</div>
+					<?php
+						}
+					?>
 
 					<div id="metaWidget" class="mb-3">
 						<div class="card mb-3">
@@ -177,8 +182,16 @@
 					<nav class="navbar navbar-sticky d-none d-xl-block">
 						<nav class="nav">
 							<a class="nav-link" href="#summaryWidget" data-toggle="scroll-to">Summary</a>
-							<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
-							<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Images</a>
+							{{{<ifdef code="ca_objects.work_description">
+								<a class="nav-link" href="#descriptionWidget" data-toggle="scroll-to">Description</a>
+							</ifdef>}}}
+							<?php
+								if($vn_count > 0) {
+							?>
+									<a class="nav-link" href="#imagesWidget" data-toggle="scroll-to">Images</a>
+							<?php
+								}
+							?>
 							<a class="nav-link" href="#metaWidget" data-toggle="scroll-to">Meta Data</a>
 						</nav>
 					</nav>
