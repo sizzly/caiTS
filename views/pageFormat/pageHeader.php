@@ -62,13 +62,32 @@
 <!-- BEGIN menu -->
  				<div class="menu">
  					<nav class="nav">
+					 	<div class="menu-item dropdown">
+							<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app" class="menu-link">
+								<div class="menu-icon"><i class="bi bi-search nav-icon"></i></div>
+							</a>
+						</div>
 						<a class="nav-link" href="/">Home</a>
   						<a class="nav-link" href="/index.php/About/Index">About</a>
   						<a class="nav-link" href="/index.php/Collections/Index">Order of Battle</a>
   						<a class="nav-link" href="/index.php/Browse/objects">Browse</a>
+
 					</nav>
 				</div>
 <!-- END menu -->
+				<!-- BEGIN menu-search -->
+				<form class="menu-search" role="search" action="<?php print caNavUrl($this->request, '', 'MultiSearch', 'Index'); ?>">
+					<div class="menu-search-container">
+						<div class="menu-search-icon"><i class="bi bi-search"></i></div>
+						<div class="menu-search-input">
+							<input type="text" class="form-control form-control-lg" id="headerSearchInput" placeholder="Search" name="search" autocomplete="off" />
+						</div>
+						<div class="menu-search-icon">
+							<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
+						</div>
+					</div>
+				</form>
+				<!-- END menu-search -->
 			</div>
 <!-- END #header -->
 		
