@@ -1,2 +1,2 @@
 This is the iToysoldiers theme for use with Collective Access.
-It uses Pawtucket2 v1.7
+It uses Pawtucket2 v2.0
