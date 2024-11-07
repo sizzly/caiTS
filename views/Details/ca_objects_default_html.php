@@ -26,7 +26,7 @@
 						<div class="card">
   							<div class="m-1 bg-white bg-opacity-15">
     							<div class="position-relative overflow-hidden" style="height: 165px">
-									<img src={{{<unit relativeTo="ca_objects_x_object_representations" delimiter="" skipIfExpression="^ca_objects_x_object_representations.is_primary =~ /0/">^ca_object_representations.media.widepreview.url</unit>}}} class="card-img rounded-0" alt="" />
+									<img src='{{{<unit relativeTo="ca_objects_x_object_representations" delimiter="" skipIfExpression="^ca_objects_x_object_representations.is_primary =~ /0/">^ca_object_representations.media.widepreview.url</unit>}}}' class='card-img rounded-0' alt='' />
       								<div class="card-img-overlay text-white text-center bg-gray-700 opacity-8">
         								<div class="mb-2"></div>
 										<div>
@@ -83,26 +83,28 @@
 					<?php
 						if($vn_count > 0) {
 					?>
-					<div id="imagesWidget" class="mb-3">
-						<div class="card mb-3">
-							<div class="card-header fw-bold small">Images</div>
-							<div class="card-body">
-								<div class="widget-img-list">
-									{{{<unit><unit relativeTo="ca_objects_x_object_representations" delimiter="">
-										<div class="widget-img-list-item"><a href="^ca_object_representations.media.original.url" data-lity><span class="img" style="background-image: url(^ca_object_representations.media.preview.url)"></span></a></div>
-									</unit></unit>}}}
-									
+							<div id="imagesWidget" class="mb-3">
+								<div class="card mb-3">
+									<div class="card-header fw-bold small">Images</div>
+									<div class="card-body">
+										<div class="widget-img-list">
+											{{{<unit relativeTo="ca_objects_x_object_representations">
+												<unit relativeTo="ca_object_representations">
+													<div class="widget-img-list-item"><a href="^ca_object_representations.media.original.url" data-lity><span class="img" style="background-image: url(^ca_object_representations.media.preview.url)"></span></a></div>
+												</unit>
+											</unit>}}}
+											
+										</div>
+									</div>
+			
+									<div class="card-arrow">
+										<div class="card-arrow-top-left"></div>
+										<div class="card-arrow-top-right"></div>
+										<div class="card-arrow-bottom-left"></div>
+										<div class="card-arrow-bottom-right"></div>
+									</div>
 								</div>
 							</div>
-    
-  							<div class="card-arrow">
-    							<div class="card-arrow-top-left"></div>
-    							<div class="card-arrow-top-right"></div>
-    							<div class="card-arrow-bottom-left"></div>
-    							<div class="card-arrow-bottom-right"></div>
-  							</div>
-						</div>
-					</div>
 					<?php
 						}
 					?>
