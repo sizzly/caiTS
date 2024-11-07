@@ -59,7 +59,7 @@ if (!$vb_ajax) {	// !ajax
 					</h1>
 					<hr class="mb-4" />
 					<div id="resultsWidget" class="mb-5">
-						<div class="row">
+						<div class="resultswrapper">
 							<?php
 								} // !ajax
 

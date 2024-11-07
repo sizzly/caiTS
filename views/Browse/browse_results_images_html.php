@@ -89,7 +89,10 @@
 				print ExternalCache::fetch($vs_cache_key, 'browse_result');
 			}else{			
 				$vs_idno_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.idno"), '', $vs_table, $vn_id);
-				$vs_label_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.preferred_labels"), '', $vs_table, $vn_id);
+				$vs_label_detail = $qr_res->get("{$vs_table}.preferred_labels");
+				$vs_objectid = $qr_res->get("ca_objects.object_id");
+				$vs_description = caTruncateStringWithEllipsis($qr_res->get("{$vs_table}.work_description"), 75);
+				$vs_url = '/index.php/Detail/objects/'.$vs_objectid.'';
 				$vs_thumbnail = "";
 				$vs_type_placeholder = "";
 				$vs_typecode = "";
@@ -120,23 +123,30 @@
 				$vs_expanded_info = $qr_res->getWithTemplate($vs_extended_info_template);
 
 				$vs_result_output = "
-<div class='col-lg-6'>
-	
-<div class='card mb-3'>	
+  <div class='card mb-2'>
   	<div class='card-body'>
-		{$vs_rep_detail_link}
-	</div>
-	<div class='card-body'>
-		<h5 class='card-title'>{$vs_label_detail_link}</h5>
-	</div>
-  	<div class='card-arrow'>
-    	<div class='card-arrow-top-left'></div>
-    	<div class='card-arrow-top-right'></div>
-    	<div class='card-arrow-bottom-left'></div>
-    	<div class='card-arrow-bottom-right'></div>
+    	<div class='row gx-0 align-items-center'>
+      		<div class='col-md-5'>
+	  			{$vs_rep_detail_link}
+      		</div>
+      		<div class='col-md-7'>
+        		<div class='card-body'>
+          			<h5 class='card-title'>{$vs_label_detail}</h5>
+          			<p class='card-text'>{$vs_description}</p>
+
+					<a href='{$vs_url}' class='btn btn-theme btn-sm'>Details</a>
+
+        		</div>
+      		</div>
+    	</div>
   	</div>
-</div>		
-</div><!-- end col -->
+  	<div class='card-arrow'>
+		<div class='card-arrow-top-left'></div>
+		<div class='card-arrow-top-right'></div>
+		<div class='card-arrow-bottom-left'></div>
+		<div class='card-arrow-bottom-right'></div>
+  	</div>
+</div>
 ";
 					ExternalCache::save($vs_cache_key, $vs_result_output, 'browse_result', $o_config->get("cache_timeout"));
 					print $vs_result_output;
@@ -148,10 +158,4 @@
 			print "<div style='clear:both'></div>".caNavLink($this->request, _t('Next %1', $vn_hits_per_block), 'jscroll-next', '*', '*', '*', array('s' => $vn_start + $vn_results_output, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0));
 		}
 ?>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		if($("#bSetsSelectMultipleButton").is(":visible")){
-			$(".bSetsSelectMultiple").show();
-		}
-	});
-</script>
+
