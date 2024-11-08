@@ -97,8 +97,9 @@ $has_user_links = (sizeof($user_links) > 0);
 					<span class="icon-bar"></span>
 				</button>
 <?php
-				print caNavLink($this->request, caGetMenuBarLogo(), "navbar-brand", "", "","");
+				#print caNavLink($this->request, caGetMenuBarLogo(), "navbar-brand", "", "","");
 ?>
+				<a href="/"><h1>iToysoldiers</h1></a>
 			</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
