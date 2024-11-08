@@ -96,10 +96,7 @@ $has_user_links = (sizeof($user_links) > 0);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-<?php
-				#print caNavLink($this->request, caGetMenuBarLogo(), "navbar-brand", "", "","");
-?>
-				<a href="/"><h1>iToysoldiers</h1></a>
+				<a href="/index.php" class="navbar-brand"><img src="/themes/caiTS/assets/pawtucket/graphics/logos/iToysoldiers.png" alt="iToysoldiers logo" style="margin-top:10px;" width="210px" height="100%"></a>
 			</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -157,3 +154,4 @@ $has_user_links = (sizeof($user_links) > 0);
 	</nav>
 	<div class="container"><div class="row"><div class="col-xs-12">
 		<div role="main" id="main"><div id="pageArea" <?= caGetPageCSSClasses(); ?>>
+

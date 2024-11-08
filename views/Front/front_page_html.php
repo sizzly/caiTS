@@ -33,7 +33,7 @@
 ?>
 	<div class="row">
 		<div class="col-sm-8">
-			<H1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate, orci quis vehicula eleifend, metus elit laoreet elit.</H1>
+			<H1>The canonical archive of my miniature wargaming collection.</H1>
 		</div><!--end col-sm-8-->
 		<div class="col-sm-4">
 <?php
