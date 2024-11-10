@@ -86,9 +86,9 @@
 				{{{<ifdef code="ca_objects.idno"><div class="unit"><label>Identifier</label>^ca_objects.idno</div></ifdef>}}}
 				{{{<ifdef code="ca_objects.containerID"><div class="unit"><label>Box/series</label>^ca_objects.containerID</div></ifdef>}}}				
 				
-				{{{<ifdef code="ca_objects.description">
+				{{{<ifdef code="ca_objects.work_description">
 					<div class='unit'><label>Description</label>
-						<span class="trimText">^ca_objects.description</span>
+						<span class="trimText">^ca_objects.work_description</span>
 					</div>
 				</ifdef>}}}
 				

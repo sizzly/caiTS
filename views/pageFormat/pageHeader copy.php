@@ -76,7 +76,7 @@ $has_user_links = (sizeof($user_links) > 0);
 </head>
 <body>
 	<div id="skipNavigation"><a href="#main">Skip to main content</a></div>
-	<nav class="navbar navbar-default yamm topbar" role="navigation">
+	<nav class="navbar navbar-default yamm" role="navigation">
 		<div class="container menuBar">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -152,6 +152,9 @@ $has_user_links = (sizeof($user_links) > 0);
 			</div><!-- /.navbar-collapse -->
 		</div><!-- end container -->
 	</nav>
-	<div class="container"><div class="row"><div class="col-xs-12">
-		<div role="main" id="main"><div id="pageArea" <?= caGetPageCSSClasses(); ?>>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div role="main" id="main">
+					<div id="pageArea" <?= caGetPageCSSClasses(); ?>>
 
