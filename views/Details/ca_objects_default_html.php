@@ -126,8 +126,7 @@
 						<div class="col-sm-6 colBorderLeft">
 							{{{map}}}
 						</div>
-					</div><!-- end row -->
-						
+					</div><!-- end row -->	
 			</div><!-- end col -->
 		</div><!-- end row --></div><!-- end container -->
 	</div><!-- end col -->

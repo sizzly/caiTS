@@ -26,61 +26,46 @@
  * ----------------------------------------------------------------------
  */
 ?>
-				<div style="clear:both; height:1px;"><!-- empty --></div>
 
-				</div><!-- end pageArea -->
-			</div><!-- end main -->
-		</div><!-- end col -->
-	</div><!-- end row -->
-</div><!-- end container -->
-		
+    <!-- ------------------------------------- -->
+    <!-- Footer Start -->
+    <!-- ------------------------------------- -->
+    <footer>
+        <div class="container-fluid">
+            <div class="border-bottom">
+                <div class="row mb-sm-12 mb-4">
 
-	<footer id="footer" role="contentinfo">
+                </div>
+            </div>
+            <div class="d-flex justify-content-between py-7 flex-md-nowrap flex-wrap gap-sm-0 gap-3">
+                <div class="d-flex gap-3 align-items-center">
+                    <img src="/themes/caiTS/assets/pawtucket/graphics/logos/itsicon.jpg" alt="icon">
+                    <p class="fs-4 mb-0">All rights reserved by RST.</p>
+                </div>
+            <div>
+            <p class="mb-0">Theme by <a target="_blank" href="https://adminmart.com/" class="text-primary link-primary">AdminMart</a>.</p>
+            <p class="mb-0">Powered by <a target="_blank" href="https://collectiveaccess.org/" class="text-primary link-primary">Collective Access</a>.</p>
+        </div>
+    </footer>
+    <!-- ------------------------------------- -->
+  <!-- Footer End -->
+  <!-- ------------------------------------- -->
 
-	</footer><!-- end footer -->
-<?php
-	//
-	// Output HTML for debug bar
-	//
-	if(Debug::isEnabled()) {
-		print Debug::$bar->getJavascriptRenderer()->render();
-	}
-?>
-	
-	<?= TooltipManager::getLoadHTML(); ?>
-	<div id="caMediaPanel" role="complementary"> 
-		<div id="caMediaPanelContentArea">
-			
-		</div>
-	</div>
-	<script type="text/javascript">
-		/*
-			Set up the "caMediaPanel" panel that will be triggered by links in object detail
-			Note that the actual <div>'s implementing the panel are located here in views/pageFormat/pageFooter.php
-		*/
-		var caMediaPanel;
-		jQuery(document).ready(function() {
-			if (caUI.initPanel) {
-				caMediaPanel = caUI.initPanel({ 
-					panelID: 'caMediaPanel',										/* DOM ID of the <div> enclosing the panel */
-					panelContentID: 'caMediaPanelContentArea',		/* DOM ID of the content area <div> in the panel */
-					onCloseCallback: function(data) {
-						if(data && data.url) {
-							window.location = data.url;
-						}
-					},
-					exposeBackgroundColor: '#FFFFFF',						/* color (in hex notation) of background masking out page content; include the leading '#' in the color spec */
-					exposeBackgroundOpacity: 0.7,							/* opacity of background color masking out page content; 1.0 is opaque */
-					panelTransitionSpeed: 400, 									/* time it takes the panel to fade in/out in milliseconds */
-					allowMobileSafariZooming: true,
-					mobileSafariViewportTagID: '_msafari_viewport',
-					closeButtonSelector: '.close'					/* anything with the CSS classname "close" will trigger the panel to close */
-				});
-			}
-		});
-		/*(function(e,d,b){var a=0;var f=null;var c={x:0,y:0};e("[data-toggle]").closest("li").on("mouseenter",function(g){if(f){f.removeClass("open")}d.clearTimeout(a);f=e(this);a=d.setTimeout(function(){f.addClass("open")},b)}).on("mousemove",function(g){if(Math.abs(c.x-g.ScreenX)>4||Math.abs(c.y-g.ScreenY)>4){c.x=g.ScreenX;c.y=g.ScreenY;return}if(f.hasClass("open")){return}d.clearTimeout(a);a=d.setTimeout(function(){f.addClass("open")},b)}).on("mouseleave",function(g){d.clearTimeout(a);f=e(this);a=d.setTimeout(function(){f.removeClass("open")},b)})})(jQuery,window,200);*/
-	</script>
-	<?= $this->render("Cookies/banner_html.php"); ?>
+  <!-- Scroll Top -->
+  <a href="javascript:void(0)" class="top-btn btn btn-primary d-flex align-items-center justify-content-center round-54 p-0 rounded-circle">
+    <i class="ti ti-arrow-up fs-7"></i>
+  </a>
 
+  <script src="/themes/caiTS/assets/js/vendor.min.js"></script>
+  <!-- Import Js Files -->
+  <script src="/themes/caiTS/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/themes/caiTS/assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="/themes/caiTS/assets/js/theme/app.dark.init.js"></script>
+  <script src="/themes/caiTS/assets/js/theme/theme.js"></script>
+  <script src="/themes/caiTS/assets/js/theme/app.min.js"></script>
+
+  <!-- solar icons -->
+  <script src="/themes/caiTS/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+  <script src="/themes/caiTS/assets/js/frontend-landingpage/homepage.js"></script>
 </body>
 </html>
