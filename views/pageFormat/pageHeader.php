@@ -19,6 +19,7 @@
 
 	<!-- Core Css -->
 	<link rel="stylesheet" href="/themes/caiTS/assets/css/styles.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 
 	<title><?= (MetaTagManager::getWindowTitle()) ? MetaTagManager::getWindowTitle() : $this->request->config->get("app_display_name"); ?></title>
 	<!-- Owl Carousel  -->

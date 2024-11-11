@@ -3,81 +3,94 @@
  * themes/default/Front/front_page_html : Front page of site 
  * ----------------------------------------------------------------------
  */
+    $o_db = new Db();
+    $qr_objects = $o_db->query('SELECT count(*) AS c FROM ca_objects WHERE deleted=0');
+    $qr_objects->nextRow(); // the result has only 1 row.
+    $vn_count = $qr_objects->get('c'); // this should be your count
 ?>
 <div class="main-wrapper overflow-hidden">
 
     <!-- ------------------------------------- -->
     <!-- banner Start -->
     <!-- ------------------------------------- -->
-    <Section class="bg-primary-subtle pt-7 py-lg-0 py-7">
+    <section class="bg-primary-subtle pt-7 py-lg-0 py-7">
         <div class="custom-container">
-
             <div class="row justify-content-center pt-lg-5 mb-4">
                 <div class="col-lg-8">
                     <h1 class="text-link-color fw-bolder text-center fs-13 mb-0 pt-lg-2">
                         iToysoldiers
                     </h1>
+                    <p class="text-muted fs-5 mb-0 fw-bold text-center">The canonical archive of my miniature wargaming collection.</p>
                 </div>
             </div>
         
 
             <div class="row align-items-end mb-3">
                 <div class="col-lg-3 d-none d-lg-block">
-                <a href="javascript:void(0)" class="card text-bg-success text-white w-100 card-hover">
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <i class="ti ti-basket display-6"></i>
-                    <div class="ms-auto">
-                      <i class="ti ti-arrow-right fs-8"></i>
+                    <div class="card text-white bg-primary rounded">
+                        <div class="card-body p-4">
+                            <span>
+                                <i class="ti ti-building-warehouse fs-8"></i>
+                            </span>
+                            <h3 class="card-title mt-3 mb-0 text-white"><?php print $vn_count; ?></h3>
+                            <p class="card-text text-white-50 fs-3 fw-normal">
+                                Collection Objects
+                            </p>
+                        </div>
                     </div>
-                  </div>
-                  <div class="mt-4">
-                    <p class="card-text fw-normal text-white opacity-75">
-                      Shoes, Jeans, Party wear, Watchs
-                    </p>
-                  </div>
                 </div>
-              </a>
-                </div>
+
+
                 <div class="col-lg-6">
-                    <div class="d-flex justify-content-center align-items-center gap-9">
-                        <p class="text-muted fs-5 mb-0 fw-bold">The canonical archive of my miniature wargaming collection.
-                    </p>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center gap-4 my-4 position-relative z-1">
-                    <a href="../dark/authentication-login.html" class="btn btn-primary">Log In</a>
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)" class="text-dark fs-4 d-flex align-items-center gap-3 fw-bold">
-                        <span class="fs-7 text-primary border border-2 rounded-circle p-6 d-flex align-items-center justify-content-center border-primary">
-                        <iconify-icon icon="bi:play-fill"></iconify-icon>
-                        </span>
-                        See how it works
-                    </a>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center gap-9 position-relative z-1 pb-lg-13">
-                    <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Bootstrap">
-                        <img src="/themes/caiTS/assets//images/frontend-pages/icon-bootstrap.svg" width="28" height="28" alt="icon" />
-                    </a>
-                    <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Sass">
-                        <img src="/themes/caiTS/assets//images/frontend-pages/icon-sass.svg" width="28" height="28" alt="icon" />
-                    </a>
-                    <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Gulp">
-                        <img src="/themes/caiTS/assets//images/frontend-pages/icon-gulp.svg" width="28" height="28" alt="icon" />
-                    </a>
-                    <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Figma">
-                        <img src="/themes/caiTS/assets//images/frontend-pages/icon-figma.svg" width="24" height="24" alt="icon" />
-                    </a>
-                    <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Apexchart">
-                        <img src="/themes/caiTS/assets//images/frontend-pages/icon-apexchart.svg" width="24" height="24" alt="icon" />
-                    </a>
-                    </div>
+
+                <div class="card w-auto">
+    <div class="card-body">
+      <div class="d-flex align-items-start">
+        <div class="bg-danger-subtle text-danger d-inline-block px-4 py-3 rounded">
+          <i class="ti ti-droplet-question display-1"></i>
+        </div>
+        <div class="ms-auto">
+          <div class="dropdown dropstart">
+            <a href="javascript:void(0)" class="link text-dark" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="ti ti-dots fs-7"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <p class="ms-2">How complete is the archive? In other words, how close does this archive reflect my collection?</p>
+              <p class="ms-2">Right now? Not even remotely!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <h4 class="card-title">Archive Completeness Monitor</h4>
+        <div class="progress mt-4 bg-light">
+          <div class="progress-bar text-bg-danger" style="width: 1%; height: 6px;" role="progressbar">
+            <span class="sr-only">50% Complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
                 </div>
+
+
                 <div class="col-lg-3 d-none d-lg-block">
-                    <img src="/themes/caiTS/assets//images/frontend-pages/banner-top-right.svg" class="me-n2 w-100" alt="banner-top-right">
+                    <div class="card text-white bg-success rounded">
+                        <div class="card-body p-4">
+                            <span>
+                                <i class="ti ti-currency-dollar-canadian fs-8"></i>
+                            </span>
+                            <h3 class="card-title mt-3 mb-0 text-white">~ $5000</h3>
+                            <p class="card-text text-white-50 fs-3 fw-normal">
+                                Collection Cost
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </Section>
+    </section>
     <!-- ------------------------------------- -->
     <!-- banner End -->
     <!-- ------------------------------------- -->
@@ -144,7 +157,7 @@
             </div>
           </div>
         </div>
-      </div>
+
     </section>
     <!-- ------------------------------------- -->
     <!-- Leadership end -->
