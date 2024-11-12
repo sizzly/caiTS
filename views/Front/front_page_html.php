@@ -8,6 +8,10 @@
     $qr_objects->nextRow(); // the result has only 1 row.
     $vn_count = $qr_objects->get('c'); // this should be your count
 
+    $qr_shame = $o_db->query('SELECT count(*) AS c FROM ca_objects WHERE deleted=0 AND status=0');
+    $qr_shame->nextRow(); // the result has only 1 row.
+    $vn_shame = $qr_shame->get('c'); // this should be your count
+
     $qr_cost = $o_db->query('SELECT SUM(value_decimal1) AS cost FROM ca_attribute_values WHERE element_id=61');
 	$qr_cost->nextRow();
 	$vn_cost = $qr_cost->get('cost');
@@ -66,7 +70,7 @@
                                 </h3>
                             </div>
                             <div class="p-3">
-                                <h3 class="text-warning mb-0 fs-6">1,000,000</h3>
+                                <h3 class="text-warning mb-0 fs-6"><?php print $vn_shame; ?></h3>
                                 <span>Pile of Shame</span>
                             </div>
                         </div>
