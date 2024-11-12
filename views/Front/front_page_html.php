@@ -23,32 +23,72 @@
                     <p class="text-muted fs-5 mb-0 fw-bold text-center">The canonical archive of my miniature wargaming collection.</p>
                 </div>
             </div>
-            <div class="row align-items-end mb-3">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="card text-white bg-primary rounded">
-                        <div class="card-body p-4">
-                            <span>
-                                <i class="ti ti-building-warehouse fs-8"></i>
-                            </span>
-                            <h3 class="card-title mt-3 mb-0 text-white"><?php print $vn_count; ?></h3>
-                            <p class="card-text text-white-50 fs-3 fw-normal">
-                                Collection Objects
-                            </p>
+            <div class="row align-items-top mb-3">
+                <div class="col-lg-3 d-none d-lg-block">
+
+                    <div class="card overflow-hidden">
+                        <div class="d-flex flex-row">
+                            <div class="p-3 bg-info-subtle d-flex align-items-center">
+                                <h3 class="text-info box mb-0">
+                                    <i class="ti ti-building-warehouse"></i>
+                                </h3>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="text-info mb-0 fs-6"><?php print $vn_count; ?></h3>
+                                <span>Collection Objects</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="card text-white bg-success rounded">
-                        <div class="card-body p-4">
-                            <span>
-                                <i class="ti ti-currency-dollar-canadian fs-8"></i>
-                            </span>
-                            <h3 class="card-title mt-3 mb-0 text-white">~ $5000</h3>
-                            <p class="card-text text-white-50 fs-3 fw-normal">
-                                Collection Cost
-                            </p>
+
+                    <div class="card overflow-hidden">
+                        <div class="d-flex flex-row">
+                            <div class="p-3">
+                                <h3 class="text-success mb-0 fs-6">~ $5000</h3>
+                                <span>Collection Cost</span>
+                            </div>
+                            <div class="p-3 bg-success-subtle d-flex align-items-center ms-auto">
+                                <h3 class="text-success box mb-0">
+                                    <i class="ti ti-currency-dollar-canadian"></i>
+                                </h3>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="card overflow-hidden">
+                        <div class="d-flex flex-row">
+                            <div class="p-3 bg-warning-subtle d-flex align-items-center">
+                                <h3 class="text-warning box mb-0">
+                                    <i class="ti ti-crane"></i>
+                                </h3>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="text-warning mb-0 fs-6">1,000,000</h3>
+                                <span>Pile of Shame</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-lg-6">
+                    <div class="d-flex justify-content-center align-items-center gap-9 position-relative z-1 pb-lg-13">
+                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Drukhari">
+                            <img src="/themes/caiTS/assets/images/darkeldar.svg" width="28" height="28" alt="icon">
+                        </a>
+                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Harlequins">
+                            <img src="/themes/caiTS/assets/images/harlequins.svg" width="28" height="28" alt="icon">
+                        </a>
+                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="World Eaters">
+                            <img src="/themes/caiTS/assets/images/worldeaters.svg" width="28" height="28" alt="icon">
+                        </a>
+                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Sisters of Battle">
+                            <img src="/themes/caiTS/assets/images/sisters-of-battle.svg" width="28" height="28" alt="icon">
+                        </a>
+                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Night Haunts">
+                            <img src="/themes/caiTS/assets/images/nighthaunt.svg" width="28" height="28" alt="icon">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-start">
