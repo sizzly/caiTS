@@ -100,15 +100,9 @@
                                     <i class="ti ti-droplet-question display-5"></i>
                                 </div>
                                 <div class="ms-auto">
-                                    <div class="dropdown dropstart">
-                                        <a href="javascript:void(0)" class="link text-dark" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="ti ti-help fs-7"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <p class="ms-2">How complete is the archive? In other words, how close does this archive reflect my collection?</p>
-                                            <p class="ms-2">Right now? Not even remotely!</p>
-                                        </div>
-                                    </div>
+                                    <button type="button" class="me-2 btn text-danger d-flex align-items-center" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="How complete is the archive? In other words, how close does this archive reflect my collection? Right now? Not even close!">
+                                        <i class="ti ti-help fs-7"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="mt-5">
