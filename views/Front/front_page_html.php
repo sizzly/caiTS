@@ -7,6 +7,10 @@
     $qr_objects = $o_db->query('SELECT count(*) AS c FROM ca_objects WHERE deleted=0');
     $qr_objects->nextRow(); // the result has only 1 row.
     $vn_count = $qr_objects->get('c'); // this should be your count
+
+    $qr_cost = $o_db->query('SELECT SUM(value_decimal1) AS cost FROM ca_attribute_values WHERE element_id=61');
+	$qr_cost->nextRow();
+	$vn_cost = $qr_cost->get('cost');
 ?>
 <div class="main-wrapper overflow-hidden">
 
@@ -43,7 +47,7 @@
                     <div class="card overflow-hidden">
                         <div class="d-flex flex-row">
                             <div class="p-3">
-                                <h3 class="text-success mb-0 fs-6">~ $5000</h3>
+                                <h3 class="text-success mb-0 fs-6">~ <?php print number_format((float)$vn_cost, 2, '.', ''); ?></h3>
                                 <span>Collection Cost</span>
                             </div>
                             <div class="p-3 bg-success-subtle d-flex align-items-center ms-auto">
@@ -71,19 +75,19 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="d-flex justify-content-center align-items-center gap-9 position-relative z-1 pb-lg-13">
-                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Drukhari">
+                        <a class="d-flex align-items-center justify-content-center bg-light-subtle rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Drukhari">
                             <img src="/themes/caiTS/assets/images/darkeldar.svg" width="28" height="28" alt="icon">
                         </a>
-                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Harlequins">
+                        <a class="d-flex align-items-center justify-content-center bg-light-subtle rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Harlequins">
                             <img src="/themes/caiTS/assets/images/harlequins.svg" width="28" height="28" alt="icon">
                         </a>
-                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="World Eaters">
+                        <a class="d-flex align-items-center justify-content-center bg-light-subtle rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="World Eaters">
                             <img src="/themes/caiTS/assets/images/worldeaters.svg" width="28" height="28" alt="icon">
                         </a>
-                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Sisters of Battle">
+                        <a class="d-flex align-items-center justify-content-center bg-light-subtle rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Sisters of Battle">
                             <img src="/themes/caiTS/assets/images/sisters-of-battle.svg" width="28" height="28" alt="icon">
                         </a>
-                        <a class="d-flex align-items-center justify-content-center bg-white rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Night Haunts">
+                        <a class="d-flex align-items-center justify-content-center bg-light-subtle rounded-3 round-54 shadow" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-title="Night Haunts">
                             <img src="/themes/caiTS/assets/images/nighthaunt.svg" width="28" height="28" alt="icon">
                         </a>
                     </div>
