@@ -46,8 +46,9 @@
 		<nav class="navbar navbar-expand-lg bg-primary-subtle py-2 py-lg-10">
 			<div class="custom-container d-flex align-items-center justify-content-between">
 				<a href="/index.php" class="text-nowrap logo-img">
-					<img src="/themes/caiTS/assets/images/logos/itslogo2.png" class="dark-logo" alt="Logo-Dark" />
-					<img src="/themes/caiTS/assets/images/logos/itslogo2.png" class="light-logo" alt="Logo-light" />
+					<span class="fw-bold fs-8 text-white">iToysoldiers</span>					
+					<!-- <img src="/themes/caiTS/assets/images/logos/itslogo2.png" class="dark-logo" alt="Logo-Dark" /> -->
+					<!-- <img src="/themes/caiTS/assets/images/logos/itslogo2.png" class="light-logo" alt="Logo-light" /> -->
 				</a>
 				<button class="navbar-toggler border-0 p-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 					<i class="ti ti-menu-2 fs-8"></i>
@@ -82,7 +83,7 @@
 	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 		<div class="offcanvas-header">
 			<a href="/index.php">
-				<img src="/themes/caiTS/assets/images/logos/itslogo2.png" alt="Logo-light" />
+				<span class="fw-bold fs-8 text-white">iToysoldiers</span>	
 			</a>
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
