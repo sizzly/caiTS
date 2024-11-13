@@ -65,7 +65,24 @@
 						</dl>
 
 						<div class="card mb-3">
-							<div class="card-header fw-bold small">1.0.?</div>
+							<div class="card-header fw-bold small">2024-11-26: 1.1.?</div>
+							<div class="card-body">
+								<h5 class="card-title">Modernize Theme</h5>
+								<h6 class="card-subtitle mb-3 text-white text-opacity-50">It Works!</h6>
+								<p class="card-text mb-3">
+									The new theme is in place and the site is looking snazzy.
+								</p>
+							</div>
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+						</div>
+						
+						<div class="card mb-3">
+							<div class="card-header fw-bold small">2024-11-08: 1.0.29</div>
 							<div class="card-body">
 								<h5 class="card-title">Minimal Viable Product</h5>
 								<h6 class="card-subtitle mb-3 text-white text-opacity-50">It Works!</h6>

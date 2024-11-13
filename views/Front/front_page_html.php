@@ -51,7 +51,7 @@
                     <div class="card overflow-hidden">
                         <div class="d-flex flex-row">
                             <div class="p-3">
-                                <h3 class="text-success mb-0 fs-6">~ <?php print number_format((float)$vn_cost, 2, '.', ''); ?></h3>
+                                <h3 class="text-success mb-0 fs-6">~ <?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
                                 <span>Collection Cost</span>
                             </div>
                             <div class="p-3 bg-success-subtle d-flex align-items-center ms-auto">
