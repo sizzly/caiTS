@@ -52,7 +52,8 @@
     <script src="/themes/caiTS/assets/js/theme/app.dark.init.js"></script>
     <script src="/themes/caiTS/assets/js/theme/theme.js"></script>
     <script src="/themes/caiTS/assets/js/theme/app.min.js"></script>
-    <script src="/themes/caiTS/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
     <script src="/themes/caiTS/assets/js/frontend-landingpage/homepage.js"></script>
+    <script src="/themes/caiTS/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="/themes/caiTS/assets/js/apps/productDetail.js"></script>
 </body>
 </html>

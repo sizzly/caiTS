@@ -34,69 +34,53 @@
 	$vn_pdf_enabled = 		$this->getVar("pdfEnabled");
 	$vn_id =				$t_object->get('ca_objects.object_id');
 ?>
-<div class="row">
-	<div class='col-xs-12 navTop'><!--- only shown at small screen size -->
-		{{{previousLink}}}{{{resultsLink}}}{{{nextLink}}}
-	</div><!-- end detailTop -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgLeft">
-			{{{previousLink}}}{{{resultsLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-	<div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
-		<div class="container"><div class="row">
-			<div class='col-sm-6 col-md-6 col-lg-5 col-lg-offset-1'>
-				{{{representationViewer}}}
-				
-				
-				<div id="detailAnnotations"></div>
-				
-				<?= caObjectRepresentationThumbnails($this->request, $this->getVar("representation_id"), $t_object, array("returnAs" => "bsCols", "linkTo" => "basic", "bsColClasses" => "smallpadding col-sm-3 col-md-3 col-xs-4", "primaryOnly" => $this->getVar('representationViewerPrimaryOnly') ? 1 : 0)); ?>
-				
-<?php
-				# Comment and Share Tools
-				if ($vn_comments_enabled | $vn_share_enabled | $vn_pdf_enabled) {
-						
-					print '<div id="detailTools">';
-					if ($vn_comments_enabled) {
-?>				
-						<div class="detailTool"><a href='#' onclick='jQuery("#detailComments").slideToggle(); return false;'><span class="glyphicon glyphicon-comment" aria-label="<?php print _t("Comments and tags"); ?>"></span><?= _t('Comments and Tags'); ?> (<?php print sizeof($va_comments) + sizeof($va_tags); ?>)</a></div><!-- end detailTool -->
-						<div id='detailComments'><?php print $this->getVar("itemComments");?></div><!-- end itemComments -->
-<?php				
-					}
-					if ($vn_share_enabled) {
-						print '<div class="detailTool"><span class="glyphicon glyphicon-share-alt" aria-label="'._t("Share").'"></span>'.$this->getVar("shareLink").'</div><!-- end detailTool -->';
-					}
-					if ($vn_pdf_enabled) {
-						print "<div class='detailTool'><span class='glyphicon glyphicon-file' aria-label='"._t("Download")."'></span>".caDetailLink($this->request, "Download as PDF", "faDownload", "ca_objects",  $vn_id, array('view' => 'pdf', 'export_format' => '_pdf_ca_objects_summary'))."</div>";
-					}
-					print '</div><!-- end detailTools -->';
-				}				
 
-?>
+<div class="body-wrapper">
+    <div class="container-fluid">
+        <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+        	<div class="card-body px-4 py-3">
+            	<div class="row align-items-center">
+                	<div class="col-9">
+                  		<h4 class="fw-semibold mb-8">{{{ca_objects.preferred_labels.name}}}</h4>
+                  		<nav aria-label="breadcrumb">
+                    		<ol class="breadcrumb">
+                      			<li class="breadcrumb-item">
+					  				{{{<unit relativeTo="ca_collections" delimiter="</li><li class='breadcrumb-item'>"><l>^ca_collections.preferred_labels.name</l></unit><ifcount min="1" code="ca_collections"></ifcount>}}}
+                      			</li>
+                      			<li class="breadcrumb-item" aria-current="page">{{{ca_objects.preferred_labels.name}}}</li>
+                    		</ol>
+                  		</nav>
+                	</div>
+                	<div class="col-3">
+                  		<div class="text-center mb-n5">
+                    		<!-- Navigation?? -->
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+        </div>
+        <div class="shop-detail">
+            <div class="card shadow-none border">
+              	<div class="card-body p-4">
+                	<div class="row">
+                  		<div class="col-lg-6">
+							{{{representationViewer}}}
+                  		</div>
+                  		<div class="col-lg-6">
+                    		<div class="shop-content">
+                      			<div class="d-flex align-items-center gap-2 mb-2">
+					 				{{{<ifdef code="ca_objects.idno"><span class='badge text-bg-light fs-2 fw-semibold'>^ca_objects.idno</span></ifdef>}}}
+                        			<span class="fs-2">{{{<unit>^ca_objects.type_id</unit>}}}</span>
+                      			</div>
+                      			<h4>{{{ca_objects.preferred_labels.name}}}</h4>
+                      			<p class="mb-3">{{{<ifdef code="ca_objects.work_description">
+									^ca_objects.work_description
+								</ifdef>}}}</p>
 
-			</div><!-- end col -->
-			
-			<div class='col-sm-6 col-md-6 col-lg-5'>
-				<H1>{{{<unit relativeTo="ca_collections" delimiter="<br/>"><l>^ca_collections.preferred_labels.name</l></unit><ifcount min="1" code="ca_collections"> ➔ </ifcount>}}}{{{ca_objects.preferred_labels.name}}}</H1>
-				<H2>{{{<unit>^ca_objects.type_id</unit>}}}</H2>
-				<HR>
-				
-				
-				{{{<ifdef code="ca_objects.idno"><div class="unit"><label>Identifier</label>^ca_objects.idno</div></ifdef>}}}
-				{{{<ifdef code="ca_objects.containerID"><div class="unit"><label>Box/series</label>^ca_objects.containerID</div></ifdef>}}}				
-				
-				{{{<ifdef code="ca_objects.work_description">
-					<div class='unit'><label>Description</label>
-						<span class="trimText">^ca_objects.work_description</span>
-					</div>
-				</ifdef>}}}
-				
-				
-				{{{<ifdef code="ca_objects.dateSet.setDisplayValue"><div class="unit"><label>Date</label>^ca_objects.dateSet.setDisplayValue</div></ifdef>}}}
-			
-				<hr></hr>
-					<div class="row">
+								<div class="d-flex align-items-center gap-8 py-7 border-top">
+									{{{<ifdef code="ca_objects.dateSet.setDisplayValue"><div class="unit"><label>Date</label>^ca_objects.dateSet.setDisplayValue</div></ifdef>}}}
+
+									<div class="row">
 						<div class="col-sm-6">		
 							{{{<ifcount code="ca_entities" min="1"><div class="unit">
 								<ifcount code="ca_entities" min="1" max="1"><label>Related person</label></ifcount>
@@ -126,22 +110,129 @@
 						<div class="col-sm-6 colBorderLeft">
 							{{{map}}}
 						</div>
-					</div><!-- end row -->	
-			</div><!-- end col -->
-		</div><!-- end row --></div><!-- end container -->
-	</div><!-- end col -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgRight">
-			{{{nextLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-</div><!-- end row -->
-
-<script type='text/javascript'>
-	jQuery(document).ready(function() {
-		$('.trimText').readmore({
-		  speed: 75,
-		  maxHeight: 120
-		});
-	});
-</script>
+					</div>
+								</div>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+			<!-- Bottom Tabs
+            <div class="card shadow-none border">
+              	<div class="card-body p-4">
+                	<ul class="nav nav-pills user-profile-tab border-bottom" id="pills-tab" role="tablist">
+                  		<li class="nav-item" role="presentation">
+                    		<button class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" id="pills-description-tab" data-bs-toggle="pill" data-bs-target="#pills-description" type="button" role="tab" aria-controls="pills-description" aria-selected="true">
+                      			Narrative Text
+                    		</button>
+                  		</li>
+                  		<li class="nav-item" role="presentation">
+                    		<button class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" id="pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews" aria-selected="false">
+                      			Additional Details
+                    		</button>
+                  		</li>
+                	</ul>
+                	<div class="tab-content pt-4" id="pills-tabContent">
+                  		<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab" tabindex="0">
+				  			{{{<ifdef code="ca_objects.work_description">
+								<div class="unit">
+									<span>^ca_objects.work_description</span>
+								</div>
+							</ifdef>}}}
+                  		</div>
+                  		<div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabindex="0">
+                    		<div class="row">
+                      			<div class="col-lg-4 d-flex align-items-stretch">
+                        			<div class="card shadow-none border w-100 mb-7 mb-lg-0">
+                          				<div class="card-body text-center p-4 d-flex flex-column justify-content-center">
+                            				<h6 class="mb-3">Average Rating</h6>
+                            				<h2 class="text-primary mb-3 fw-semibold fs-9">4/5</h2>
+                            				<ul class="list-unstyled d-flex align-items-center justify-content-center mb-0">
+												<li>
+													<a class="me-1" href="javascript:void(0)">
+														<i class="ti ti-star text-warning fs-6"></i>
+													</a>
+												</li>
+												<li>
+													<a class="me-1" href="javascript:void(0)">
+														<i class="ti ti-star text-warning fs-6"></i>
+													</a>
+												</li>
+												<li>
+													<a class="me-1" href="javascript:void(0)">
+														<i class="ti ti-star text-warning fs-6"></i>
+													</a>
+												</li>
+												<li>
+													<a class="me-1" href="javascript:void(0)">
+														<i class="ti ti-star text-warning fs-6"></i>
+													</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)">
+														<i class="ti ti-star text-warning fs-6"></i>
+													</a>
+												</li>
+                            				</ul>
+                          				</div>
+                        			</div>
+                      			</div>
+                      			<div class="col-lg-4 d-flex align-items-stretch">
+                        			<div class="card shadow-none border w-100 mb-7 mb-lg-0">
+                          				<div class="card-body p-4 d-flex flex-column justify-content-center">
+                            				<div class="d-flex align-items-center gap-9 mb-3">
+                              					<span class="flex-shrink-0 fs-2">1 Stars</span>
+                              					<div class="progress bg-primary-subtle w-100 h-4">
+                                					<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
+                              					</div>
+                              					<h6 class="mb-0">(485)</h6>
+                            				</div>
+											<div class="d-flex align-items-center gap-9 mb-3">
+												<span class="flex-shrink-0 fs-2">2 Stars</span>
+												<div class="progress bg-primary-subtle w-100 h-4">
+													<div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+												</div>
+												<h6 class="mb-0">(215)</h6>
+											</div>
+											<div class="d-flex align-items-center gap-9 mb-3">
+												<span class="flex-shrink-0 fs-2">3 Stars</span>
+												<div class="progress bg-primary-subtle w-100 h-4">
+													<div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
+												</div>
+												<h6 class="mb-0">(110)</h6>
+											</div>
+											<div class="d-flex align-items-center gap-9 mb-3">
+												<span class="flex-shrink-0 fs-2">4 Stars</span>
+												<div class="progress bg-primary-subtle w-100 h-4">
+													<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+												</div>
+												<h6 class="mb-0">(620)</h6>
+											</div>
+											<div class="d-flex align-items-center gap-9">
+												<span class="flex-shrink-0 fs-2">5 Stars</span>
+												<div class="progress bg-primary-subtle w-100 h-4">
+													<div class="progress-bar" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" style="width: 12%;"></div>
+												</div>
+												<h6 class="mb-0">(160)</h6>
+                            				</div>
+                          				</div>
+                        			</div>
+                      			</div>
+                      			<div class="col-lg-4 d-flex align-items-stretch">
+                        			<div class="card shadow-none border w-100 mb-7 mb-lg-0">
+                          				<div class="card-body p-4 d-flex flex-column justify-content-center">
+                            				<button type="button" class="btn btn-outline-primary d-flex align-items-center gap-2 mx-auto">
+                              					<i class="ti ti-pencil fs-7"></i>Write an Review
+                            				</button>
+                          				</div>
+                        			</div>
+                      			</div>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+			Bottom Tabs Supressed -->
+        </div>
+    </div>
+</div>

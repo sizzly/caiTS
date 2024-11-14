@@ -34,96 +34,35 @@ $t_subject						= $this->getVar('t_subject');
 $subject_id						= $t_subject->getPrimaryKey();
 
 $slide_list = $this->getVar('slide_list');
-
-
-if ($representation_count > 1) {
 ?>
-<div class="repViewerWrapper">
-	<div id="repViewerItemDisplay">
-			
-	</div>
-
-	<!-- Prev/next controls -->
-	<div id='detailRepNav'>
-		<a href='#' id='detailRepNavPrev' title='<?= _t("Previous"); ?>' aria-label='Previous'><span class='glyphicon glyphicon-arrow-left'></span></a> 
-		<a href='#' id='detailRepNavNext' title='<?= _t("Next"); ?>' aria-label='Next'><span class='glyphicon glyphicon-arrow-right'></span></a>
-		<div style='clear:both;'></div>
-	</div><!-- end detailRepNav -->
-</div><!-- end wrapper -->
-
-<script type='text/javascript'>
-	let index = 0;
-	let slide_list = <?= json_encode($slide_list); ?>;
-	jQuery(document).ready(function() {
-		setByIndex(0);
-		
-		jQuery('#detailRepNavPrev').on('click', function(e) {
-			previousItem();
-			e.preventDefault();
-		});
-		jQuery('#detailRepNavNext').on('click', function(e) {
-			nextItem();
-			e.preventDefault();
-		});
-	});
-	
-	function nextItem() {
-		if(index < (slide_list.length - 1)) {
-			index = index + 1;
-			setByIndex(index);
-		}
-		return false;
-	};
-	function previousItem() {
-		if(index > 0) {
-			index = index - 1;
-			setByIndex(index);
-		}
-		return false;
-	};
-	function setByIndex(i) {
-		if((i >= 0) && (i < slide_list.length)) {
-			jQuery('#repViewerItemDisplay').html(slide_list[i]);
-
-			let repid = jQuery('#repViewerItemDisplay').children(":first").attr('data-representation_id');
-			let thumbid = jQuery('.repThumb[data-representation_id="' + repid + '"]').attr('id');
-
-			jQuery('.repThumb').removeClass('active');
-			jQuery('#' + thumbid).addClass('active');
-
-			index = i;
-		}
-		return false;
-	};
-	function setItem(i) {
-		let repid = jQuery('#repThumb_' + i).attr('data-representation_id');
-
-		for (let newindex = 0; newindex < slide_list.length; newindex++) {
-			if (slide_list[newindex].includes("data-representation_id='" + repid + "'")) {
-				setByIndex(newindex);
-				break;
-			}
-		}
-		return false;
-	};
-</script>
+<div id="sync1" class="owl-carousel owl-theme">
 <?php
-	} elseif($representation_count == 1) {
-		// Just dump the slide list without controls when there is only one representation
-
-		print $slide_list[0];
-		if ($show_annotations_mode == 'div') {
-?>	
-<script type='text/javascript'>
-	jQuery(document).ready(function() {
-			if (jQuery('#detailAnnotations').length) { jQuery('#detailAnnotations').load('<?php print caNavUrl($this->request, '*', '*', 'GetTimebasedRepresentationAnnotationList', array('context' => $context, 'id' => $subject_id, 'representation_id' => $representation_ids[0])); ?>'); }
-	});
-</script>
-<?php
-		}
-	} else {
-		// Use placeholder graphic when no representations are available
+	foreach ($representation_ids as $rep_id) {
+		$rep_object = new ca_object_representations($rep_id);
 ?>
-		{{{placeholder}}}
+		<div class="item rounded-4 overflow-hidden">
+			<img src="<?php print $rep_object->get('ca_object_representations.media.widepreview.url'); ?>" alt="" class="img-fluid">
+		</div>
 <?php
 	}
+?>
+</div>
+<?php
+	if ($representation_count > 1) {
+		?>
+
+<div id="sync2" class="owl-carousel owl-theme">
+<?php
+	foreach ($representation_ids as $rep_id) {
+		$rep_object = new ca_object_representations($rep_id);
+?>
+		<div class="item rounded-4 overflow-hidden">
+			<img src="<?php print $rep_object->get('ca_object_representations.media.largeicon.url'); ?>" alt="" class="img-fluid">
+		</div>
+<?php
+	}
+?>
+</div>
+<?php
+	}
+	?>
