@@ -66,8 +66,8 @@
 	$vs_default_placeholder_tag = "<div class='bResultItemImgPlaceholder'>".$vs_default_placeholder."</div>";
 		
 
-		$vn_col_span = 3;
-		$vn_col_span_sm = 4;
+		$vn_col_span = 4;
+		$vn_col_span_sm = 6;
 		$vb_refine = false;
 		if(is_array($va_facets) && sizeof($va_facets)){
 			$vb_refine = true;
@@ -115,20 +115,17 @@
 					$vs_idno_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.idno"), '', $vs_table, $vn_id);
 					$vs_label_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.preferred_labels"), '', $vs_table, $vn_id);
 					$vs_thumbnail = "";
-					$vs_type_placeholder = "";
+					$vs_type_placeholder = "/themes/caiTS/assets/images/placeholder.png";
 					$vs_typecode = "";
 					if ($vs_table == 'ca_objects') {
-						if(!($vs_thumbnail = $qr_res->get('ca_object_representations.media.medium', array("checkAccess" => $va_access_values)))){
+						if(!($vs_thumbnail = $qr_res->get('ca_object_representations.media.widepreview.url', array("checkAccess" => $va_access_values)))){
 							$t_list_item->load($qr_res->get("type_id"));
 							$vs_typecode = $t_list_item->get("idno");
-							if($vs_type_placeholder = caGetPlaceholder($vs_typecode, "placeholder_media_icon")){
-								$vs_thumbnail = "<div class='bResultItemImgPlaceholder'>".$vs_type_placeholder."</div>";
-							}else{
-								$vs_thumbnail = $vs_default_placeholder_tag;
-							}
+							$vs_thumbnail = $vs_type_placeholder;
 						}
+						$vs_thumbnail_format = "<img class='card-img-top' src='".$vs_thumbnail."'>";
 						$vs_info = null;
-						$vs_rep_detail_link 	= caDetailLink($this->request, $vs_thumbnail, '', $vs_table, $vn_id);				
+						$vs_rep_detail_link 	= caDetailLink($this->request, $vs_thumbnail_format, '', $vs_table, $vn_id);				
 					} else {
 						if($va_images[$vn_id]){
 							$vs_thumbnail = $va_images[$vn_id];
@@ -144,20 +141,16 @@
 					$vs_expanded_info = $qr_res->getWithTemplate($vs_extended_info_template);
 
 					$vs_result_output = "
-		<div class='bResultItemCol col-xs-{$vn_col_span_xs} col-sm-{$vn_col_span_sm} col-md-{$vn_col_span}'>
-			<div class='bResultItem' id='row{$vn_id}' onmouseover='jQuery(\"#bResultItemExpandedInfo{$vn_id}\").show();'  onmouseout='jQuery(\"#bResultItemExpandedInfo{$vn_id}\").hide();'>
-				<div class='bSetsSelectMultiple'><input type='checkbox' name='object_ids' value='{$vn_id}'></div>
-				<div class='bResultItemContent'><div class='text-center bResultItemImg'>{$vs_rep_detail_link}</div>
-					<div class='bResultItemText'>
-						<small>{$vs_idno_detail_link}</small><br/>{$vs_label_detail_link}
-					</div><!-- end bResultItemText -->
-				</div><!-- end bResultItemContent -->
-				<div class='bResultItemExpandedInfo' id='bResultItemExpandedInfo{$vn_id}'>
-					<hr>
-					{$vs_expanded_info}{$vs_add_to_set_link}
-				</div><!-- bResultItemExpandedInfo -->
-			</div><!-- end bResultItem -->
-		</div><!-- end col -->";
+<div class='col-sm-6 col-xxl-4'>
+	<div class='card hover-img overflow-hidden'>
+		<div class='position-relative'>
+		{$vs_rep_detail_link}
+		</div>
+		<div class='card-body pt-3 p-4'>
+			<h6 class='fs-4'>{$vs_label_detail_link}</h6>
+		</div>
+	</div>
+</div>";
 					ExternalCache::save($vs_cache_key, $vs_result_output, 'browse_result', $o_config->get("cache_timeout"));
 					print $vs_result_output;
 				}				
@@ -168,10 +161,4 @@
 			print "<div style='clear:both'></div>".caNavLink($this->request, _t('Next %1', $vn_hits_per_block), 'jscroll-next', '*', '*', '*', array('s' => $vn_start + $vn_results_output, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0));
 		}
 ?>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		if($("#bSetsSelectMultipleButton").is(":visible")){
-			$(".bSetsSelectMultiple").show();
-		}
-	});
-</script>
+

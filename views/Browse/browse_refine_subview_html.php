@@ -41,7 +41,6 @@
 		print "<div id='bMorePanel'><!-- long lists of facets are loaded here --></div>";
 		print "<div id='bRefine'>";
 		print "<a href='#' class='pull-right' id='bRefineClose' onclick='jQuery(\"#bRefine\").toggle(); return false;'><span class='glyphicon glyphicon-remove-circle'></span></a>";
-		print "<H2>"._t("Filter by")."</H2>";
 		foreach($va_facets as $vs_facet_name => $va_facet_info) {
 			
 			if ((caGetOption('deferred_load', $va_facet_info, false) || ($va_facet_info["group_mode"] == 'hierarchical')) && ($o_browse->getFacet($vs_facet_name))) {
@@ -57,7 +56,8 @@
 <?php
 			} else {				
 				if (!is_array($va_facet_info['content']) || !sizeof($va_facet_info['content'])) { continue; }
-				print "<h3>".$va_facet_info['label_singular']."</h3>"; 
+				print "<ul class='list-group pt-2 border-bottom rounded-0'>";
+				print "<h6 class='my-3 mx-4'>Filter by ".$va_facet_info['label_singular']."</h6>"; 
 				switch($va_facet_info["group_mode"]){
 					case "alphabetical":
 					case "list":
@@ -66,7 +66,7 @@
 						$vn_c = 0;
 						foreach($va_facet_info['content'] as $va_item) {
 						    $vs_content_count = (isset($va_item['content_count']) && ($va_item['content_count'] > 0)) ? " (".$va_item['content_count'].")" : "";
-							print "<div>".caNavLink($this->request, $va_item['label'].$vs_content_count, '', '*', '*','*', array('key' => $vs_key, 'facet' => $vs_facet_name, 'id' => $va_item['id'], 'view' => $vs_view))."</div>";
+							print "<li class='list-group-item border-0 p-0 mx-4 mb-2'>".caNavLink($this->request, $va_item['label'].$vs_content_count, '', '*', '*','*', array('key' => $vs_key, 'facet' => $vs_facet_name, 'id' => $va_item['id'], 'view' => $vs_view))."</li>";
 							$vn_c++;
 						
 							if (($vn_c == $vn_facet_display_length_initial) && ($vn_facet_size > $vn_facet_display_length_initial) && ($vn_facet_size <= $vn_facet_display_length_maximum)) {
@@ -91,26 +91,6 @@
 				}
 			}
 		}
-		print "</div><!-- end bRefine -->\n";
-?>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-            if(jQuery('#browseResultsContainer').height() > jQuery(window).height()){
-				var offset = jQuery('#bRefine').height(jQuery(window).height() - 30).offset();   // 0px top + (2 * 15px padding) = 30px
-				var panelWidth = jQuery('#bRefine').width();
-				jQuery(window).scroll(function () {
-					var scrollTop = $(window).scrollTop();
-					// check the visible top of the browser
-					if (offset.top<scrollTop && ((offset.top + jQuery('#pageArea').height() - jQuery('#bRefine').height()) > scrollTop)) {
-						jQuery('#bRefine').addClass('fixed');
-						jQuery('#bRefine').width(panelWidth);
-					} else {
-						jQuery('#bRefine').removeClass('fixed');
-					}
-				});
-            }
-		});
-	</script>
-<?php	
+		print "</div><!-- end bRefine -->\n";	
 	}
 ?>
