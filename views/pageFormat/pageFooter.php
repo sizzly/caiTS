@@ -24,6 +24,7 @@
 	<script src="/themes/caiTS/assets/js/vendor.min.js"></script>
 	<script src="/themes/caiTS/assets/js/app.min.js"></script>
 	<script src="/themes/caiTS/assets/js/homepage.js"></script>
+	<script src="/themes/caiTS/assets/js/productDetail.js"></script>
 	<!-- ================== END core-js ================== -->
 
 	<!-- ================== BEGIN page-js ================== -->
