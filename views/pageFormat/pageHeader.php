@@ -17,6 +17,7 @@
 		<link href="/themes/caiTS/assets/css/vendor.min.css" rel="stylesheet" />
 		<link href="/themes/caiTS/assets/css/theme.css" rel="stylesheet" />
 		<link href="/themes/caiTS/assets/css/mods.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 		<link href="/themes/caiTS/assets/plugins//lity/dist/lity.min.css" rel="stylesheet" />
 
 		<!-- ================== END core-css ================== -->
