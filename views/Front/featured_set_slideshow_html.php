@@ -14,7 +14,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-5">
-                <h2 class="fs-10 fw-bolder">Featured Models</h2>
                 <p class="fs-4 mb-0">
                     Models of which I am especially proud.
                 </p>
@@ -28,12 +27,17 @@
 					if($vs_media = $qr_res->getWithTemplate("$vs_img_template", array("checkAccess" => $va_access_values))){
 ?>
                         <div class="item">
-                            <a href="/index.php/Detail/objects/<?php print $qr_res->get("ca_objects.object_id"); ?>">
-                                <div class="">
-                                    <img src="<?php print $vs_media; ?>" alt="Featured Model" class="rounded-3">
-                                    <div class="position-relative leadership-card z-1 bg-white mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm">
-                                        <h4 class="fs-5 fw-semibold mb-2"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h4>
-                                        <!-- <p class="fs-3 mb-0">CTO & Co-Founder</p> -->
+                            <a href="/index.php/Detail/objects/<?php print $qr_res->get("ca_objects.object_id"); ?>" class="text-decoration-none">
+                                <div class='card'>
+                                    <img src="<?php print $vs_media; ?>" alt="Featured Model">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h5>
+                                    </div>
+                                    <div class='card-arrow'>
+                                        <div class='card-arrow-top-left'></div>
+                                        <div class='card-arrow-top-right'></div>
+                                        <div class='card-arrow-bottom-left'></div>
+                                        <div class='card-arrow-bottom-right'></div>
                                     </div>
                                 </div>
                             </a>

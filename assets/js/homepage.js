@@ -20,8 +20,8 @@ $(function () {
         dots: false,
         margin: 30,
         navText: [
-            '<i class="ti ti-arrow-left fs-7 round-48 hstack justify-content-center bg-primary-subtle rounded-circle"></i>',  // Previous button
-            '<i class="ti ti-arrow-right fs-7 round-48 hstack justify-content-center bg-primary-subtle rounded-circle"></i>'  // Next button
+            '<i class="ti ti-arrow-left display-6 round-48 hstack justify-content-center bg-secondary rounded-circle"></i>',  // Previous button
+            '<i class="ti ti-arrow-right display-6 round-48 hstack justify-content-center bg-secondary rounded-circle"></i>'  // Next button
         ],
         responsive: {
             0: {

@@ -125,6 +125,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class='card'>
+            <div class="card-header fw-bold small">FEATURED MODELS</div>
             <div class='card-body'>
                 <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
             </div>
