@@ -115,7 +115,7 @@
 					$vs_idno_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.idno"), '', $vs_table, $vn_id);
 					$vs_label_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.preferred_labels"), '', $vs_table, $vn_id);
 					$vs_thumbnail = "";
-					$vs_type_placeholder = "/themes/caiTS/assets/images/placeholder.png";
+					$vs_type_placeholder = "/themes/caiTS/assets/img/placeholder.png";
 					$vs_typecode = "";
 					if ($vs_table == 'ca_objects') {
 						if(!($vs_thumbnail = $qr_res->get('ca_object_representations.media.widepreview.url', array("checkAccess" => $va_access_values)))){
@@ -141,13 +141,19 @@
 					$vs_expanded_info = $qr_res->getWithTemplate($vs_extended_info_template);
 
 					$vs_result_output = "
-<div class='col-sm-6 col-xxl-4'>
-	<div class='card hover-img overflow-hidden'>
+<div class='col-sm-6 col-md-4 mb-3'>
+	<div class='card'>
 		<div class='position-relative'>
 		{$vs_rep_detail_link}
 		</div>
-		<div class='card-body pt-3 p-4'>
+		<div class='card-body'>
 			<h6 class='fs-4'>{$vs_label_detail_link}</h6>
+		</div>
+		<div class='card-arrow'>
+			<div class='card-arrow-top-left'></div>
+			<div class='card-arrow-top-right'></div>
+			<div class='card-arrow-bottom-left'></div>
+			<div class='card-arrow-bottom-right'></div>
 		</div>
 	</div>
 </div>";
