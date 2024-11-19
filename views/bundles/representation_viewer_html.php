@@ -28,7 +28,7 @@
 $representation_count 			= $this->getVar('representation_count');
 $representation_ids				= $this->getVar('representation_ids');
 $show_annotations_mode			= $this->getVar('display_annotations');
-$context							= $this->getVar('context');
+$context						= $this->getVar('context');
 
 $t_subject						= $this->getVar('t_subject');
 $subject_id						= $t_subject->getPrimaryKey();
@@ -41,7 +41,9 @@ $slide_list = $this->getVar('slide_list');
 		$rep_object = new ca_object_representations($rep_id);
 ?>
 		<div class="item rounded-4 overflow-hidden">
-			<img src="<?php print $rep_object->get('ca_object_representations.media.widepreview.url'); ?>" alt="" class="img-fluid">
+			<a href="<?php print $rep_object->get('ca_object_representations.media.original.url'); ?>" data-lity>
+				<img src="<?php print $rep_object->get('ca_object_representations.media.widepreview.url'); ?>" alt="" class="img-fluid">
+			</a>
 		</div>
 <?php
 	}
