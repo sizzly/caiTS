@@ -50,7 +50,7 @@
 					{{{<unit relativeTo="ca_collections.related" delimiter="">
 						<div class='hstack gap-6'>
 							<i class='ti ti-sitemap fs-6 me-1'></i> 
-							<h6 class=' mb-0'><l>^ca_collections.related.preferred_labels.name</l> (^relationship_typename)</h6>
+							<h6 class=' mb-0'><l>^ca_collections.preferred_labels.name</l> (^relationship_typename)</h6>
 						</div>
 					</unit>}}}
 					{{{<unit relativeTo="ca_entities" delimiter="">
