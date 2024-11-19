@@ -15,6 +15,9 @@
     $qr_cost = $o_db->query('SELECT SUM(value_decimal1) AS cost FROM ca_attribute_values WHERE element_id=61');
     $qr_cost->nextRow();
     $vn_cost = $qr_cost->get('cost');
+
+    $qr_collections = $o_db->query('SELECT collection_id FROM ca_collections WHERE parent_id IS NULL');
+
 ?>
  
 <ul class="breadcrumb">
@@ -26,106 +29,209 @@
 </h1>
 <hr class="mb-4" />
 
-<div class="row mb-3">
-    <div class="col-lg-3">
-        <div class="card overflow-hidden mb-2">
-            <div class="d-flex flex-row">
-                <div class="p-3 bg-info-subtle d-flex align-items-center">
-                    <h3 class="text-info box mb-0">
-                        <i class="ti ti-building-warehouse"></i>
-                    </h3>
-                </div>
-                <div class="p-3">
-                    <h3 class="text-info mb-0 fs-6"><?php print $vn_count; ?></h3>
-                    <span>Collection Objects</span>
-                </div>
-            </div> 
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-        </div>
-
-        <div class="card overflow-hidden mb-2">
-            <div class="d-flex flex-row">
-                <div class="p-3 d-flex align-items-center">
-                    <h3 class="text-warning box mb-0">
-                        <i class="ti ti-crane"></i>
-                    </h3>
-                </div>
-                <div class="p-3">
-                    <h3 class="text-warning mb-0 fs-6"><?php print $vn_shame; ?></h3>
-                    <span>Pile of Shame</span>
-                </div>
-            </div>
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-        </div>
-        
-        <div class="card overflow-hidden mb-2">
-            <div class="d-flex flex-row">
-                <div class="p-3">
-                    <h3 class="text-success mb-0 fs-6">~ <?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
-                    <span>Collection Cost</span>
-                </div>
-                <div class="p-3 d-flex align-items-center ms-auto">
-                    <h3 class="text-green box mb-0">
-                        <i class="ti ti-currency-dollar-canadian"></i>
-                    </h3>
-                </div>
-            </div>
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6">
-    </div>
-    <div class="col-lg-3">
+<div class="row">
+    <div class="col-xl-3 col-lg-6 mb-3">
         <div class="card">
+            <!-- BEGIN card-body -->
             <div class="card-body">
-                <div class="d-flex align-items-start">
-                    <div class="bg-danger-subtle text-danger d-inline-block px-4 py-3 rounded">
-                        <i class="ti ti-droplet-question display-5"></i>
+                <!-- BEGIN title -->
+                <div class="d-flex fw-bold small mb-3">
+                    <span class="flex-grow-1">COLLECTION OBJECTS</span>
+                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="The raw number of recorded items in my collection." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
+                </div>
+                <!-- END title -->
+                <!-- BEGIN stat-lg -->
+                <div class="row align-items-center mb-2">
+                    <div class="col-7">
+                        <h3 class="mb-0"><?php print $vn_count; ?></h3>
                     </div>
-                    <div class="ms-auto">
-                        <button type="button" class="me-2 btn text-danger d-flex align-items-center" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="How complete is the archive? In other words, how close does this archive reflect my collection? Right now? Not even close!">
-                            <i class="ti ti-help fs-7"></i>
-                        </button>
+                    <div class="col-5">
+                        <h3 class="text-info box mb-0 display-5 align-top">
+                            <i class="ti ti-building-warehouse"></i>
+                        </h3>
                     </div>
                 </div>
-                <div class="mt-5">
-                    <h4 class="card-title">Archive Completeness Monitor</h4>
-
+                <!-- END stat-lg -->
+                <!-- BEGIN stat-sm -->
+                <div class="small text-white text-opacity-50 text-truncate">
+                </div>
+                <!-- END stat-sm -->
+            </div>
+            <!-- END card-body -->
+            
+            <!-- BEGIN card-arrow -->
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+            <!-- END card-arrow -->
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 mb-3">
+        <div class="card">
+            <!-- BEGIN card-body -->
+            <div class="card-body">
+                <!-- BEGIN title -->
+                <div class="d-flex fw-bold small mb-3">
+                    <span class="flex-grow-1">PILE OF SHAME</span>
+                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Models that need to be finished. This metric is not accurate yet." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
+                </div>
+                <!-- END title -->
+                <!-- BEGIN stat-lg -->
+                <div class="row align-items-center mb-2">
+                    <div class="col-7">
+                        <h3 class="mb-0"><?php print $vn_shame; ?></h3>
+                    </div>
+                    <div class="col-5">
+                        <h3 class="text-warning box mb-0 display-5 align-top">
+                            <i class="ti ti-crane"></i>
+                        </h3>
+                    </div>
+                </div>
+                <!-- END stat-lg -->
+                <!-- BEGIN stat-sm -->
+                <div class="small text-white text-opacity-50 text-truncate">
+                </div>
+                <!-- END stat-sm -->
+            </div>
+            <!-- END card-body -->
+            
+            <!-- BEGIN card-arrow -->
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+            <!-- END card-arrow -->
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 mb-3">
+        <div class="card">
+            <!-- BEGIN card-body -->
+            <div class="card-body">
+                <!-- BEGIN title -->
+                <div class="d-flex fw-bold small mb-3">
+                    <span class="flex-grow-1">COLLECTION COST</span>
+                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="An extremely approximate amount I've spent putting my collection together." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
+                </div>
+                <!-- END title -->
+                <!-- BEGIN stat-lg -->
+                <div class="row align-items-center mb-2">
+                    <div class="col-7">
+                        <h3 class="mb-0">~ $<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
+                    </div>
+                    <div class="col-5">
+                        <h3 class="text-green box mb-0 display-5 align-top">
+                            <i class="ti ti-currency-dollar-canadian"></i>
+                        </h3>
+                    </div>
+                </div>
+                <!-- END stat-lg -->
+                <!-- BEGIN stat-sm -->
+                <div class="small text-white text-opacity-50 text-truncate">
+                </div>
+                <!-- END stat-sm -->
+            </div>
+            <!-- END card-body -->
+            
+            <!-- BEGIN card-arrow -->
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+            <!-- END card-arrow -->
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 mb-3">
+        <div class="card">
+            <!-- BEGIN card-body -->
+            <div class="card-body">
+                <!-- BEGIN title -->
+                <div class="d-flex fw-bold small mb-3">
+                    <span class="flex-grow-1">ARCHIVE COMPLETENESS</span>
+                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="How complete is the archive? In other words, how close does this archive reflect my collection? Right now? Not even close!" class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
+                </div>
+                <!-- END title -->
+                <!-- BEGIN stat-lg -->
+                <div class="row align-items-center mb-2">
+                    <div class="col-7">
+                        <h3 class="mb-0">1 %</h3>
+                    </div>
+                    <div class="col-5">
+                        <h3 class="text-danger box mb-0 display-5 align-top">
+                            <i class="ti ti-droplet-question"></i>
+                        </h3>
+                    </div>
+                </div>
+                <!-- END stat-lg -->
+                <!-- BEGIN stat-sm -->
+                <div class="small text-white text-opacity-50 text-truncate">
                     <div class="progress">
                         <div class="progress-bar" style="width: 1%">1%</div>
                     </div>
-
                 </div>
+                <!-- END stat-sm -->
             </div>
+            <!-- END card-body -->
+            
+            <!-- BEGIN card-arrow -->
             <div class="card-arrow">
                 <div class="card-arrow-top-left"></div>
                 <div class="card-arrow-top-right"></div>
                 <div class="card-arrow-bottom-left"></div>
                 <div class="card-arrow-bottom-right"></div>
             </div>
+            <!-- END card-arrow -->
         </div>
-    </div>  
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <div class='card'>
+            <div class="card-header fw-bold small bg-white bg-opacity-15">FACTIONS AND CATEGORIES</div>
+            <div class='card-body'>
+                <div class="d-flex justify-content-center align-items-center">
+<?php
+
+                    while ($qr_collections->nextRow()){
+                        $col_object = new ca_collections($qr_collections->get('collection_id'));
+?>
+                        <a class="m-1 d-flex align-items-center justify-content-center bg-dark rounded-3 round-54 shadow text-decoration-none h-70px w-70px" href="/index.php/Detail/collections/<?php print $col_object->get('ca_collections.collection_id'); ?>" data-bs-toggle="tooltip" data-bs-title="<?php print $col_object->get('ca_collections.preferred_labels.name'); ?>">
+<?php
+                            if(!($col_img = $col_object->get('ca_collections.collection_media.media.tiny.url'))) {
+                                print '<i class="ti ti-sitemap display-5"></i>';
+
+                            }else{
+?>
+                                <img src="<?php print $col_object->get('ca_collections.collection_media.media.tiny.url'); ?>" class="rounded">
+<?php
+                            }
+?>  
+                        </a>
+<?php
+                    }
+?>
+                </div>
+            </div>
+            <div class='card-arrow'>
+                <div class='card-arrow-top-left'></div>
+                <div class='card-arrow-top-right'></div>
+                <div class='card-arrow-bottom-left'></div>
+                <div class='card-arrow-bottom-right'></div>
+            </div>
+        </div>
+    </div> 
 </div>
 <div class="row mb-3">
     <div class="col-12">
         <div class='card'>
-            <div class="card-header fw-bold small">FEATURED MODELS</div>
+            <div class="card-header fw-bold small bg-white bg-opacity-15">FEATURED MODELS</div>
             <div class='card-body'>
                 <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
             </div>
