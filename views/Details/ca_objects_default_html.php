@@ -36,11 +36,10 @@
 ?>
 <ul class="breadcrumb">
 	<li class="breadcrumb-item"><a href="/">Home</a></li>
-	<li class="breadcrumb-item">
-		{{{<unit relativeTo="ca_collections" delimiter="</li><li class='breadcrumb-item'>"><l>^ca_collections.preferred_labels.name</l></unit><ifcount min="1" code="ca_collections"></ifcount>}}}
-    </li>
+	{{{<unit relativeTo="ca_collections" delimiter=""><li class="breadcrumb-item"><l>^ca_collections.preferred_labels.name</l></li></unit>}}}
     <li class="breadcrumb-item" aria-current="page">{{{ca_objects.preferred_labels.name}}}</li>
 </ul>
+
 <h1 class="page-header">{{{ca_objects.preferred_labels.name}}}
     <small></small>
 </h1>
