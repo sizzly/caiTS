@@ -13,46 +13,35 @@
 <hr class="mb-4" />
 
 <div class="card">
-	<div class="card-body p-3">
-		<div class="table-responsive border rounded">
-			<table class="table align-middle text-nowrap mb-0">
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody> 
+	<div class="card-header fw-bold small bg-white bg-opacity-15">FACTIONS AND UNITS</div>
+	<div class="list-group">
+
 <?php	
-				if($qr_collections && $qr_collections->numHits()) {
-					while($qr_collections->nextHit()) {
-?>
-						<tr>
-							<td>
-								<div class="d-flex align-items-center">
-									<div class="ms-3">
-										<h4 class="mb-0"><?php print caDetailLink($this->request, $qr_collections->get("ca_collections.preferred_labels"), "", "ca_collections",  $qr_collections->get("ca_collections.collection_id")); ?></h4>
-										<p class="mb-0"><?php print $qr_collections->get("ca_collections.description"); ?></p>
-									</div>
-								</div>
-							</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-<?php
-					}
-				} else {
-					print _t('No collections available');
+		if($qr_collections && $qr_collections->numHits()) {
+			while($qr_collections->nextHit()) {
+				if(!($col_img_url = $qr_collections->get('ca_collections.collection_media.media.tiny.url'))) {
+					$col_img = '<i class="ti ti-sitemap display-5 rounded-circle"></i>';
+				
+				}else{
+					$col_img = '<img src="'.$col_img_url.'" class="rounded-circle">';
+				
 				}
 ?>
-				</tbody>
-			</table>	
-		</div>
+				<a href="/index.php/Detail/collections/<?php print $qr_collections->get("ca_collections.collection_id"); ?>" class="d-flex list-group-item list-group-item-action">
+					<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-dark rounded-circle">
+						<?php print $col_img; ?>
+					</div>
+					<div class="flex-fill ps-3">
+						<h4 class="mb-0"><?php print $qr_collections->get("ca_collections.preferred_labels.name"); ?></h4>
+						<p class="mb-0"><?php print $qr_collections->get("ca_collections.description"); ?></p>
+					</div>
+				</a>
+<?php
+			}
+		} else {
+			print _t('No collections available');
+		}
+?>
 	</div>
 	<div class='card-arrow'>
 		<div class='card-arrow-top-left'></div>
