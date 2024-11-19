@@ -47,7 +47,7 @@
 					{{{<ifdef code="ca_collections.description">^ca_collections.description</ifdef>}}}
 				</p>
                 <div class="vstack gap-3 mt-4">
-					{{{<unit relativeTo="ca_collections" delimiter="">
+					{{{<unit relativeTo="ca_collections.related" delimiter="">
 						<div class='hstack gap-6'>
 							<i class='ti ti-sitemap fs-6 me-1'></i> 
 							<h6 class=' mb-0'><l>^ca_collections.related.preferred_labels.name</l> (^relationship_typename)</h6>
