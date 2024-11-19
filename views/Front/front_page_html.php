@@ -21,7 +21,7 @@
 ?>
  
 <ul class="breadcrumb">
-	<li class="breadcrumb-item">Home</li>
+	<li class="breadcrumb-item" aria-current="page">Home</li>
 </ul>
 
 <h1 class="page-header">iToysoldiers.com
