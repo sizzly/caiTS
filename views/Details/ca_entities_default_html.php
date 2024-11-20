@@ -2,130 +2,134 @@
 /* ----------------------------------------------------------------------
  * themes/default/views/bundles/ca_entities_default_html.php : 
  * ----------------------------------------------------------------------
- * CollectiveAccess
- * Open-source collections management software
- * ----------------------------------------------------------------------
- *
- * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2013-2022 Whirl-i-Gig
- *
- * For more information visit http://www.CollectiveAccess.org
- *
- * This program is free software; you may redistribute it and/or modify it under
- * the terms of the provided license as published by Whirl-i-Gig
- *
- * CollectiveAccess is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTIES whatsoever, including any implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- *
- * This source code is free and modifiable under the terms of 
- * GNU General Public License. (http://www.gnu.org/copyleft/gpl.html). See
- * the "license.txt" file for details, or visit the CollectiveAccess web site at
- * http://www.CollectiveAccess.org
- *
- * ----------------------------------------------------------------------
  */
- 
 	$t_item = $this->getVar("item");
 	$va_comments = $this->getVar("comments");
 	$vn_comments_enabled = 	$this->getVar("commentsEnabled");
 	$vn_share_enabled = 	$this->getVar("shareEnabled");	
 ?>
-<div class="row">
-	<div class='col-xs-12 navTop'><!--- only shown at small screen size -->
-		{{{previousLink}}}{{{resultsLink}}}{{{nextLink}}}
-	</div><!-- end detailTop -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgLeft">
-			{{{previousLink}}}{{{resultsLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-	<div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
-		<div class="container">
-			<div class="row">
-				<div class='col-md-12 col-lg-12'>
-					<H1>{{{^ca_entities.preferred_labels.displayname}}}</H1>
-					<H2>{{{^ca_entities.type_id}}}{{{<ifdef code="ca_entities.idno">, ^ca_entities.idno</ifdef>}}}</H2>
-				</div><!-- end col -->
-			</div><!-- end row -->
-			<div class="row">			
-				<div class='col-sm-6 col-md-6 col-lg-6'>
-					{{{<ifcount code="ca_objects" min="1" max="1"><div class='unit'><unit relativeTo="ca_objects" delimiter=" "><l>^ca_object_representations.media.large</l><div class='caption'>Related Object: <l>^ca_objects.preferred_labels.name</l></div></unit></div></ifcount>}}}
-<?php
-				# Comment and Share Tools
-				if ($vn_comments_enabled | $vn_share_enabled) {
-						
-					print '<div id="detailTools">';
-					if ($vn_comments_enabled) {
-?>				
-						<div class="detailTool"><a href='#' onclick='jQuery("#detailComments").slideToggle(); return false;'><span class="glyphicon glyphicon-comment" aria-label="<?php print _t("Comments and tags"); ?>"></span>Comments (<?php print sizeof($va_comments); ?>)</a></div><!-- end detailTool -->
-						<div id='detailComments'><?php print $this->getVar("itemComments");?></div><!-- end itemComments -->
-<?php				
-					}
-					if ($vn_share_enabled) {
-						print '<div class="detailTool"><span class="glyphicon glyphicon-share-alt" aria-label="'._t("Share").'"></span>'.$this->getVar("shareLink").'</div><!-- end detailTool -->';
-					}
-					print '</div><!-- end detailTools -->';
-				}				
-?>
-					
-				</div><!-- end col -->
-				<div class='col-sm-6 col-md-6 col-lg-6'>
-					{{{<ifdef code="ca_entities.description"><div class='unit'><label>Biography</label>^ca_entities.description</div></ifdef>}}}
-					
-					{{{<ifcount code="ca_collections" min="1" max="1"><label>Related collection</label></ifcount>}}}
-					{{{<ifcount code="ca_collections" min="2"><label>Related collections</label></ifcount>}}}
-					{{{<unit relativeTo="ca_collections" delimiter="<br/>"><l>^ca_collections.preferred_labels.name</l> (^relationship_typename)</unit>}}}
 
-					
-					{{{<ifcount code="ca_entities.related" min="1" max="1"><label>Related person</label></ifcount>}}}
-					{{{<ifcount code="ca_entities.related" min="2"><label>Related people</label></ifcount>}}}
-					{{{<unit relativeTo="ca_entities.related" delimiter="<br/>"><l>^ca_entities.preferred_labels.displayname</l> (^relationship_typename)</unit>}}}
-					
-					{{{<ifcount code="ca_occurrences" min="1" max="1"><label>Related occurrence</label></ifcount>}}}
-					{{{<ifcount code="ca_occurrences" min="2"><label>Related occurrences</label></ifcount>}}}
-					{{{<unit relativeTo="ca_occurrences" delimiter="<br/>"><l>^ca_occurrences.preferred_labels.name</l> (^relationship_typename)</unit>}}}
-					
-					{{{<ifcount code="ca_places" min="1" max="1"><label>Related place</label></ifcount>}}}
-					{{{<ifcount code="ca_places" min="2"><label>Related places</label></ifcount>}}}
-					{{{<unit relativeTo="ca_places" delimiter="<br/>"><l>^ca_places.preferred_labels.name</l> (^relationship_typename)</unit>}}}				
-				</div><!-- end col -->
-			</div><!-- end row -->
-			
-{{{<ifcount code="ca_objects" min="2">
-			<div class="row">
-				<div id="browseResultsContainer">
-					<?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?>
-				</div><!-- end browseResultsContainer -->
-			</div><!-- end row -->
-			<script type="text/javascript">
-				jQuery(document).ready(function() {
-					jQuery("#browseResultsContainer").load("<?php print caNavUrl($this->request, '', 'Search', 'objects', array('search' => 'entity_id:^ca_entities.entity_id'), array('dontURLEncodeParameters' => true)); ?>", function() {
-						jQuery('#browseResultsContainer').jscroll({
-							autoTrigger: true,
-							loadingHtml: '<?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?>',
-							padding: 20,
-							nextSelector: 'a.jscroll-next'
-						});
-					});
-					
-					
-				});
-			</script>
-</ifcount>}}}
-		</div><!-- end container -->
-	</div><!-- end col -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgRight">
-			{{{nextLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-</div><!-- end row -->
-<script type='text/javascript'>
-	jQuery(document).ready(function() {
-		$('.trimText').readmore({
-		  speed: 75,
-		  maxHeight: 120
-		});
-	});
-</script>
+<ul class="breadcrumb">
+	<li class="breadcrumb-item"><a href="/">Home</a></li>
+	<li class="breadcrumb-item" aria-current="page">{{{^ca_entities.preferred_labels.displayname}}}</li>
+</ul>
+
+<h1 class="page-header">{{{^ca_entities.preferred_labels.displayname}}}
+    <small>{{{^ca_entities.type_id}}}</small>
+</h1>
+<hr class="mb-4" />
+
+<div class="row">
+	<div class="col-md-3 mb-3">
+		<div class='card'>
+  			<div class='card-header fw-bold small bg-white bg-opacity-15'>Details</div>
+  			<div class='card-body'>
+			  	{{{<ifdef code="ca_entities.biography"><p class='card-subtitle'>^ca_entities.biography</p><hr></ifdef>}}}
+				<!-- Collections -->
+				{{{<ifdef code="ca_collections">
+					<div class='list-group'>
+						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Collections</h5>
+						<unit relativeTo="ca_collections" delimiter="">
+							<a href='/index.php/Detail/collections/^ca_collections.collection_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+								<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+									<i class='ti ti-sitemap fa-lg'></i>
+								</div>
+								<div class='flex-fill px-3'>
+									<div class='fw-bold'>^ca_collections.preferred_labels.name</div>
+									<div class='small text-white text-opacity-50'>^relationship_typename</div>
+								</div>
+							</a>
+						</unit>
+					</div>
+				</ifdef>}}}
+				<!-- Entities -->
+				{{{<ifdef code="ca_entities.related">
+					<div class='list-group'>
+						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Entities</h5>
+						<unit relativeTo="ca_entities.related" delimiter="">
+						<a href='/index.php/Detail/entities/^ca_entities.entity_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+							<i class='ti ti-affiliate fa-lg'></i>
+						</div>
+						<div class='flex-fill px-3'>
+							<div class='fw-bold'>^ca_entities.preferred_labels.displayname</div>
+							<div class='small text-white text-opacity-50'>^relationship_typename</div>
+						</div>
+					</a>
+						</unit>
+					</div>
+				</ifdef>}}}
+				<!-- Occurances -->
+				{{{<ifdef code="ca_occurrences">
+					<div class='list-group'>
+						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Occurrences</h5>
+						<unit relativeTo="ca_occurences.related" delimiter="">
+						<a href='/index.php/Detail/occurrences/^ca_occurrences.occurrence_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+							<i class='ti ti-affiliates fa-lg'></i>
+						</div>
+						<div class='flex-fill px-3'>
+							<div class='fw-bold'>^ca_occurrences.preferred_labels.displayname</div>
+							<div class='small text-white text-opacity-50'>^relationship_typename</div>
+						</div>
+					</a>
+						</unit>
+					</div>
+				</ifdef>}}}
+				<!-- Places -->
+				{{{<ifdef code="ca_places">
+					<div class='list-group'>
+						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Places</h5>
+						<unit relativeTo="ca_places.related" delimiter="">
+						<a href='/index.php/Detail/places/^ca_places.place_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+							<i class='ti ti-affiliates fa-lg'></i>
+						</div>
+						<div class='flex-fill px-3'>
+							<div class='fw-bold'>^ca_places.preferred_labels.displayname</div>
+							<div class='small text-white text-opacity-50'>^relationship_typename</div>
+						</div>
+					</a>
+						</unit>
+					</div>
+				</ifdef>}}}
+  			</div>
+  			<div class='card-arrow'>
+				<div class='card-arrow-top-left'></div>
+				<div class='card-arrow-top-right'></div>
+				<div class='card-arrow-bottom-left'></div>
+				<div class='card-arrow-bottom-right'></div>
+  			</div>
+		</div>
+	</div>
+
+	<div class="col-md-9 mb-3">
+		<div class='card'>
+  			<div class='card-header fw-bold small bg-white bg-opacity-15'>Related Objects</div>
+  			<div class='card-body'>
+			  	{{{<ifcount code="ca_objects" min="1">
+					<unit relativeTo="ca_objects" delimiter=" ">
+						<a href='/index.php/Detail/objects/^ca_objects.object_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+							<div class='w-70px h-70px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+								<img class='rounded-2' src='^ca_object_representations.media.icon.url' alt=''>
+							</div>
+							<div class='flex-fill px-3'>
+								<div class='fw-bold'>^ca_objects.preferred_labels.name</div>
+								<div class='small text-white text-opacity-50'>^relationship_typename</div>
+							</div>
+						</a>
+					</unit>
+				</ifcount>}}}
+				{{{<ifcount code="ca_objects" max="0">
+					<h1>No Related Objects</h1>
+				</ifcount>}}}
+  			</div>
+  			<div class='card-arrow'>
+    			<div class='card-arrow-top-left'></div>
+    			<div class='card-arrow-top-right'></div>
+    			<div class='card-arrow-bottom-left'></div>
+    			<div class='card-arrow-bottom-right'></div>
+  			</div>
+		</div>
+	</div>
+</div>
