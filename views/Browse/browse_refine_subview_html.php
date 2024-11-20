@@ -44,15 +44,15 @@
 		foreach($va_facets as $vs_facet_name => $va_facet_info) {
 			
 			if ((caGetOption('deferred_load', $va_facet_info, false) || ($va_facet_info["group_mode"] == 'hierarchical')) && ($o_browse->getFacet($vs_facet_name))) {
-				print "<H3>".$va_facet_info['label_singular']."</H3>";
-				print "<p>".$va_facet_info['description']."</p>";
+				print "<h6 class='my-3 mx-4'>Filter by ".$va_facet_info['label_singular']."</h6>";
+				
 ?>
 					<script type="text/javascript">
 						jQuery(document).ready(function() {
 							jQuery("#bHierarchyList_<?php print $vs_facet_name; ?>").load("<?php print caNavUrl($this->request, '*', '*', 'getFacetHierarchyLevel', array('facet' => $vs_facet_name, 'browseType' => $vs_browse_type, 'key' => $vs_key, 'linkTo' => 'morePanel')); ?>");
 						});
 					</script>
-					<div id='bHierarchyList_<?php print $vs_facet_name; ?>'><?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?></div>
+					<li class='list-group-item border-0 p-0 mx-4 mb-2' id='bHierarchyList_<?php print $vs_facet_name; ?>'><?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?></li>
 <?php
 			} else {				
 				if (!is_array($va_facet_info['content']) || !sizeof($va_facet_info['content'])) { continue; }

@@ -2,28 +2,6 @@
 /* ----------------------------------------------------------------------
  * themes/default/views/bundles/ca_objects_default_html.php : 
  * ----------------------------------------------------------------------
- * CollectiveAccess
- * Open-source collections management software
- * ----------------------------------------------------------------------
- *
- * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2013-2022 Whirl-i-Gig
- *
- * For more information visit http://www.CollectiveAccess.org
- *
- * This program is free software; you may redistribute it and/or modify it under
- * the terms of the provided license as published by Whirl-i-Gig
- *
- * CollectiveAccess is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTIES whatsoever, including any implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- *
- * This source code is free and modifiable under the terms of 
- * GNU General Public License. (http://www.gnu.org/copyleft/gpl.html). See
- * the "license.txt" file for details, or visit the CollectiveAccess web site at
- * http://www.CollectiveAccess.org
- *
- * ----------------------------------------------------------------------
  */
  
 	$t_object = 			$this->getVar("item");
@@ -79,10 +57,8 @@
 						<div class="row">
 						<!-- Collections -->
 						{{{<ifdef code="ca_collections">
-
-
-								<unit relativeTo="ca_collections.related" delimiter="">
-									<div class='col-lg-4 mb-3'>
+							<unit relativeTo="ca_collections.related" delimiter="">
+								<div class='col-lg-6 mb-3'>
 									<a href='/index.php/Detail/collections/^ca_collections.collection_id' class='list-group-item list-group-item-action d-flex align-items-center'>
 										<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
 											<i class='ti ti-sitemap fa-lg'></i>
@@ -92,84 +68,74 @@
 											<div class='small text-white text-opacity-50'>^relationship_typename</div>
 										</div>
 									</a>
-									</div>
-								</unit>
-
+								</div>
+							</unit>
 						</ifdef>}}}
 						<!-- Entities -->
 						{{{<ifdef code="ca_entities.related">
-		
-
-								<unit relativeTo="ca_entities.related" delimiter="">
-								<div class='col-lg-4 mb-3'>
-								<a href='/index.php/Detail/entities/^ca_entities.entity_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-								<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-									<i class='ti ti-affiliate fa-lg'></i>
+							<unit relativeTo="ca_entities.related" delimiter="">
+								<div class='col-lg-6 mb-3'>
+									<a href='/index.php/Detail/entities/^ca_entities.entity_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+										<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+											<i class='ti ti-affiliate fa-lg'></i>
+										</div>
+										<div class='flex-fill px-3'>
+											<div class='fw-bold'>^ca_entities.preferred_labels.displayname</div>
+											<div class='small text-white text-opacity-50'>^relationship_typename</div>
+										</div>
+									</a>
 								</div>
-								<div class='flex-fill px-3'>
-									<div class='fw-bold'>^ca_entities.preferred_labels.displayname</div>
-									<div class='small text-white text-opacity-50'>^relationship_typename</div>
-								</div>
-							</a>
-						</div>
-								</unit>
-
+							</unit>
 						</ifdef>}}}
 						<!-- Occurances -->
 						{{{<ifdef code="ca_occurrences">
-
-
-								<unit relativeTo="ca_occurences.related" delimiter="">
-								<div class='col-lg-4 mb-3'>
-								<a href='/index.php/Detail/occurrences/^ca_occurrences.occurrence_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-								<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-									<i class='ti ti-affiliates fa-lg'></i>
+							<unit relativeTo="ca_occurences.related" delimiter="">
+								<div class='col-lg-6 mb-3'>
+									<a href='/index.php/Detail/occurrences/^ca_occurrences.occurrence_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+										<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+											<i class='ti ti-affiliates fa-lg'></i>
+										</div>
+										<div class='flex-fill px-3'>
+											<div class='fw-bold'>^ca_occurrences.preferred_labels.displayname</div>
+											<div class='small text-white text-opacity-50'>^relationship_typename</div>
+										</div>
+									</a>
 								</div>
-								<div class='flex-fill px-3'>
-									<div class='fw-bold'>^ca_occurrences.preferred_labels.displayname</div>
-									<div class='small text-white text-opacity-50'>^relationship_typename</div>
-								</div>
-							</a>
-						</div>
-								</unit>
-
+							</unit>
 						</ifdef>}}}
 						<!-- Places -->
 						{{{<ifdef code="ca_places">
-
-
-								<unit relativeTo="ca_places.related" delimiter="">
-								<div class='col-lg-4 mb-3'>
-								<a href='/index.php/Detail/places/^ca_places.place_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-								<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-									<i class='ti ti-affiliates fa-lg'></i>
+							<unit relativeTo="ca_places.related" delimiter="">
+								<div class='col-lg-6 mb-3'>
+									<a href='/index.php/Detail/places/^ca_places.place_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+										<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+											<i class='ti ti-affiliates fa-lg'></i>
+										</div>
+										<div class='flex-fill px-3'>
+											<div class='fw-bold'>^ca_places.preferred_labels.displayname</div>
+											<div class='small text-white text-opacity-50'>^relationship_typename</div>
+										</div>
+									</a>
 								</div>
-								<div class='flex-fill px-3'>
-									<div class='fw-bold'>^ca_places.preferred_labels.displayname</div>
-									<div class='small text-white text-opacity-50'>^relationship_typename</div>
-								</div>
-							</a>
-						</div>
-								</unit>
-
+							</unit>
 						</ifdef>}}}
 						<!-- Keywords -->
 						{{{<ifcount code="ca_list_items" min="1">
-	<unit relativeTo="ca_list_items" delimiter="">
-		<div class='col-lg-4 mb-3'>
-		<a href='/index.php/Detail/list_items/^ca_list_items.item_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-			<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-				<i class='ti ti-vocabulary fa-lg'></i>
-			</div>
-			<div class='flex-fill px-3'>
-				<div class='fw-bold'>^ca_list_items.preferred_labels.name_singular</div>
-				<div class='small text-white text-opacity-50'>^relationship_typename</div>
-			</div>
-		</a>
-	</div>
-	</unit>
-</ifcount>}}}
-						</div>
+							<unit relativeTo="ca_list_items" delimiter="">
+								<div class='col-lg-6 mb-3'>
+									<a href='/index.php/Detail/list_items/^ca_list_items.item_id' class='list-group-item list-group-item-action d-flex align-items-center'>
+										<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
+											<i class='ti ti-vocabulary fa-lg'></i>
+										</div>
+										<div class='flex-fill px-3'>
+											<div class='fw-bold'>^ca_list_items.preferred_labels.name_singular</div>
+											<div class='small text-white text-opacity-50'>^relationship_typename</div>
+										</div>
+									</a>
+								</div>
+							</unit>
+						</ifcount>}}}
+					</div>
 					</div>
 					<div class='card-arrow'>
 						<div class='card-arrow-top-left'></div>

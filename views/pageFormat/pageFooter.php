@@ -21,6 +21,7 @@
 	</div>
 	
 	<!-- ================== BEGIN core-js ================== -->
+	
 	<script src="/themes/caiTS/assets/js/vendor.min.js"></script>
 	<script src="/themes/caiTS/assets/js/app.min.js"></script>
 	<script src="/themes/caiTS/assets/js/homepage.js"></script>

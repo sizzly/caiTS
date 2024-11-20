@@ -13,6 +13,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
+	<script src="/assets/jquery/js/jquery.js"></script>
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="/themes/caiTS/assets/css/vendor.min.css" rel="stylesheet" />
 	<link href="/themes/caiTS/assets/css/app.min.css" rel="stylesheet" />

@@ -58,7 +58,7 @@
 <div class="row">
 	<div class="col-md-3 mb-3">
 		<div class='card'>
-  			<div class='card-header fw-bold'>FILTERS</div>
+  			<div class='card-header fw-bold small bg-white bg-opacity-15'>FILTERS</div>
   			<div class='card-body'>
 			  	<ul class='list-group pt-2'>
 <?php
@@ -102,7 +102,7 @@
 	</div>
 	<div class="col-md-9 mb-3">
 		<div class='card'>
-  			<div class='card-header fw-bold'><?php print _t('%1 %2 %3', $vn_result_size, ($va_browse_info["labelSingular"]) ? $va_browse_info["labelSingular"] : $t_instance->getProperty('NAME_SINGULAR'), ($vn_result_size == 1) ? _t("RESULT") : _t("RESULTS"));	?></div>
+  			<div class='card-header fw-bold  bg-white bg-opacity-15 small'><?php print _t('%1 %2 %3', $vn_result_size, ($va_browse_info["labelSingular"]) ? $va_browse_info["labelSingular"] : $t_instance->getProperty('NAME_SINGULAR'), ($vn_result_size == 1) ? _t("RESULT") : _t("RESULTS"));	?></div>
 			<div class='card-body'>
 				<div class="row">
 <?php
