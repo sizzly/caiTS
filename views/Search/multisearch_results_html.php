@@ -42,14 +42,18 @@
   			<div class='card-header fw-bold small bg-white bg-opacity-15'>RESULTS</div>
 			<div class='card-body'>
 <?php
-				foreach($this->getVar('blockNames') as $vs_block) {
+				if ($va_result_count > 0) {
+					foreach($this->getVar('blockNames') as $vs_block) {
 ?>
-					<a href='#' name='<?php print $vs_block; ?>' aria-label='<?php print $vs_block; ?>'></a>
-					<div id="<?php print $vs_block; ?>Block" class='resultBlock'>
-						<?php print $va_results[$vs_block]['html']; ?>
-					</div>
+						<a href='#' name='<?php print $vs_block; ?>' aria-label='<?php print $vs_block; ?>'></a>
+						<div id="<?php print $vs_block; ?>Block" class='resultBlock'>
+							<?php print $va_results[$vs_block]['html']; ?>
+						</div>
 <?php
-				} 
+					} 
+				}else{
+					print "<H1>"._t("Your search for %1 returned no results", caUcFirstUTF8Safe($this->getVar('search')))."</H1>";
+				}
 ?>
 			</div>
 			<div class='card-arrow'>
