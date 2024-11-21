@@ -112,8 +112,8 @@
 				if(($o_config->get("cache_timeout") > 0) && ExternalCache::contains($vs_cache_key,'browse_result')){
 					print ExternalCache::fetch($vs_cache_key, 'browse_result');
 				}else{			
-					$vs_idno_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.idno"), '', $vs_table, $vn_id);
-					$vs_label_detail_link 	= caDetailLink($this->request, $qr_res->get("{$vs_table}.preferred_labels"), '', $vs_table, $vn_id);
+					$vs_idno_detail_link 	= $qr_res->get("{$vs_table}.object_id");
+					$vs_label_detail_link 	= $qr_res->get("{$vs_table}.preferred_labels");
 					$vs_thumbnail = "";
 					$vs_type_placeholder = "/themes/caiTS/assets/img/placeholder.png";
 					$vs_typecode = "";
@@ -123,7 +123,7 @@
 							$vs_typecode = $t_list_item->get("idno");
 							$vs_thumbnail = $vs_type_placeholder;
 						}
-						$vs_thumbnail_format = "<img class='card-img-top' src='".$vs_thumbnail."'>";
+						$vs_thumbnail_format = "<img class='card-img-top img-responsive rounded-3' src='".$vs_thumbnail."'>";
 						$vs_info = null;
 						$vs_rep_detail_link 	= caDetailLink($this->request, $vs_thumbnail_format, '', $vs_table, $vn_id);				
 					} else {
@@ -142,20 +142,12 @@
 
 					$vs_result_output = "
 <div class='col-sm-6 col-md-4 mb-3'>
-	<div class='card'>
-		<div class='position-relative'>
-		{$vs_rep_detail_link}
+	<a href='/index.php/Detail/objects/{$vs_idno_detail_link}' class='text-white text-decoration-none'>
+		<img src='{$vs_thumbnail}' class='card-img-top img-responsive rounded-3'>
+		<div class='position-relative leadership-card z-1 bg-dark mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm'>
+			<h6 class='fs-5 fw-semibold mb-2'>{$vs_label_detail_link}</h6>
 		</div>
-		<div class='card-body'>
-			<h6 class='fs-4'>{$vs_label_detail_link}</h6>
-		</div>
-		<div class='card-arrow'>
-			<div class='card-arrow-top-left'></div>
-			<div class='card-arrow-top-right'></div>
-			<div class='card-arrow-bottom-left'></div>
-			<div class='card-arrow-bottom-right'></div>
-		</div>
-	</div>
+	</a>
 </div>";
 					ExternalCache::save($vs_cache_key, $vs_result_output, 'browse_result', $o_config->get("cache_timeout"));
 					print $vs_result_output;

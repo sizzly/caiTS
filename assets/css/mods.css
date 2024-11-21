@@ -2,8 +2,12 @@ img {
     width:100%;
     height:auto;
 }
-.browsenav {
-    padding-left:24px;
+.mt-n10 {
+    margin-top: -36px !important
+}
+.mx-9 {
+    margin-right: 20px !important;
+    margin-left: 20px !important
 }
 .popover-body {
     background-color: rgba(29, 40, 53, .95);
@@ -14,6 +18,9 @@ img {
     right: 0;
     display: flex;
     gap: 16px
+}
+.leadership-card {
+    box-shadow: 0 12px 24px -4px rgba(145, 158, 171, .1215686275)
 }
 @media (max-width:991px) {
     .leadership-carousel .owl-nav {

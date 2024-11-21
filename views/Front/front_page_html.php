@@ -41,12 +41,12 @@
                 </div>
                 <!-- END title -->
                 <!-- BEGIN stat-lg -->
-                <div class="row align-items-center mb-2">
+                <div class="row align-items-center">
                     <div class="col-7">
                         <h3 class="mb-0"><?php print $vn_count; ?></h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-info box mb-0 display-5 align-top">
+                        <h3 class="text-theme box mb-2 align-top">
                             <i class="ti ti-building-warehouse"></i>
                         </h3>
                     </div>
@@ -54,6 +54,9 @@
                 <!-- END stat-lg -->
                 <!-- BEGIN stat-sm -->
                 <div class="small text-white text-opacity-50 text-truncate">
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;
                 </div>
                 <!-- END stat-sm -->
             </div>
@@ -85,7 +88,7 @@
                         <h3 class="mb-0"><?php print $vn_shame; ?></h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-warning box mb-0 display-5 align-top">
+                        <h3 class="text-theme box mb-0 align-top">
                             <i class="ti ti-crane"></i>
                         </h3>
                     </div>
@@ -93,6 +96,9 @@
                 <!-- END stat-lg -->
                 <!-- BEGIN stat-sm -->
                 <div class="small text-white text-opacity-50 text-truncate">
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;
                 </div>
                 <!-- END stat-sm -->
             </div>
@@ -124,7 +130,7 @@
                         <h3 class="mb-0">~ $<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-green box mb-0 display-5 align-top">
+                        <h3 class="text-theme box mb-0 align-top">
                             <i class="ti ti-currency-dollar-canadian"></i>
                         </h3>
                     </div>
@@ -132,6 +138,9 @@
                 <!-- END stat-lg -->
                 <!-- BEGIN stat-sm -->
                 <div class="small text-white text-opacity-50 text-truncate">
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;
                 </div>
                 <!-- END stat-sm -->
             </div>
@@ -163,17 +172,17 @@
                         <h3 class="mb-0">1 %</h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-danger box mb-0 display-5 align-top">
-                            <i class="ti ti-droplet-question"></i>
-                        </h3>
+                        <div class="progress">
+                            <div class="progress-bar bg-theme" style="width: 1%">1%</div>
+                        </div>
                     </div>
                 </div>
                 <!-- END stat-lg -->
                 <!-- BEGIN stat-sm -->
                 <div class="small text-white text-opacity-50 text-truncate">
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 1%">1%</div>
-                    </div>
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;
                 </div>
                 <!-- END stat-sm -->
             </div>
@@ -202,7 +211,7 @@
                     while ($qr_collections->nextRow()){
                         $col_object = new ca_collections($qr_collections->get('collection_id'));
 ?>
-                        <a class="m-1 d-flex align-items-center justify-content-center bg-dark rounded-3 round-54 shadow text-decoration-none h-70px w-70px" href="/index.php/Detail/collections/<?php print $col_object->get('ca_collections.collection_id'); ?>" data-bs-toggle="tooltip" data-bs-title="<?php print $col_object->get('ca_collections.preferred_labels.name'); ?>">
+                        <a class="m-1 d-flex align-items-center justify-content-center bg-theme bg-opacity-15 rounded-3 round-54 shadow text-decoration-none h-70px w-70px" href="/index.php/Detail/collections/<?php print $col_object->get('ca_collections.collection_id'); ?>" data-bs-toggle="tooltip" data-bs-title="<?php print $col_object->get('ca_collections.preferred_labels.name'); ?>">
 <?php
                             if(!($col_img = $col_object->get('ca_collections.collection_media.media.tiny.url'))) {
                                 print '<i class="ti ti-sitemap display-5"></i>';
@@ -231,8 +240,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class='card'>
-            <div class="card-header fw-bold small bg-white bg-opacity-15">FEATURED MODELS</div>
-            <div class='card-body'>
+            <div class='card-body bg-dark m-1'>
                 <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
             </div>
             <div class='card-arrow'>
@@ -245,6 +253,3 @@
     </div>
 
 </div>
-
-
-

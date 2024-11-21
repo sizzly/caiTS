@@ -1,71 +1,64 @@
-<div class="body-wrapper">
-    <div class="container-fluid">
-        <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3">
-              	<div class="row align-items-center">
-                	<div class="col-9">
-                  		<nav aria-label="breadcrumb">
-                    		<ol class="breadcrumb">
-                      			<li class="breadcrumb-item">
-                        			<a class="text-muted text-decoration-none" href="/index.php">Home</a>
-                      			</li>
-                      			<li class="breadcrumb-item" aria-current="page">Advanced Search</li>
-                    		</ol>
-                  		</nav>
-                	</div>
-                	<div class="col-3">
-                	</div>
-              	</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-				<!-- start Basic Form -->
-				<div class="card">
-					<div class="card-body">
-					
-					<form>
-						<div class="row">
-						<div class="col-md-12">
-							<div class="form-floating mb-3">
-							<input name="_fulltext[]" type="text" class="form-control" id="_fulltext" placeholder="Enter Name here">
-							<label for="tb-fname">Keyword</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating mb-3">
-							<input type="email" class="form-control" id="tb-email" placeholder="name@example.com">
-							<label for="tb-email">Title</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating mb-3">
-							<input type="password" class="form-control" id="tb-pwd" placeholder="Password">
-							<label for="tb-pwd">Item Identifier</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating mb-3">
-							<input type="password" class="form-control" id="tb-cpwd" placeholder="Password">
-							<label for="tb-cpwd">Collection</label>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="d-md-flex align-items-center">
-							<div class="ms-auto mt-3 mt-md-0">
-								<button type="submit" class="btn btn-primary hstack gap-6">
-								<i class="ti ti-search fs-4"></i>
-								Search
-								</button>
-							</div>
-							</div>
-						</div>
-						</div>
-					</form>
-					</div>
-				</div>
-				<!-- end Basic Form -->
-            </div>
-        </div>
-    </div>
-</div>
+<div class="row">
+	<div class="col-sm-8 " style='border-right:1px solid #ddd;'>
+		<h1><?php _p('Objects Advanced Search') ?></h1>
+
+        <p><?php _p("Enter your search terms in the fields below."); ?></p>
+{{{form}}}
+
+<div class='advancedContainer'>
+	<div class='row'>
+		<div class="advancedSearchField col-sm-12">
+			<label for="_fulltext" class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Search across all fields in the database.') ?>"><?php _p('Keyword') ?></label>
+			{{{_fulltext%width=200px&height=1}}}
+		</div>			
+	</div>		
+	<div class='row'>
+		<div class="advancedSearchField col-sm-12">
+			<label for='ca_objects_preferred_labels_name' class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Limit your search to Object Titles only.') ?>"><?php _p('Title') ?></label>
+			{{{ca_objects.preferred_labels.name%width=220px}}}
+		</div>
+	</div>
+	<div class='row'>
+		<div class="advancedSearchField col-sm-6">
+			<label for='ca_objects_idno' class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Search object identifiers.') ?>"><?php _p('Accession number') ?></label>
+			{{{ca_objects.idno%width=210px}}}
+		</div>
+		<div class="advancedSearchField col-sm-6">
+			<label for='ca_objects_type_id' class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Limit your search to object types.') ?>"><?php _p('Type') ?></label>
+			{{{ca_objects.type_id%height=30px&id=ca_objects_type_id}}}
+		</div>
+	</div>
+	<div class='row'>
+		<div class="advancedSearchField col-sm-12">
+			<label for='ca_objects.date.dates_value[]' class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Search records of a particular date or date range.') ?>"><?php _p('Date range <i>(e.g. 1970-1979)</i>') ?></label>
+			{{{ca_objects.dates.dates_value%width=200px&height=40px&useDatePicker=0}}}
+		</div>
+	</div>
+	<div class='row'>
+		<div class="advancedSearchField col-sm-12">
+			<label for='ca_collections_preferred_labels' class='formLabel' data-toggle="popover" data-trigger="hover" data-content="<?php _p('Search records within a particular collection.') ?>"><?php _p('Collection') ?></label>
+			{{{ca_collections.preferred_labels%restrictToTypes=collection%width=200px&height=40px}}}
+		</div>
+	</div>
+	<br style="clear: both;"/>
+	<div class='advancedFormSubmit'>
+		<span class='btn btn-default'>{{{reset%label=Reset}}}</span>
+		<span class='btn btn-default' style="margin-left: 20px;">{{{submit%label=Search}}}</span>
+	</div>
+</div>	
+
+{{{/form}}}
+
+	</div>
+	<div class="col-sm-4" >
+		<h1><?php _p('Helpful Links') ?></h1>
+		<p>Include some helpful info for your users here.</p>
+	</div><!-- end col -->
+</div><!-- end row -->
+
+<script>
+	jQuery(document).ready(function() {
+		$('.advancedSearchField .formLabel').popover(); 
+	});
+	
+</script>

@@ -103,7 +103,7 @@
 	<div class="col-md-9 mb-3">
 		<div class='card'>
   			<div class='card-header fw-bold  bg-white bg-opacity-15 small'><?php print _t('%1 %2 %3', $vn_result_size, ($va_browse_info["labelSingular"]) ? $va_browse_info["labelSingular"] : $t_instance->getProperty('NAME_SINGULAR'), ($vn_result_size == 1) ? _t("RESULT") : _t("RESULTS"));	?></div>
-			<div class='card-body'>
+			<div class='card-body bg-dark m-1'>
 				<div class="row">
 <?php
 					$vs_cache_key = md5($vs_browse_key.$vs_current_sort.$vs_sort_dir.$vs_current_view.$vn_start.$vn_hits_per_block.$vn_row_id.$vs_letter);

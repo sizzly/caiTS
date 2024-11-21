@@ -28,7 +28,7 @@
 				}
 ?>
 				<a href="/index.php/Detail/collections/<?php print $qr_collections->get("ca_collections.collection_id"); ?>" class="d-flex list-group-item list-group-item-action">
-					<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-dark rounded-circle">
+					<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-theme bg-opacity-15 rounded-circle">
 						<?php print $col_img; ?>
 					</div>
 					<div class="flex-fill ps-3">

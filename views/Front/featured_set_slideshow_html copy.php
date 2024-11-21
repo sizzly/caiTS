@@ -28,11 +28,18 @@
 ?>
                         <div class="item">
                             <a href="/index.php/Detail/objects/<?php print $qr_res->get("ca_objects.object_id"); ?>" class="text-decoration-none">
-
-                                    <img src="<?php print $vs_media; ?>" class="rounded-3" alt="Featured Model">
-                                    <div class="position-relative leadership-card z-1 bg-dark mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm">
-                                        <h5 class="fs-5 fw-semibold mb-0"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h5>
+                                <div class='card'>
+                                    <img src="<?php print $vs_media; ?>" alt="Featured Model">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h5>
                                     </div>
+                                    <div class='card-arrow'>
+                                        <div class='card-arrow-top-left'></div>
+                                        <div class='card-arrow-top-right'></div>
+                                        <div class='card-arrow-bottom-left'></div>
+                                        <div class='card-arrow-bottom-right'></div>
+                                    </div>
+                                </div>
                             </a>
                         </div>
 <?php
