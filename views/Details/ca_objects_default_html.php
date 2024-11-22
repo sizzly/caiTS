@@ -36,7 +36,7 @@
 					<div class="card-header fw-bold small bg-white bg-opacity-15">DETAILS</div>
 					<div class="card-body">
 						<div class="mb-2">
-							{{{<ifdef code="ca_objects.idno"><span class='badge bg-dark'>^ca_objects.idno</span></ifdef>}}}
+							{{{<ifdef code="ca_objects.idno"><span class='badge bg-light text-dark'>^ca_objects.idno</span></ifdef>}}}
 							<span class="fw-bold">{{{<unit>^ca_objects.type_id</unit>}}}</span>
  						</div>
 						<p class="mb-3">{{{<ifdef code="ca_objects.work_description">

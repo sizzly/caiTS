@@ -40,10 +40,16 @@ $slide_list = $this->getVar('slide_list');
 	foreach ($representation_ids as $rep_id) {
 		$rep_object = new ca_object_representations($rep_id);
 ?>
-		<div class="item rounded-4 overflow-hidden">
+		<div class="item rounded-3 overflow-hidden">
 			<a href="<?php print $rep_object->get('ca_object_representations.media.original.url'); ?>" data-lity>
 				<img src="<?php print $rep_object->get('ca_object_representations.media.widepreview.url'); ?>" alt="" class="img-fluid">
 			</a>
+			<div class="bg-white bg-opacity-15 p-2">
+			<div class="d-flex fw-bold small mb-2">
+    <span class="flex-grow-1"><?php print $rep_object->get('ca_object_representations.preferred_labels'); ?></span>
+    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Click the image above for a high-res view" class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-info-circle"></i></a>
+</div>
+			</div>
 		</div>
 <?php
 	}
@@ -58,8 +64,8 @@ $slide_list = $this->getVar('slide_list');
 	foreach ($representation_ids as $rep_id) {
 		$rep_object = new ca_object_representations($rep_id);
 ?>
-		<div class="item rounded-4 overflow-hidden">
-			<img src="<?php print $rep_object->get('ca_object_representations.media.largeicon.url'); ?>" alt="" class="img-fluid">
+		<div class="item overflow-hidden">
+			<img src="<?php print $rep_object->get('ca_object_representations.media.largeicon.url'); ?>" alt="" class="img-fluid rounded-3">
 		</div>
 <?php
 	}
