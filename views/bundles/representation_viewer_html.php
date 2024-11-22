@@ -72,5 +72,18 @@ $slide_list = $this->getVar('slide_list');
 ?>
 </div>
 <?php
+	}elseif ($representation_count == 0){
+?>
+		<div class="item rounded-3 overflow-hidden">	
+			<img src="/themes/caiTS/assets/img/placeholder.png" alt="" class="img-fluid">
+			
+			<div class="bg-white bg-opacity-15 p-2">
+			<div class="d-flex fw-bold small mb-2">
+    <span class="flex-grow-1">No Images Available</span>
+    
+</div>
+			</div>
+		</div>
+<?php
 	}
-	?>
+?>
