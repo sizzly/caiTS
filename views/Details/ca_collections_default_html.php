@@ -46,7 +46,6 @@
 				<p class="card-subtitle">
 					{{{<ifdef code="ca_collections.description">^ca_collections.description</ifdef>}}}
 				</p>
-				<hr>
 
 				<!-- Collections -->
 				{{{<ifdef code="ca_collections.related">
