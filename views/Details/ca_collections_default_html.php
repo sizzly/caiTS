@@ -41,8 +41,17 @@
 <div class="row">
 	<div class="col-md-3 mb-3">
 		<div class='card mb-3'>
+		
 			<div class='card-header fw-bold small bg-white bg-opacity-15'>DETAILS</div>
 			<div class='card-body'>
+				{{{<ifdef code="ca_collections.collection_media">
+
+					<div class="mb-3">
+						<img src="^ca_collections.collection_media.iconlarge.url" class="w-50 h-50 rounded-circle mx-auto d-block">
+					</div>
+
+				</ifdef>}}}
+				
 				<p class="card-subtitle">
 					{{{<ifdef code="ca_collections.description">^ca_collections.description</ifdef>}}}
 				</p>
@@ -150,10 +159,9 @@
   			<div class='card-header fw-bold small bg-white bg-opacity-15'>MEMBERS</div>
   			<div class='card-body bg-dark m-1'>
 				<div class="row">
-	  			
 					{{{<ifcount code="ca_objects" min="1">
 						<unit relativeTo="ca_objects" delimiter="">
-							<div class='col-lg-4'>
+							<div class='col-lg-4 mb-3'>
 								<a href='/index.php/Detail/objects/^ca_objects.object_id' class='text-decoration-none text-white'>
 									<img class='card-img-top img-responsive rounded-3' src='^ca_object_representations.media.widepreview.url' alt=''>
 									<div class='position-relative leadership-card z-1 bg-dark mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm'>
@@ -163,7 +171,6 @@
 							</div>
 						</unit>
 					</ifcount>}}}
-					
 				</div>
   			</div>
 			<div class='card-arrow'>
