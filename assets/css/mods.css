@@ -5,6 +5,12 @@ img {
 .mt-n10 {
     margin-top: -36px !important
 }
+.mt-n3 {
+    margin-top: -1rem !important
+}
+.mb-n2 {
+    margin-bottom: -.5rem !important
+}
 .mx-9 {
     margin-right: 20px !important;
     margin-left: 20px !important
@@ -29,3 +35,4 @@ img {
         margin-top: 24px
     }
 }
+

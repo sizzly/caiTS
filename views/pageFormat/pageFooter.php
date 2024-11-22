@@ -4,6 +4,7 @@
  * ----------------------------------------------------------------------
   */
 ?>
+
 	</div>
 <!-- END #app -->
 
@@ -31,6 +32,12 @@
 	<!-- ================== BEGIN page-js ================== -->
 	<script src="/themes/caiTS/assets/plugins/lity/dist/lity.min.js"></script>
 	<script src="/themes/caiTS/assets/js/owl.carousel/dist/owl.carousel.min.js"></script>
+	<script src="/themes/caiTS/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
 	<!-- ================== END page-js ================== -->
+<?php 
+	if ($this->request->getController() == "Front") {
+		print $this->render("Front/dashboard_stats_html.php");
+	}
+?>
 </body>
 </html>

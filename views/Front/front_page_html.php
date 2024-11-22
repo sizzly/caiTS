@@ -41,14 +41,15 @@
                 </div>
                 <!-- END title -->
                 <!-- BEGIN stat-lg -->
-                <div class="row align-items-center">
+                <div class="row align-items-center mb-2">
                     <div class="col-7">
                         <h3 class="mb-0"><?php print $vn_count; ?></h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-theme box mb-2 align-top">
+                        <div class ="mt-n3 mb-n2" id="apexchart" data-type="pie" data-title="Visitors" data-height="45"></div>
+                        <!-- <h3 class="text-theme box mb-2 align-top">
                             <i class="ti ti-building-warehouse"></i>
-                        </h3>
+                        </h3> -->
                     </div>
                 </div>
                 <!-- END stat-lg -->
@@ -88,7 +89,7 @@
                         <h3 class="mb-0"><?php print $vn_shame; ?></h3>
                     </div>
                     <div class="col-5">
-                        <h3 class="text-theme box mb-0 align-top">
+                        <h3 class="text-theme box mb-n2 align-top">
                             <i class="ti ti-crane"></i>
                         </h3>
                     </div>
@@ -172,7 +173,7 @@
                         <h3 class="mb-0">1 %</h3>
                     </div>
                     <div class="col-5">
-                        <div class="progress">
+                        <div class="progress mb-1">
                             <div class="progress-bar bg-theme" style="width: 1%">1%</div>
                         </div>
                     </div>
