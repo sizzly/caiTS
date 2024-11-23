@@ -19,7 +19,7 @@
 	<link href="/themes/caiTS/assets/css/app.min.css" rel="stylesheet" />
 	<link href="/themes/caiTS/assets/css/mods.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-	<link href="/themes/caiTS/assets/plugins//lity/dist/lity.min.css" rel="stylesheet" />
+	<link href="/themes/caiTS/assets/js/lity/dist/lity.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="/themes/caiTS/assets/js/owl.carousel/dist/assets/owl.carousel.min.css" />
 
 	<!-- ================== END core-css ================== -->

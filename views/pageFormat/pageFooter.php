@@ -30,9 +30,9 @@
 	<!-- ================== END core-js ================== -->
 
 	<!-- ================== BEGIN page-js ================== -->
-	<script src="/themes/caiTS/assets/plugins/lity/dist/lity.min.js"></script>
+	<script src="/themes/caiTS/assets/js/lity/dist/lity.min.js"></script>
 	<script src="/themes/caiTS/assets/js/owl.carousel/dist/owl.carousel.min.js"></script>
-	<script src="/themes/caiTS/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="/themes/caiTS/assets/js/apexcharts/dist/apexcharts.min.js"></script>
 	<!-- ================== END page-js ================== -->
 <?php 
 	if ($this->request->getController() == "Front") {
