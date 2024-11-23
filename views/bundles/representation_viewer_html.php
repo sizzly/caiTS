@@ -47,7 +47,7 @@ $slide_list = $this->getVar('slide_list');
 			<div class="bg-white bg-opacity-15 p-2">
 			<div class="d-flex fw-bold small mb-2">
     <span class="flex-grow-1"><?php print $rep_object->get('ca_object_representations.preferred_labels'); ?></span>
-    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Click the image above for a high-res view" class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-info-circle"></i></a>
+    <a href="#" data-bs-toggle="tooltip" data-bs-title="Click the image above for a high-res view" data-bs-original-title="" title="" class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-info-circle"></i></a>
 </div>
 			</div>
 		</div>
