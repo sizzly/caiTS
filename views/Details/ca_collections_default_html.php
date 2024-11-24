@@ -133,31 +133,61 @@
 				<div class='card-arrow-bottom-right'></div>
 			</div>
         </div>
-                  		
-		<div class="card shadow-none border">
-			<div class='card-header fw-bold small bg-white bg-opacity-15'>HIERARCHY</div>
-            <div class="card-body">
-                <div class="list-group">
-					{{{<ifdef code="ca_collections.parent_id">
-						<unit relativeTo="ca_collections.parent" delimiter=""><l><div class='list-group-item list-group-item-action'>^ca_collections.preferred_labels</div></l></unit>
-					</ifdef>}}}
-					{{{
-						<unit relativeTo="ca_collections.children" delimiter=""><l><div class='list-group-item list-group-item-action'>^ca_collections.preferred_labels</div></l></unit>
-					}}}
-				</div>					
-			</div>
-			<div class='card-arrow'>
-				<div class='card-arrow-top-left'></div>
-				<div class='card-arrow-top-right'></div>
-				<div class='card-arrow-bottom-left'></div>
-				<div class='card-arrow-bottom-right'></div>
-			</div>
-		</div>
 	</div>
+
 	<div class="col-md-9">
 		<div class='card'>
-  			<div class='card-header fw-bold small bg-white bg-opacity-15'>MEMBERS</div>
+  			<div class='card-header fw-bold small bg-white bg-opacity-15'>ELEMENTS</div>
   			<div class='card-body bg-dark m-1'>
+			  	<div class="list-group mb-3">
+					{{{<ifdef code="ca_collections.parent_id">
+						<unit relativeTo="ca_collections.parent" delimiter="">
+
+							<a href="/index.php/Detail/collections/^ca_collections.collection_id" class="d-flex list-group-item list-group-item-action">
+								<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-theme bg-opacity-15 rounded-circle">
+									<ifdef code="ca_collections.collection_media">
+										<img src="^ca_collections.collection_media.media.iconlarge.url" class="rounded-circle">
+									</ifdef>
+									<ifnotdef code="ca_collections.collection_media">
+										<i class="ti ti-sitemap display-5 rounded-circle"></i>
+									</ifnotdef>
+								</div>
+								<div class="flex-fill ps-3">
+									<h4 class="mb-0">^ca_collections.preferred_labels</h4>
+									<p class="mb-0">^ca_collections.description"</p>
+								</div>
+								<div>
+									<i class="fa fa-chevron-up"></i>
+								</div>
+ 							</a>
+
+						</unit>
+					</ifdef>}}}
+					{{{
+						<unit relativeTo="ca_collections.children" delimiter="">
+
+							<a href="/index.php/Detail/collections/^ca_collections.collection_id" class="d-flex list-group-item list-group-item-action">
+								<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-theme bg-opacity-15 rounded-circle">
+									<ifdef code="ca_collections.collection_media">
+										<img src="^ca_collections.collection_media.media.iconlarge.url" class="rounded-circle">
+									</ifdef>
+									<ifnotdef code="ca_collections.collection_media">
+										<i class="ti ti-sitemap display-5 rounded-circle"></i>
+									</ifnotdef>
+								</div>
+								<div class="flex-fill ps-3">
+									<h4 class="mb-0">^ca_collections.preferred_labels</h4>
+									<p class="mb-0">^ca_collections.description"</p>
+								</div>
+								<div>
+									<i class="fa fa-chevron-down"></i>
+								</div>
+							</a>
+
+						</unit>
+					}}}
+				</div>
+
 				<div class="row">
 					{{{<ifcount code="ca_objects" min="1">
 						<unit relativeTo="ca_objects" delimiter="">
