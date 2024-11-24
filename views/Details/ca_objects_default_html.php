@@ -39,7 +39,7 @@
 							{{{<ifdef code="ca_objects.idno"><span class='badge bg-light text-dark'>^ca_objects.idno</span></ifdef>}}}
 							<span class="fw-bold">{{{<unit>^ca_objects.type_id</unit>}}}</span>
  						</div>
-						<p class="mb-3">{{{<ifdef code="ca_objects.work_description">
+						<p class="mb-3 fs-5">{{{<ifdef code="ca_objects.work_description">
 							^ca_objects.work_description
 						</ifdef>}}}</p>
 					</div>

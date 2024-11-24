@@ -24,7 +24,7 @@
 		<div class='card'>
   			<div class='card-header fw-bold small bg-white bg-opacity-15'>Details</div>
   			<div class='card-body'>
-			  	{{{<ifdef code="ca_entities.biography"><p class='card-subtitle'>^ca_entities.biography</p></ifdef>}}}
+			  	{{{<ifdef code="ca_entities.biography"><p class='card-subtitle fs-5'>^ca_entities.biography</p></ifdef>}}}
 				<!-- Collections -->
 				{{{<ifdef code="ca_collections">
 					<div class='list-group'>
