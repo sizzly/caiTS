@@ -19,7 +19,7 @@
 </ul>
 
 <h1 class="page-header">{{{ca_objects.preferred_labels.name}}}
-    <small></small>
+    <small>{{{ca_objects.nonpreferred_labels.name}}}</small>
 </h1>
 <hr class="mb-4" />
 
