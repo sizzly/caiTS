@@ -164,7 +164,7 @@
                 <!-- Put new version block here -->
                 <div class="item">
                     <div class='card mb-3'>
-                        <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-11-26: 1.1.?</div>
+                        <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-11-26: 1.1.51</div>
                         <div class='card-body'>
                             <h5 class="card-title">New Themey Theme</h5>
                             The HUD admin based theme is online and working. I'm sure there will be refinements, but it's looking pretty snazzy.
