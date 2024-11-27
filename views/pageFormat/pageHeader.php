@@ -46,15 +46,48 @@
 <!-- BEGIN menu -->
 			<div class="menu">
 				<nav class="nav">
-					<div class="menu-item dropdown">
+				<div class="menu-item dropdown">
 						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app" class="menu-link">
 							<div class="menu-icon"><i class="bi bi-search nav-icon"></i></div>
 						</a>
 					</div>
-					<a class="nav-link" href="/">Home</a>
-					<a class="nav-link" href="/index.php/About/Index">About</a>
-					<a class="nav-link" href="/index.php/Collections/Index">Order of Battle</a>
-					<a class="nav-link" href="/index.php/Browse/objects">Browse</a>
+				<div class="menu-item dropdown dropdown-mobile-full">
+    <a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
+        <div class="menu-icon"><i class="bi bi-grid-3x3-gap nav-icon"></i></div>
+    </a>
+    <div class="dropdown-menu fade dropdown-menu-end w-300px text-center p-0 mt-1">
+        <div class="row row-grid gx-0">
+            <div class="col-4">
+                <a href="/" class="dropdown-item text-decoration-none p-3 bg-none">
+                    <div class="position-relative">
+                        <i class="ti ti-home h2 opacity-5 d-block my-1"></i>
+                    </div>
+                    <div class="fw-500 fs-10px text-white">HOME</div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/index.php/About/Index" target="_blank" class="dropdown-item text-decoration-none p-3 bg-none">
+                    <div><i class="ti ti-info-circle h2 opacity-5 d-block my-1"></i></div>
+                    <div class="fw-500 fs-10px text-white">ABOUT</div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/index.php/Browse/objects" class="dropdown-item text-decoration-none p-3 bg-none">
+                    <div><i class="ti ti-binoculars h2 opacity-5 d-block my-1"></i></div>
+                    <div class="fw-500 fs-10px text-white">BROWSE</div>
+                </a>
+            </div>
+        </div>
+        <div class="row row-grid gx-0">
+            <div class="col-8">
+                <a href="/index.php/Collections/Index" class="dropdown-item text-decoration-none p-3 bg-none">
+                    <div><i class="ti ti-sitemap h2 opacity-5 d-block my-1"></i></div>
+                    <div class="fw-500 fs-10px text-white">ORDER OF BATTLE</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 				</nav>
 			</div>
