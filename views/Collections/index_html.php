@@ -33,7 +33,7 @@
 					</div>
 					<div class="flex-fill ps-3">
 						<h4 class="mb-0"><?php print $qr_collections->get("ca_collections.preferred_labels.name"); ?></h4>
-						<p class="mb-0"><?php print $qr_collections->get("ca_collections.description"); ?></p>
+						<p class="mb-0 d-none d-sm-block"><?php print $qr_collections->get("ca_collections.description"); ?></p>
 					</div>
 				</a>
 <?php

@@ -154,9 +154,9 @@
 								</div>
 								<div class="flex-fill ps-3">
 									<h4 class="mb-0">^ca_collections.preferred_labels</h4>
-									<p class="mb-0">^ca_collections.description</p>
+									<p class="mb-0 d-none d-sm-block">^ca_collections.description</p>
 								</div>
-								<div>
+								<div class="d-none d-sm-block">
 									<i class="fa fa-chevron-up"></i>
 								</div>
  							</a>
@@ -177,9 +177,9 @@
 								</div>
 								<div class="flex-fill ps-3">
 									<h4 class="mb-0">^ca_collections.preferred_labels</h4>
-									<p class="mb-0">^ca_collections.description</p>
+									<p class="mb-0 d-none d-sm-block">^ca_collections.description</p>
 								</div>
-								<div>
+								<div class="d-none d-sm-block">
 									<i class="fa fa-chevron-down"></i>
 								</div>
 							</a>
