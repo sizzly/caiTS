@@ -164,6 +164,22 @@
                 <!-- Put new version block here -->
                 <div class="item">
                     <div class='card mb-3'>
+                        <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-12-10: 1.2.??</div>
+                        <div class='card-body'>
+                            <h5 class="card-title">Workflow</h5>
+                            I've implemented workflow features so I can create and display a running activity log and muster state of models.
+                        </div>
+                        <div class='card-arrow'>
+                            <div class='card-arrow-top-left'></div>
+                            <div class='card-arrow-top-right'></div>
+                            <div class='card-arrow-bottom-left'></div>
+                            <div class='card-arrow-bottom-right'></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class='card mb-3'>
                         <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-11-27: 1.1.53</div>
                         <div class='card-body'>
                             <h5 class="card-title">Mobile Fixes</h5>
