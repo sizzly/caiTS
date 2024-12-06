@@ -18,6 +18,10 @@
 
     $qr_collections = $o_db->query('SELECT collection_id FROM ca_collections WHERE parent_id IS NULL');
 
+    $qr_topmodels = $o_db->query('SELECT object_id FROM ca_objects WHERE deleted=0 ORDER BY view_count DESC LIMIT 5');
+
+    $qr_activity = $o_db->query('SELECT * FROM ca_objects_x_occurrences ORDER BY edatetime DESC LIMIT 11')
+
 ?>
  
 <ul class="breadcrumb">
@@ -252,5 +256,88 @@
             </div>
         </div> 
     </div>
+</div>
 
+<div class="row">
+    <div class="col-lg-6">
+        <div class='card mb-3'>
+        <div class="card-header fw-bold small bg-white bg-opacity-15">POPULAR MODELS</div>
+            <div class='card-body'>
+                <div class="list-group">
+<?php
+                    $tm_count = 1;
+                    while ($qr_topmodels->nextRow()){
+                        $top_object = new ca_objects($qr_topmodels->get('object_id'));
+?>
+                    <a href='/index.php/Detail/objects/<?php print $top_object->get('ca_objects.object_id'); ?>' class='list-group-item list-group-item-action d-flex align-items-center'>
+                        <div class="position-relative">
+                            <div class="bg-center bg-cover bg-no-repeat w-80px h-60px" style="background-image: url(<?php print $top_object->get('ca_object_representations.media.thumbnail.url'); ?>">
+                            </div>
+                            <div class="position-absolute top-0 start-0">
+                                <span class="badge bg-theme text-theme-900 rounded-0 d-flex align-items-center justify-content-center w-20px h-20px"><?php print $tm_count; ?></span>
+                            </div>
+                        </div>
+                        <div class='flex-fill px-3'>
+                            <div class="fw-500 text-white"><?php print $top_object->get('ca_objects.preferred_labels.name'); ?></div>
+                        </div>
+                    </a>
+<?php
+                        $tm_count++;
+                    }
+?>
+
+                </div>
+            </div>
+            <div class='card-arrow'>
+                <div class='card-arrow-top-left'></div>
+                <div class='card-arrow-top-right'></div>
+                <div class='card-arrow-bottom-left'></div>
+                <div class='card-arrow-bottom-right'></div>
+            </div>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class='card mb-3'>
+            <div class="card-header fw-bold small bg-white bg-opacity-15">RECENT ACTIVITY</div>
+            <div class='card-body'>
+                <div class="table-responsive">
+                    <table class="table table-striped table-borderless mb-2px small text-nowrap">
+                        <tbody>
+<?php
+                        while ($qr_activity->nextRow()){
+                            $qr_object = new ca_objects($qr_activity->get('object_id'));
+                            $qr_occurrence = new ca_occurrences($qr_activity->get('occurrence_id'));
+                            $qr_time = $qr_activity->get('edatetime');
+?>
+                            <tr>
+                                <td>
+                                    <span class="d-flex align-items-center">
+                                        <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                        <span class="fw-bold"><?php print $qr_object->get('ca_objects.preferred_labels.name'); ?></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    is now
+                                </td>
+                                <td>
+                                    <span style="min-height: 18px"><?php print $qr_occurrence->get('ca_occurrences.preferred_labels.name'); ?></span>
+                                </td>
+                                <td><small><?php print $qr_time; ?></small></td>
+                                <td><a href="/index.php/Detail/objects/<?php print $qr_object->get('ca_objects.object_id'); ?>" class="text-decoration-none text-white"><i class="bi bi-link"></i></a></td>
+                            </tr>
+<?php
+                        }
+?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class='card-arrow'>
+                <div class='card-arrow-top-left'></div>
+                <div class='card-arrow-top-right'></div>
+                <div class='card-arrow-bottom-left'></div>
+                <div class='card-arrow-bottom-right'></div>
+            </div>
+        </div> 
+    </div>
 </div>

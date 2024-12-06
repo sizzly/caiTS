@@ -55,6 +55,11 @@
 					<div class='card-header fw-bold small bg-white bg-opacity-15'>META DATA</div>
 					<div class='card-body'>
 						<div class="row">
+						<!-- Muster State -->
+						{{{<ifdef code="ca_objects.history_tracking_current_value%policy=current_status">
+							^ca_objects.history_tracking_current_value%policy=current_status%useTemplate=metadata
+						</ifdef>}}}
+
 						<!-- Collections -->
 						{{{<ifdef code="ca_collections">
 							<unit relativeTo="ca_collections.related" delimiter="">
@@ -71,6 +76,7 @@
 								</div>
 							</unit>
 						</ifdef>}}}
+
 						<!-- Entities -->
 						{{{<ifdef code="ca_entities.related">
 							<unit relativeTo="ca_entities.related" delimiter="">
