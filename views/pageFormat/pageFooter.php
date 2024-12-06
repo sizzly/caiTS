@@ -33,11 +33,17 @@
 	<script src="/themes/caiTS/assets/js/lity/dist/lity.min.js"></script>
 	<script src="/themes/caiTS/assets/js/owl.carousel/dist/owl.carousel.min.js"></script>
 	<script src="/themes/caiTS/assets/js/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="/themes/caiTS/assets/js/jquery.timeago.js"></script>
 	<!-- ================== END page-js ================== -->
 <?php 
 	if ($this->request->getController() == "Front") {
 		print $this->render("Front/dashboard_stats_html.php");
 	}
 ?>
+	<script>
+	jQuery(document).ready(function() {
+	jQuery("time.timeago").timeago();
+	});
+	</script>
 </body>
 </html>

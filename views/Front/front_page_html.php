@@ -307,7 +307,11 @@
                         while ($qr_activity->nextRow()){
                             $qr_object = new ca_objects($qr_activity->get('object_id'));
                             $qr_occurrence = new ca_occurrences($qr_activity->get('occurrence_id'));
-                            $qr_time = $qr_activity->get('edatetime');
+                            $qr_edate = substr($qr_activity->get('edatetime'),0,13);
+                            $qr_time = substr_replace(substr_replace(substr_replace(substr_replace(substr($qr_edate,0,13),'/',4,1),'/',7,0),'T',10,0),':',13,0);
+
+                            
+                            
 ?>
                             <tr>
                                 <td>
@@ -322,7 +326,7 @@
                                 <td>
                                     <span style="min-height: 18px"><?php print $qr_occurrence->get('ca_occurrences.preferred_labels.name'); ?></span>
                                 </td>
-                                <td><small><?php print $qr_time; ?></small></td>
+                                <td><small><time class="timeago" datetime="<?php print $qr_time; ?>"><?php print $qr_time; ?></time></small></td>
                                 <td><a href="/index.php/Detail/objects/<?php print $qr_object->get('ca_objects.object_id'); ?>" class="text-decoration-none text-white"><i class="bi bi-link"></i></a></td>
                             </tr>
 <?php
