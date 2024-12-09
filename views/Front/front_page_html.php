@@ -23,15 +23,6 @@
     $qr_activity = $o_db->query('SELECT * FROM ca_objects_x_occurrences ORDER BY edatetime DESC LIMIT 11')
 
 ?>
- 
-<ul class="breadcrumb">
-	<li class="breadcrumb-item" aria-current="page">Home</li>
-</ul>
-
-<h1 class="page-header">iToysoldiers.com
-    <small>The canonical archive of my miniature wargaming collection.</small>
-</h1>
-<hr class="mb-4" />
 
 <div class="row">
     <div class="col-xl-3 col-lg-6 mb-3">
@@ -50,7 +41,7 @@
                         <h3 class="mb-0"><?php print $vn_count; ?></h3>
                     </div>
                     <div class="col-5">
-                        <div class ="mt-n3 mb-n2" id="apexchart" data-type="pie" data-title="Visitors" data-height="45"></div>
+                        <div class ="mt-n3 mb-n2" id="apexchart" data-type="pie" data-title="Object Types" data-height="45"></div>
                         <!-- <h3 class="text-theme box mb-2 align-top">
                             <i class="ti ti-building-warehouse"></i>
                         </h3> -->
@@ -309,9 +300,6 @@
                             $qr_occurrence = new ca_occurrences($qr_activity->get('occurrence_id'));
                             $qr_edate = substr($qr_activity->get('edatetime'),0,13);
                             $qr_time = substr_replace(substr_replace(substr_replace(substr_replace(substr($qr_edate,0,13),'/',4,1),'/',7,0),'T',10,0),':',13,0);
-
-                            
-                            
 ?>
                             <tr>
                                 <td>
@@ -321,7 +309,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    is now
+                                    set to
                                 </td>
                                 <td>
                                     <span style="min-height: 18px"><?php print $qr_occurrence->get('ca_occurrences.preferred_labels.name'); ?></span>

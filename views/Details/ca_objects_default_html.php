@@ -93,7 +93,7 @@
 								</div>
 							</unit>
 						</ifdef>}}}
-						<!-- Occurances -->
+						<!-- Occurences -->
 						{{{<ifdef code="ca_occurrences">
 							<unit relativeTo="ca_occurences.related" delimiter="">
 								<div class='col-lg-6 mb-3'>

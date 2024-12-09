@@ -27,10 +27,29 @@
 </head>
 <body>
 <!-- BEGIN #app -->
-	<div id="app" class="app app-content-full-width">
+	<div id="app" class="app">
 
 <!-- BEGIN #header -->
 		<div id="header" class="app-header">
+			<!-- BEGIN desktop-toggler -->
+			<div class="desktop-toggler">
+				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<!-- BEGIN desktop-toggler -->
+			
+			<!-- BEGIN mobile-toggler -->
+			<div class="mobile-toggler">
+				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+			</div>
+			<!-- END mobile-toggler -->
 		
 <!-- BEGIN brand -->
 			<div class="brand">
@@ -46,52 +65,14 @@
 <!-- BEGIN menu -->
 			<div class="menu">
 				<nav class="nav">
-				<div class="menu-item dropdown">
+					<div class="menu-item dropdown">
 						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app" class="menu-link">
 							<div class="menu-icon"><i class="bi bi-search nav-icon"></i></div>
 						</a>
 					</div>
-				<div class="menu-item dropdown dropdown-mobile-full">
-    <a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
-        <div class="menu-icon"><i class="bi bi-grid-3x3-gap nav-icon"></i></div>
-    </a>
-    <div class="dropdown-menu fade dropdown-menu-end w-300px text-center p-0 mt-1">
-        <div class="row row-grid gx-0">
-            <div class="col-4">
-                <a href="/" class="dropdown-item text-decoration-none p-3 bg-none">
-                    <div class="position-relative">
-                        <i class="ti ti-home h2 opacity-5 d-block my-1"></i>
-                    </div>
-                    <div class="fw-500 fs-10px text-white">HOME</div>
-                </a>
-            </div>
-            <div class="col-4">
-                <a href="/index.php/About/Index" target="_blank" class="dropdown-item text-decoration-none p-3 bg-none">
-                    <div><i class="ti ti-info-circle h2 opacity-5 d-block my-1"></i></div>
-                    <div class="fw-500 fs-10px text-white">ABOUT</div>
-                </a>
-            </div>
-            <div class="col-4">
-                <a href="/index.php/Browse/objects" class="dropdown-item text-decoration-none p-3 bg-none">
-                    <div><i class="ti ti-binoculars h2 opacity-5 d-block my-1"></i></div>
-                    <div class="fw-500 fs-10px text-white">BROWSE</div>
-                </a>
-            </div>
-        </div>
-        <div class="row row-grid gx-0">
-            <div class="col-8">
-                <a href="/index.php/Collections/Index" class="dropdown-item text-decoration-none p-3 bg-none">
-                    <div><i class="ti ti-sitemap h2 opacity-5 d-block my-1"></i></div>
-                    <div class="fw-500 fs-10px text-white">ORDER OF BATTLE</div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
 				</nav>
 			</div>
-<!-- END menu -->
+			<!-- END menu -->
 			<!-- BEGIN menu-search -->
 			<form class="menu-search" role="search" action="<?php print caNavUrl($this->request, '', 'MultiSearch', 'Index'); ?>">
 				<div class="menu-search-container">
@@ -106,7 +87,64 @@
 			</form>
 			<!-- END menu-search -->
 		</div>
-<!-- END #header -->
-	
-<!-- BEGIN #content -->
+		<!-- END #header -->
+			<!-- BEGIN #sidebar -->
+			<div id="sidebar" class="app-sidebar">
+			<!-- BEGIN scrollbar -->
+			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+				<!-- BEGIN menu -->
+				<div class="menu">
+					<div class="menu-header">Navigation</div>
+					<div class="menu-item">
+						<a href="/index.php" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
+							<span class="menu-text">Home</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="/index.php/About/Index" class="menu-link">
+							<span class="menu-icon"><i class="fas fa-info-circle"></i></span>
+							<span class="menu-text">About</span>
+						</a>
+					</div>
+					<div class="menu-item">
+						<a href="/index.php/Collections/Index" class="menu-link">
+							<span class="menu-icon"><i class="fas fa-sitemap"></i></span>
+							<span class="menu-text">Order of Battle</span>
+						</a>
+					</div>
+					<div class="menu-item has-sub">
+						<a href="#" class="menu-link">
+							<span class="menu-icon">
+								<i class="fas fa-binoculars"></i>
+							</span>
+							<span class="menu-text">Browse</span>
+							<span class="menu-caret"><b class="caret"></b></span>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="/index.php/Browse/objects" class="menu-link">
+									<span class="menu-text">Objects</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="menu-header">Other</div>
+					<div class="menu-item">
+						<a href="https://blog.itoysoldiers.com" class="menu-link">
+							<span class="menu-icon"><i class="bi bi-book"></i></span>
+							<span class="menu-text">Blog</span>
+						</a>
+					</div>
+				</div>
+				<!-- END menu -->
+			</div>
+			<!-- END scrollbar -->
+		</div>
+		<!-- END #sidebar -->
+			
+		<!-- BEGIN mobile-sidebar-backdrop -->
+		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+		<!-- END mobile-sidebar-backdrop -->
+		<!-- BEGIN #content -->
 		<div id="content" class="app-content">
