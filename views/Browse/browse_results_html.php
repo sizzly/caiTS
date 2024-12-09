@@ -91,6 +91,35 @@
 <?php
 				print $this->render("Browse/browse_refine_subview_html.php");
 ?>
+<!-- Pagination -->
+<div class="m-3">
+<?php
+	$page_count = intval($vn_result_size/$vn_hits_per_block);
+?>
+	<ul class="pagination mb-0">
+<?php
+		if ($page_count < 1) {
+?>
+			<li class="page-item"><a class="page-link">1</a></li>
+<?php
+		} else {
+			$page_count++;
+			$count = 1;
+			while ($count <= $page_count) {
+				$pag_start = ($count-1)*$vn_hits_per_block;
+?>
+<li class="page-item">
+	<?php print caNavLink($this->request, _t($count), 'page-link', '*', '*', '*', array('s' => ($count -1) * $vn_hits_per_block, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0)); ?>
+</li>
+<?php
+				$count++;
+			}
+
+		}
+?>
+	</ul>
+	</div>
+	<!-- end Pagination -->
   			</div>
   			<div class='card-arrow'>
 				<div class='card-arrow-top-left'></div>
@@ -126,3 +155,4 @@
 		</div>
 	</div>
 </div>
+
