@@ -164,7 +164,7 @@
                 <!-- Put new version block here -->
                 <div class="item">
                     <div class='card mb-3'>
-                        <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-12-10: 1.2.??</div>
+                        <div class='card-header fw-bold small bg-white bg-opacity-15'>2024-12-10: 1.2.7</div>
                         <div class='card-body'>
                             <h5 class="card-title">Workflow</h5>
                             I've implemented workflow features so I can create and display a running activity log and muster state of models.

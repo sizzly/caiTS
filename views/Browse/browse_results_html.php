@@ -56,7 +56,32 @@
 <hr class="mb-4" />
 
 <div class="row">
-	<div class="col-md-3 mb-3">
+	<div class="col-md-9 mb-3">
+		<div class='card'>
+  			<div class='card-header fw-bold  bg-white bg-opacity-15 small'><?php print _t('%1 %2 %3', $vn_result_size, ($va_browse_info["labelSingular"]) ? $va_browse_info["labelSingular"] : $t_instance->getProperty('NAME_SINGULAR'), ($vn_result_size == 1) ? _t("RESULT") : _t("RESULTS"));	?></div>
+			<div class='card-body bg-dark m-1'>
+				<div class="row">
+<?php
+					$vs_cache_key = md5($vs_browse_key.$vs_current_sort.$vs_sort_dir.$vs_current_view.$vn_start.$vn_hits_per_block.$vn_row_id.$vs_letter);
+					if(($o_config->get("cache_timeout") > 0) && ExternalCache::contains($vs_cache_key,'browse_results')){
+						print ExternalCache::fetch($vs_cache_key, 'browse_results');
+					}else{
+						$vs_result_page = $this->render("Browse/browse_results_{$vs_current_view}_html.php");
+						ExternalCache::save($vs_cache_key, $vs_result_page, 'browse_results', $o_config->get("cache_timeout"));
+						print $vs_result_page;
+					}		
+?>
+				</div>
+			</div>
+			<div class='card-arrow'>
+				<div class='card-arrow-top-left'></div>
+				<div class='card-arrow-top-right'></div>
+				<div class='card-arrow-bottom-left'></div>
+				<div class='card-arrow-bottom-right'></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 mb-3 sticky-top">
 		<div class='card'>
   			<div class='card-header fw-bold small bg-white bg-opacity-15'>FILTERS</div>
   			<div class='card-body'>
@@ -87,66 +112,41 @@
 					}
 ?>	
 				</ul>
-
 <?php
 				print $this->render("Browse/browse_refine_subview_html.php");
 ?>
-<!-- Pagination -->
-<div class="m-3">
+				<!-- Pagination -->
+				<div class="m-3">
 <?php
-	$page_count = intval($vn_result_size/$vn_hits_per_block);
+					$page_count = intval($vn_result_size/$vn_hits_per_block);
 ?>
-	<ul class="pagination mb-0">
+					<ul class="pagination mb-0">
 <?php
-		if ($page_count < 1) {
+						if ($page_count < 1) {
 ?>
-			<li class="page-item"><a class="page-link">1</a></li>
+							<li class="page-item active"><a class="page-link">1</a></li>
 <?php
-		} else {
-			$page_count++;
-			$count = 1;
-			while ($count <= $page_count) {
-				$pag_start = ($count-1)*$vn_hits_per_block;
+						} else {
+							$page_count++;
+							$count = 1;
+							while ($count <= $page_count) {
+								$pag_start = ($count-1)*$vn_hits_per_block;
+								if ($pag_start == $vn_start + $vn_results_output) {
+									print '<li class="page-item active">';
+								} else {
+									print '<li class="page-item">';
+								}
+								print caNavLink($this->request, _t($count), 'page-link', '*', '*', '*', array('s' => ($count -1) * $vn_hits_per_block, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0));
+								print '</li>';
+								$count++;
+							}
+						}
 ?>
-<li class="page-item">
-	<?php print caNavLink($this->request, _t($count), 'page-link', '*', '*', '*', array('s' => ($count -1) * $vn_hits_per_block, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0)); ?>
-</li>
-<?php
-				$count++;
-			}
-
-		}
-?>
-	</ul>
-	</div>
-	<!-- end Pagination -->
+					</ul>
+				</div>
+				<!-- end Pagination -->
   			</div>
   			<div class='card-arrow'>
-				<div class='card-arrow-top-left'></div>
-				<div class='card-arrow-top-right'></div>
-				<div class='card-arrow-bottom-left'></div>
-				<div class='card-arrow-bottom-right'></div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-9 mb-3">
-		<div class='card'>
-  			<div class='card-header fw-bold  bg-white bg-opacity-15 small'><?php print _t('%1 %2 %3', $vn_result_size, ($va_browse_info["labelSingular"]) ? $va_browse_info["labelSingular"] : $t_instance->getProperty('NAME_SINGULAR'), ($vn_result_size == 1) ? _t("RESULT") : _t("RESULTS"));	?></div>
-			<div class='card-body bg-dark m-1'>
-				<div class="row">
-<?php
-					$vs_cache_key = md5($vs_browse_key.$vs_current_sort.$vs_sort_dir.$vs_current_view.$vn_start.$vn_hits_per_block.$vn_row_id.$vs_letter);
-					if(($o_config->get("cache_timeout") > 0) && ExternalCache::contains($vs_cache_key,'browse_results')){
-						print ExternalCache::fetch($vs_cache_key, 'browse_results');
-					}else{
-						$vs_result_page = $this->render("Browse/browse_results_{$vs_current_view}_html.php");
-						ExternalCache::save($vs_cache_key, $vs_result_page, 'browse_results', $o_config->get("cache_timeout"));
-						print $vs_result_page;
-					}		
-?>
-				</div>
-			</div>
-			<div class='card-arrow'>
 				<div class='card-arrow-top-left'></div>
 				<div class='card-arrow-top-right'></div>
 				<div class='card-arrow-bottom-left'></div>
