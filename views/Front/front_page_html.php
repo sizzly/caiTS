@@ -16,7 +16,7 @@
     $qr_cost->nextRow();
     $vn_cost = $qr_cost->get('cost');
 
-    $qr_collections = $o_db->query('SELECT collection_id FROM ca_collections WHERE parent_id IS NULL');
+    $qr_collections = $o_db->query('SELECT collection_id FROM ca_collections WHERE deleted=0 AND parent_id IS NULL');
 
     $qr_topmodels = $o_db->query('SELECT object_id FROM ca_objects WHERE deleted=0 ORDER BY view_count DESC LIMIT 5');
 
