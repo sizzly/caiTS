@@ -84,16 +84,15 @@
 <!-- ------------------------------------- -->
 <section class="py-5 py-md-14 py-lg-12">
     <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-5">
-        <h2 class="fs-10 fw-bolder">Featured Models</h2>
-        <p class="fs-4 mb-0">
-            Models of which I am particularly proud.
-        </p>
-
+        <div class="row">
+            <div class="col-lg-5">
+                <h2 class="fs-10 fw-bolder">Featured Models</h2>
+                <p class="fs-4 mb-0">
+                    Models of which I am particularly proud.
+                </p>
+            </div>
         </div>
-    </div>
-    <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
+        <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
     </div>
 </section>
 <!-- ------------------------------------- -->
@@ -107,38 +106,35 @@
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-lg-5 mb-5 mb-lg-0">
-                <h2 class="fs-10 fw-bolder mb-3">Key metric at a glance</h2>
+                <h2 class="fs-10 fw-bolder mb-3">Key metrics at a glance</h2>
                 <p class="fs-4 mb-0">
-                From the year we were founded to the impressive customer base we've built, and the growth
-                percentages that reflect our continuous improvement, these numbers tell our story at a
-                glance. Explore the data that drives our mission and underscores our commitment to
-                excellence.
+                One of the coolest things about iToysoldiers is the ability to visualize the details of my collection. The Dashboard has more but here's the core set of stats.
                 </p>
             </div>
-        <div class="col-lg-6">
-        <div class="row">
-            <div class="col-sm-6">
-            <div class="mb-5">
-                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">founded</p>
-                <h3 class="fs-12 fw-semibold ">2024</h3>
-                <p class="mb-0 fs-4">When this iteration was introduced</p>
-            </div>
-            <div class="">
-                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Objects</p>
-                <h3 class="fs-12 fw-semibold "><?php print $vn_count; ?></h3>
-                <p class="mb-0 fs-4">Objects in collection</p>
-            </div>
-            </div>
-            <div class="col-sm-6">
-            <div class="mb-5">
-                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Value</p>
-                <h3 class="fs-12 fw-semibold ">$<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
-                <p class="mb-0 fs-4">Estimate of collection value</p>
-            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-5">
+                            <p class="text-primary text-uppercase fs-2 fw-bold mb-0">founded</p>
+                            <h3 class="fs-12 fw-semibold ">2024</h3>
+                            <p class="mb-0 fs-4">When this iteration was introduced</p>
+                        </div>
+                        <div class="">
+                            <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Objects</p>
+                            <h3 class="fs-12 fw-semibold "><?php print $vn_count; ?></h3>
+                            <p class="mb-0 fs-4">Objects in collection</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-5">
+                            <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Value</p>
+                            <h3 class="fs-12 fw-semibold ">$<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
+                            <p class="mb-0 fs-4">Estimate of collection value</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </section>
 <!-- ------------------------------------- -->
