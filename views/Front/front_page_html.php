@@ -119,7 +119,7 @@
                             <h3 class="fs-12 fw-semibold ">2024</h3>
                             <p class="mb-0 fs-4">When this iteration was introduced</p>
                         </div>
-                        <div class="">
+                        <div class="mb-5">
                             <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Objects</p>
                             <h3 class="fs-12 fw-semibold "><?php print $vn_count; ?></h3>
                             <p class="mb-0 fs-4">Objects in collection</p>

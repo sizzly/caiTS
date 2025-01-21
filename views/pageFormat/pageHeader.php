@@ -32,7 +32,7 @@
     	<nav class="navbar navbar-expand-lg bg-primary-subtle py-2 py-lg-10 max-w-100">
       		<div class="custom-container d-flex align-items-center justify-content-between">
         		<a href="/" class="text-nowrap logo-img">
-          			<img src="/themes/caiTS/assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
+          			<img src="/themes/caiTS/assets/images/logos/dark-logo.png" class="dark-logo" alt="Logo-Dark" />
           			<img src="/themes/caiTS/assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
         		</a>
         		<button class="navbar-toggler border-0 p-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">

@@ -14,7 +14,7 @@
 	<li class="breadcrumb-item"><a href="/">Home</a></li>
     <li class="breadcrumb-item" aria-current="page">About</li>
 </ul>
-
+ 
 <h1 class="page-header">About iToysoldiers.com
     <small>'cause it's possible the content isn't a dead giveaway</small>
 </h1>
