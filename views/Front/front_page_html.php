@@ -24,186 +24,31 @@
 
 ?>
 
-<div class="row">
-    <div class="col-xl-3 col-lg-6 mb-3">
-        <div class="card">
-            <!-- BEGIN card-body -->
-            <div class="card-body">
-                <!-- BEGIN title -->
-                <div class="d-flex fw-bold small mb-3">
-                    <span class="flex-grow-1">COLLECTION OBJECTS</span>
-                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="The raw number of recorded items in my collection." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
-                </div>
-                <!-- END title -->
-                <!-- BEGIN stat-lg -->
-                <div class="row align-items-center mb-2">
-                    <div class="col-7">
-                        <h3 class="mb-0"><?php print $vn_count; ?></h3>
-                    </div>
-                    <div class="col-5">
-                        <div class ="mt-n3 mb-n2" id="apexchart" data-type="pie" data-title="Object Types" data-height="45"></div>
-                        <!-- <h3 class="text-theme box mb-2 align-top">
-                            <i class="ti ti-building-warehouse"></i>
-                        </h3> -->
-                    </div>
-                </div>
-                <!-- END stat-lg -->
-                <!-- BEGIN stat-sm -->
-                <div class="small text-white text-opacity-50 text-truncate">
-                    &nbsp;<br>
-                    &nbsp;<br>
-                    &nbsp;
-                </div>
-                <!-- END stat-sm -->
+<!-- ------------------------------------- -->
+<!-- banner Start -->
+<!-- ------------------------------------- -->
+<Section class="bg-primary-subtle pt-7 py-lg-0 py-7">
+    <div class="custom-container">
+        <div class="row justify-content-center pt-lg-5 mb-4">
+            <div class="col-lg-8">
+                <h1 class="text-link-color fw-bolder text-center fs-11 mb-0 pt-lg-2">
+                    iToysoldiers is the <span class="text-primary">canonical record</span> of my miniature wargaming collection
+                </h1>
             </div>
-            <!-- END card-body -->
-            
-            <!-- BEGIN card-arrow -->
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-            <!-- END card-arrow -->
         </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 mb-3">
-        <div class="card">
-            <!-- BEGIN card-body -->
-            <div class="card-body">
-                <!-- BEGIN title -->
-                <div class="d-flex fw-bold small mb-3">
-                    <span class="flex-grow-1">PILE OF SHAME</span>
-                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Models that need to be finished. This metric is not accurate yet." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
-                </div>
-                <!-- END title -->
-                <!-- BEGIN stat-lg -->
-                <div class="row align-items-center mb-2">
-                    <div class="col-7">
-                        <h3 class="mb-0"><?php print $vn_shame; ?></h3>
-                    </div>
-                    <div class="col-5">
-                        <h3 class="text-theme box mb-n2 align-top">
-                            <i class="ti ti-crane"></i>
-                        </h3>
-                    </div>
-                </div>
-                <!-- END stat-lg -->
-                <!-- BEGIN stat-sm -->
-                <div class="small text-white text-opacity-50 text-truncate">
-                    &nbsp;<br>
-                    &nbsp;<br>
-                    &nbsp;
-                </div>
-                <!-- END stat-sm -->
-            </div>
-            <!-- END card-body -->
-            
-            <!-- BEGIN card-arrow -->
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-            <!-- END card-arrow -->
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 mb-3">
-        <div class="card">
-            <!-- BEGIN card-body -->
-            <div class="card-body">
-                <!-- BEGIN title -->
-                <div class="d-flex fw-bold small mb-3">
-                    <span class="flex-grow-1">COLLECTION COST</span>
-                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="An extremely approximate amount I've spent putting my collection together." class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
-                </div>
-                <!-- END title -->
-                <!-- BEGIN stat-lg -->
-                <div class="row align-items-center mb-2">
-                    <div class="col-7">
-                        <h3 class="mb-0">~ $<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
-                    </div>
-                    <div class="col-5">
-                        <h3 class="text-theme box mb-0 align-top">
-                            <i class="ti ti-currency-dollar-canadian"></i>
-                        </h3>
-                    </div>
-                </div>
-                <!-- END stat-lg -->
-                <!-- BEGIN stat-sm -->
-                <div class="small text-white text-opacity-50 text-truncate">
-                    &nbsp;<br>
-                    &nbsp;<br>
-                    &nbsp;
-                </div>
-                <!-- END stat-sm -->
-            </div>
-            <!-- END card-body -->
-            
-            <!-- BEGIN card-arrow -->
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-            <!-- END card-arrow -->
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 mb-3">
-        <div class="card">
-            <!-- BEGIN card-body -->
-            <div class="card-body">
-                <!-- BEGIN title -->
-                <div class="d-flex fw-bold small mb-3">
-                    <span class="flex-grow-1">ARCHIVE COMPLETENESS</span>
-                    <a href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="How complete is the archive? In other words, how close does this archive reflect my collection? Right now? Not even close!" class="text-white text-opacity-50 text-decoration-none"><i class="ti ti-help"></i></a>
-                </div>
-                <!-- END title -->
-                <!-- BEGIN stat-lg -->
-                <div class="row align-items-center mb-2">
-                    <div class="col-7">
-                        <h3 class="mb-0">1 %</h3>
-                    </div>
-                    <div class="col-5">
-                        <div class="progress mb-1">
-                            <div class="progress-bar bg-theme" style="width: 1%">1%</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END stat-lg -->
-                <!-- BEGIN stat-sm -->
-                <div class="small text-white text-opacity-50 text-truncate">
-                    &nbsp;<br>
-                    &nbsp;<br>
-                    &nbsp;
-                </div>
-                <!-- END stat-sm -->
-            </div>
-            <!-- END card-body -->
-            
-            <!-- BEGIN card-arrow -->
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
-            </div>
-            <!-- END card-arrow -->
-        </div>
-    </div> 
-</div>
+        <div class="row align-items-end mb-3">
+            <div class="col-lg-3 d-none d-lg-block">
 
-<div class="row">
-    <div class="col-12 mb-3">
-        <div class='card'>
-            <div class="card-header fw-bold small bg-white bg-opacity-15">FACTIONS AND CATEGORIES</div>
-            <div class='card-body'>
-                <div class="d-flex justify-content-center align-items-center">
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-center align-items-center gap-9">
+                    <p class="text-muted fs-5 mb-0 fw-bold">We have stats. Stats are cool.</p>
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-4 my-4 position-relative z-1">
+
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-9 position-relative z-1 pb-lg-13">
 <?php
-
                     while ($qr_collections->nextRow()){
                         $col_object = new ca_collections($qr_collections->get('collection_id'));
 ?>
@@ -214,7 +59,7 @@
 
                             }else{
 ?>
-                                <img src="<?php print $col_object->get('ca_collections.collection_media.media.tiny.url'); ?>" class="rounded">
+                            <img src="<?php print $col_object->get('ca_collections.collection_media.media.tiny.url'); ?>" class="rounded">
 <?php
                             }
 ?>  
@@ -224,112 +69,78 @@
 ?>
                 </div>
             </div>
-            <div class='card-arrow'>
-                <div class='card-arrow-top-left'></div>
-                <div class='card-arrow-top-right'></div>
-                <div class='card-arrow-bottom-left'></div>
-                <div class='card-arrow-bottom-right'></div>
+            <div class="col-lg-3 d-none d-lg-block">
+
             </div>
         </div>
-    </div> 
-</div>
-<div class="row mb-3">
-    <div class="col-12">
-        <div class='card'>
-            <div class='card-body bg-dark m-1'>
-                <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
-            </div>
-            <div class='card-arrow'>
-                <div class='card-arrow-top-left'></div>
-                <div class='card-arrow-top-right'></div>
-                <div class='card-arrow-bottom-left'></div>
-                <div class='card-arrow-bottom-right'></div>
-            </div>
-        </div> 
     </div>
-</div>
+</Section>
+<!-- ------------------------------------- -->
+<!-- banner End -->
+<!-- ------------------------------------- -->
 
-<div class="row">
-    <div class="col-lg-6">
-        <div class='card mb-3'>
-        <div class="card-header fw-bold small bg-white bg-opacity-15">POPULAR MODELS</div>
-            <div class='card-body'>
-                <div class="list-group">
-<?php
-                    $tm_count = 1;
-                    while ($qr_topmodels->nextRow()){
-                        $top_object = new ca_objects($qr_topmodels->get('object_id'));
-?>
-                    <a href='/index.php/Detail/objects/<?php print $top_object->get('ca_objects.object_id'); ?>' class='list-group-item list-group-item-action d-flex align-items-center'>
-                        <div class="position-relative">
-                            <div class="bg-center bg-cover bg-no-repeat w-80px h-60px" style="background-image: url(<?php print $top_object->get('ca_object_representations.media.thumbnail.url'); ?>">
-                            </div>
-                            <div class="position-absolute top-0 start-0">
-                                <span class="badge bg-theme text-theme-900 rounded-0 d-flex align-items-center justify-content-center w-20px h-20px"><?php print $tm_count; ?></span>
-                            </div>
-                        </div>
-                        <div class='flex-fill px-3'>
-                            <div class="fw-500 text-white"><?php print $top_object->get('ca_objects.preferred_labels.name'); ?></div>
-                        </div>
-                    </a>
-<?php
-                        $tm_count++;
-                    }
-?>
+<!-- ------------------------------------- -->
+<!-- Leadership Start -->
+<!-- ------------------------------------- -->
+<section class="py-5 py-md-14 py-lg-12">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5">
+        <h2 class="fs-10 fw-bolder">Featured Models</h2>
+        <p class="fs-4 mb-0">
+            Models of which I am particularly proud.
+        </p>
 
-                </div>
-            </div>
-            <div class='card-arrow'>
-                <div class='card-arrow-top-left'></div>
-                <div class='card-arrow-top-right'></div>
-                <div class='card-arrow-bottom-left'></div>
-                <div class='card-arrow-bottom-right'></div>
-            </div>
-        </div> 
+        </div>
     </div>
-    <div class="col-lg-6">
-        <div class='card mb-3'>
-            <div class="card-header fw-bold small bg-white bg-opacity-15">RECENT ACTIVITY</div>
-            <div class='card-body'>
-                <div class="table-responsive">
-                    <table class="table table-striped table-borderless mb-2px small text-nowrap">
-                        <tbody>
-<?php
-                        while ($qr_activity->nextRow()){
-                            $qr_object = new ca_objects($qr_activity->get('object_id'));
-                            $qr_occurrence = new ca_occurrences($qr_activity->get('occurrence_id'));
-                            $qr_edate = substr($qr_activity->get('edatetime'),0,13);
-                            $qr_time = substr_replace(substr_replace(substr_replace(substr_replace(substr($qr_edate,0,13),'/',4,1),'/',7,0),'T',10,0),':',13,0);
-?>
-                            <tr>
-                                <td>
-                                    <span class="d-flex align-items-center">
-                                        <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                        <span class="fw-bold"><?php print $qr_object->get('ca_objects.preferred_labels.name'); ?></span>
-                                    </span>
-                                </td>
-                                <td>
-                                    set to
-                                </td>
-                                <td>
-                                    <span style="min-height: 18px"><?php print $qr_occurrence->get('ca_occurrences.preferred_labels.name'); ?></span>
-                                </td>
-                                <td><small><time class="timeago" datetime="<?php print $qr_time; ?>"><?php print $qr_time; ?></time></small></td>
-                                <td><a href="/index.php/Detail/objects/<?php print $qr_object->get('ca_objects.object_id'); ?>" class="text-decoration-none text-white"><i class="bi bi-link"></i></a></td>
-                            </tr>
-<?php
-                        }
-?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class='card-arrow'>
-                <div class='card-arrow-top-left'></div>
-                <div class='card-arrow-top-right'></div>
-                <div class='card-arrow-bottom-left'></div>
-                <div class='card-arrow-bottom-right'></div>
-            </div>
-        </div> 
+    <?php print $this->render("Front/featured_set_slideshow_html.php"); ?>
     </div>
-</div>
+</section>
+<!-- ------------------------------------- -->
+<!-- Leadership end -->
+<!-- ------------------------------------- -->
+
+<!-- ------------------------------------- -->
+<!-- Metric Start -->
+<!-- ------------------------------------- -->
+<section class="py-lg-12 py-13 border-top data-shadow">
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <h2 class="fs-10 fw-bolder mb-3">Key metric at a glance</h2>
+                <p class="fs-4 mb-0">
+                From the year we were founded to the impressive customer base we've built, and the growth
+                percentages that reflect our continuous improvement, these numbers tell our story at a
+                glance. Explore the data that drives our mission and underscores our commitment to
+                excellence.
+                </p>
+            </div>
+        <div class="col-lg-6">
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="mb-5">
+                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">founded</p>
+                <h3 class="fs-12 fw-semibold ">2024</h3>
+                <p class="mb-0 fs-4">When this iteration was introduced</p>
+            </div>
+            <div class="">
+                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Objects</p>
+                <h3 class="fs-12 fw-semibold "><?php print $vn_count; ?></h3>
+                <p class="mb-0 fs-4">Objects in collection</p>
+            </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="mb-5">
+                <p class="text-primary text-uppercase fs-2 fw-bold mb-0">Value</p>
+                <h3 class="fs-12 fw-semibold ">$<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h3>
+                <p class="mb-0 fs-4">Estimate of collection value</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- ------------------------------------- -->
+<!-- Metric End -->
+<!-- ------------------------------------- -->

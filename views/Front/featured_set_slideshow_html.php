@@ -10,39 +10,27 @@
 	if($qr_res && $qr_res->numHits()){
 ?>   
 
-<section id="featuredCarousel" class="py-5 py-md-14 py-lg-12">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-5">
-                <p class="fs-4 mb-0">
-                    Models of which I am especially proud.
-                </p>
-            </div>
-        </div>
-		<div class="owl-carousel leadership-carousel owl-theme mt-5">
-				
+        <div class="owl-carousel leadership-carousel owl-theme mt-5">
+                        
 <?php
-			while($qr_res->nextHit()){
-				if($qr_res->get("ca_object_representations.media.widepreview")){
-					if($vs_media = $qr_res->getWithTemplate("$vs_img_template", array("checkAccess" => $va_access_values))){
+            while($qr_res->nextHit()){
+                if($qr_res->get("ca_object_representations.media.widepreview")){
+                    if($vs_media = $qr_res->getWithTemplate("$vs_img_template", array("checkAccess" => $va_access_values))){
 ?>
                         <div class="item">
                             <a href="/index.php/Detail/objects/<?php print $qr_res->get("ca_objects.object_id"); ?>" class="text-decoration-none">
-
-                                    <img src="<?php print $vs_media; ?>" class="rounded-3" alt="Featured Model">
-                                    <div class="position-relative leadership-card z-1 bg-dark mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm">
-                                        <h5 class="fs-5 fw-semibold mb-0"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h5>
-                                    </div>
+                                <img src="<?php print $vs_media; ?>" class="rounded-3" alt="Featured Model">
+                                <div class="position-relative leadership-card z-1 bg-white mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm">
+                                    <h5 class="fs-5 fw-semibold mb-0"><?php print $qr_res->get("ca_objects.preferred_labels.name"); ?></h5>
+                                </div>
                             </a>
                         </div>
 <?php
-					}
-				}
-			}
+                    }
+                }
+            }
 ?>
-
-	</div><!-- end owl carousel-wrapper -->
-</section>
+        </div><!-- end owl carousel-wrapper -->
 <?php
 	}
 ?>

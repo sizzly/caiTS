@@ -5,146 +5,117 @@
  */
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="horizontal">
+
 <head>
-	<meta charset="utf-8" />
+  	<!-- Required meta tags -->
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/png" href="/themes/caiTS/assets/images/logos/favicon.png" />
+
+	<!-- Core Css -->
+	<link rel="stylesheet" href="/themes/caiTS/assets/css/styles.css" />
+
 	<title><?php print (MetaTagManager::getWindowTitle()) ? MetaTagManager::getWindowTitle() : $this->request->config->get("app_display_name"); ?></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-
-	<script src="/assets/jquery/js/jquery.js"></script>
-	<!-- ================== BEGIN core-css ================== -->
-	<link href="/themes/caiTS/assets/css/vendor.min.css" rel="stylesheet" />
-	<link href="/themes/caiTS/assets/css/app.min.css" rel="stylesheet" />
-	<link href="/themes/caiTS/assets/css/mods.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-	<link href="/themes/caiTS/assets/js/lity/dist/lity.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/themes/caiTS/assets/js/owl.carousel/dist/assets/owl.carousel.min.css" />
-
-	<!-- ================== END core-css ================== -->
-
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="/themes/caiTS/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css" />
 </head>
-<body>
-<!-- BEGIN #app -->
-	<div id="app" class="app">
 
-<!-- BEGIN #header -->
-		<div id="header" class="app-header">
-			<!-- BEGIN desktop-toggler -->
-			<div class="desktop-toggler">
-				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
-					<span class="bar"></span>
-					<span class="bar"></span>
-					<span class="bar"></span>
-				</button>
-			</div>
-			<!-- BEGIN desktop-toggler -->
-			
-			<!-- BEGIN mobile-toggler -->
-			<div class="mobile-toggler">
-				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
-					<span class="bar"></span>
-					<span class="bar"></span>
-					<span class="bar"></span>
-				</button>
-			</div>
-			<!-- END mobile-toggler -->
-		
-<!-- BEGIN brand -->
-			<div class="brand">
-				<a href="/" class="brand-logo">
-					<span class="brand-img">
-						<span class="brand-img-text text-theme">I</span>
-					</span>
-					<span class="brand-text">iToysoldiers</span>
-				</a>
-			</div>
-<!-- END brand -->
-		
-<!-- BEGIN menu -->
-			<div class="menu">
-				<nav class="nav">
-					<div class="menu-item dropdown">
-						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app" class="menu-link">
-							<div class="menu-icon"><i class="bi bi-search nav-icon"></i></div>
-						</a>
-					</div>
-				</nav>
-			</div>
-			<!-- END menu -->
-			<!-- BEGIN menu-search -->
-			<form class="menu-search" role="search" action="<?php print caNavUrl($this->request, '', 'MultiSearch', 'Index'); ?>">
-				<div class="menu-search-container">
-					<div class="menu-search-icon"><i class="bi bi-search"></i></div>
-					<div class="menu-search-input">
-						<input type="text" class="form-control form-control-lg" id="headerSearchInput" placeholder="Search" name="search" autocomplete="off" />
-					</div>
-					<div class="menu-search-icon">
-						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
-					</div>
-				</div>
-			</form>
-			<!-- END menu-search -->
-		</div>
-		<!-- END #header -->
-			<!-- BEGIN #sidebar -->
-			<div id="sidebar" class="app-sidebar">
-			<!-- BEGIN scrollbar -->
-			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
-				<!-- BEGIN menu -->
-				<div class="menu">
-					<div class="menu-header">Navigation</div>
-					<div class="menu-item">
-						<a href="/index.php" class="menu-link">
-							<span class="menu-icon"><i class="bi bi-cpu"></i></span>
-							<span class="menu-text">Home</span>
-						</a>
-					</div>
-					<div class="menu-item">
-						<a href="/index.php/About/Index" class="menu-link">
-							<span class="menu-icon"><i class="fas fa-info-circle"></i></span>
-							<span class="menu-text">About</span>
-						</a>
-					</div>
-					<div class="menu-item">
-						<a href="/index.php/Collections/Index" class="menu-link">
-							<span class="menu-icon"><i class="fas fa-sitemap"></i></span>
-							<span class="menu-text">Order of Battle</span>
-						</a>
-					</div>
-					<div class="menu-item has-sub">
-						<a href="#" class="menu-link">
-							<span class="menu-icon">
-								<i class="fas fa-binoculars"></i>
-							</span>
-							<span class="menu-text">Browse</span>
-							<span class="menu-caret"><b class="caret"></b></span>
-						</a>
-						<div class="menu-submenu">
-							<div class="menu-item">
-								<a href="/index.php/Browse/objects" class="menu-link">
-									<span class="menu-text">Objects</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="menu-header">Other</div>
-					<div class="menu-item">
-						<a href="https://blog.itoysoldiers.com" class="menu-link">
-							<span class="menu-icon"><i class="bi bi-book"></i></span>
-							<span class="menu-text">Blog</span>
-						</a>
-					</div>
-				</div>
-				<!-- END menu -->
-			</div>
-			<!-- END scrollbar -->
-		</div>
-		<!-- END #sidebar -->
-			
-		<!-- BEGIN mobile-sidebar-backdrop -->
-		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
-		<!-- END mobile-sidebar-backdrop -->
-		<!-- BEGIN #content -->
-		<div id="content" class="app-content">
+<body>
+	<!-- ------------------------------------- -->
+  	<!-- Header Start -->
+  	<!-- ------------------------------------- -->
+  	<header class="header-fp p-0 w-100">
+    	<nav class="navbar navbar-expand-lg bg-primary-subtle py-2 py-lg-10 max-w-100">
+      		<div class="custom-container d-flex align-items-center justify-content-between">
+        		<a href="/" class="text-nowrap logo-img">
+          			<img src="/themes/caiTS/assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
+          			<img src="/themes/caiTS/assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
+        		</a>
+        		<button class="navbar-toggler border-0 p-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          			<i class="ti ti-menu-2 fs-8"></i>
+        		</button>
+        		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+          			<ul class="navbar-nav mx-auto mb-2 gap-xl-7 gap-8 mb-lg-0">
+            			<li class="nav-item">
+              				<a class="nav-link fs-4 fw-bold text-dark link-primary" href="/About/Index">About</a>
+            			</li>
+            			<li class="nav-item">
+              				<a class="nav-link fs-4 fw-bold text-dark link-primary d-flex gap-2" href="/Collections/Index">Collections</a>
+            			</li>
+            			<li class="nav-item">
+              				<a class="nav-link fs-4 fw-bold text-dark link-primary" href="/Dashboard/Index">Dashboard</a>
+            			</li>
+            			<li class="nav-item">
+              				<a class="nav-link fs-4 fw-bold text-dark link-primary" href="/Contact/form">Contact</a>
+            			</li>
+          			</ul>
+        		</div>
+      		</div>
+    	</nav>
+	</header>
+  	<!-- ------------------------------------- -->
+  	<!-- Header End -->
+  	<!-- ------------------------------------- -->
+
+  	<!-- ------------------------------------- -->
+  	<!-- Responsive Sidebar Start -->
+  	<!-- ------------------------------------- -->
+  	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    	<div class="offcanvas-header">
+      		<a href="../horizontal/frontend-landingpage.html">
+        		<img src="/themes/caiTS/assets/images/logos/dark-logo.svg" alt="Logo-light" />
+      		</a>
+      		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    	</div>
+    	<div class="offcanvas-body">
+      		<ul class="list-unstyled ps-0">
+        		<li class="mb-1">
+          			<a href="../horizontal/frontend-aboutpage.html" class="px-0 fs-4 d-block text-dark link-primary w-100 py-2">
+            			About Us
+          			</a>
+        		</li>
+
+        		<li class="mb-1">
+          			<a href="../horizontal/frontend-blogpage.html" class="px-0 fs-4 d-block w-100 py-2 text-dark link-primary">
+            			Blog
+          			</a>
+        		</li>
+
+        		<li class="mb-1">
+          			<a href="../horizontal/frontend-portfoliopage.html" class="px-0 fs-4 d-flex align-items-center justify-content-start gap-2 w-100 py-2 text-dark link-primary">
+            			Portfolio
+            			<span class="badge text-primary bg-primary-subtle fs-2 fw-bolder hstack">New</span>
+          			</a>
+        		</li>
+
+        		<li class="mb-1">
+          			<a href="../horizontal/index.html" class="px-0 fs-4 d-block w-100 py-2 text-dark link-primary">
+            			Dashboard
+          			</a>
+        		</li>
+
+        		<li class="mb-1">
+          			<a href="../horizontal/frontend-pricingpage.html" class="px-0 fs-4 d-block w-100 py-2 text-dark link-primary">
+            			Pricing
+          			</a>
+        		</li>
+
+        		<li class="mb-1">
+          			<a href="../horizontal/frontend-contactpage.html" class="px-0 fs-4 d-block w-100 py-2 text-dark link-primary">
+            			Contact
+          			</a>
+        		</li>
+        		<li class="mt-3">
+          			<a href="../horizontal/authentication-login.html" class="btn btn-primary w-100">Log In</a>
+        		</li>
+      		</ul>
+    	</div>
+  	</div>
+  	<!-- ------------------------------------- -->
+  	<!-- Responsive Sidebar End -->
+  	<!-- ------------------------------------- -->
+	  <div class="main-wrapper overflow-hidden">
