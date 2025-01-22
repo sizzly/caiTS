@@ -18,6 +18,7 @@
 
 	<!-- Core Css -->
 	<link rel="stylesheet" href="/themes/caiTS/assets/css/styles.css" />
+	<link rel="stylesheet" href="/themes/caiTS/assets/fonts/tabler-icons/tabler-icons.css" />
 
 	<title><?php print (MetaTagManager::getWindowTitle()) ? MetaTagManager::getWindowTitle() : $this->request->config->get("app_display_name"); ?></title>
 	<!-- Owl Carousel  -->
