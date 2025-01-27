@@ -23,6 +23,7 @@
 	<title><?php print (MetaTagManager::getWindowTitle()) ? MetaTagManager::getWindowTitle() : $this->request->config->get("app_display_name"); ?></title>
 	<!-- Owl Carousel  -->
 	<link rel="stylesheet" href="/themes/caiTS/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css" />
+	<link rel="stylesheet" href="/themes/caiTS/assets/js/lity/dist/lity.min.css" />
 </head>
 
 <?php 

@@ -26,7 +26,7 @@
     $arms_counts = "[".$arms_count."]";
     $arms_labels = "[".$arms_label."]";
 ?>
-
+ 
 <script>
     var options = {
         stroke: { 
@@ -35,7 +35,7 @@
             },
         chart: {
             type: 'pie',
-            height: 45,
+            height: 85,
             toolbar: {
                 show: false
             },
@@ -54,7 +54,7 @@
             }
 ?>
         ],
-        colors: ['rgba('+ app.color.themeRgb + ', 1)', 'rgba('+ app.color.themeRgb + ', .75)', 'rgba('+ app.color.themeRgb + ', .5)'],
+        colors: [],
         labels: ['Documents', 'Prints', 'Models'],
         legend: false,
         dataLabels: { enabled : false }
@@ -68,37 +68,24 @@
 <script>
   var apexRadarChartOptions = {
     chart: {
-      height: 320,
-      type: 'radar',
+      fontFamily: "inherit",
+      height: 350,
+      type: "radar",
+      toolbar: {
+        show: false,
+      },
     },
     series: [{
       name: 'Model Count',
       data: <?php print $arms_counts; ?>,
     }],
     labels: <?php print $arms_labels; ?>,
-    plotOptions: {
-      radar: {
-        size: 140,
-        polygons: {
-          strokeColors: 'rgba('+ app.color.whiteRgb +', .25)',
-          strokeWidth: 1,
-          connectorColors: 'rgba('+ app.color.whiteRgb +', .25)',
-          fill: {
-            colors: ['rgba('+ app.color.gray300Rgb +', .25)', 'rgba('+ app.color.whiteRgb +', .25)']
-          }
-        }
-      }
-    },
+    
     title: {
       text: ''
     },
-    colors: [app.color.theme],
-    markers: {
-      size: 4,
-      colors: [app.color.theme],
-      strokeColor: app.color.theme,
-      strokeWidth: 2,
-    },
+    colors: ["#615dff"],
+
     tooltip: {
       y: {
         formatter: function(val) {
