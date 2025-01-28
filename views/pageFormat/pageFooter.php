@@ -48,7 +48,7 @@
 <?php
     }
 ?>
-
+    
     <script src="/themes/caiTS/assets/js/vendor.min.js"></script>
     <!-- Import Js Files -->
     <script src="/themes/caiTS/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -63,6 +63,7 @@
     <script src="/themes/caiTS/assets/js/apps/productDetail.js"></script>
     <script src="/themes/caiTS/assets/js/jquery.timeago.js"></script>
     <script src="/themes/caiTS/assets/js/lity/dist/lity.min.js"></script>
+    <script src="/themes/caiTS/assets/js/apps/notes.js"></script>
     <script>
         jQuery(document).ready(function() {
         jQuery("time.timeago").timeago();
