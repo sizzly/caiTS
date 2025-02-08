@@ -115,7 +115,7 @@
 					$vs_idno_detail_link 	= $qr_res->get("{$vs_table}.object_id");
 					$vs_label_detail_link 	= $qr_res->get("{$vs_table}.preferred_labels");
 					$vs_thumbnail = "";
-					$vs_type_placeholder = "/themes/caiTS/assets/img/placeholder.png";
+					$vs_type_placeholder = "/themes/caiTS/assets/img/Locked_wide.png";
 					$vs_typecode = "";
 					if ($vs_table == 'ca_objects') {
 						if(!($vs_thumbnail = $qr_res->get('ca_object_representations.media.widepreview.url', array("checkAccess" => $va_access_values)))){
@@ -141,14 +141,19 @@
 					$vs_expanded_info = $qr_res->getWithTemplate($vs_extended_info_template);
 
 					$vs_result_output = "
-<div class='col-sm-6 col-md-4 mb-3'>
-	<a href='/index.php/Detail/objects/{$vs_idno_detail_link}' class='text-white text-decoration-none'>
-		<img src='{$vs_thumbnail}' class='card-img-top img-responsive rounded-3'>
-		<div class='position-relative leadership-card z-1 bg-dark mt-n10 rounded py-3 px-8 mx-9 text-center shadow-sm'>
-			<h6 class='fs-5 fw-semibold mb-2'>{$vs_label_detail_link}</h6>
-		</div>
-	</a>
-</div>";
+<div class='col-md-4'>
+    <div class='card hover-img overflow-hidden'>
+        <div class='position-relative'>
+            <a href='/Detail/objects/{$vs_idno_detail_link}'>
+                <img src='{$vs_thumbnail}' class='card-img-top' alt='modernize-img'>
+            </a>
+        </div>
+        <div class='card-body pt-3 p-4'>
+            <h6 class='fs-4'>{$vs_label_detail_link}</h6>
+        </div>
+    </div>
+</div>
+";
 					ExternalCache::save($vs_cache_key, $vs_result_output, 'browse_result', $o_config->get("cache_timeout"));
 					print $vs_result_output;
 				}				

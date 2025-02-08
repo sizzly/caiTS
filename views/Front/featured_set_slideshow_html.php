@@ -11,6 +11,7 @@
 ?>   
 
         <div class="owl-carousel leadership-carousel owl-theme mt-5">
+            
                         
 <?php
             while($qr_res->nextHit()){

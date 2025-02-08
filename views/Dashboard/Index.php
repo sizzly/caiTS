@@ -19,76 +19,59 @@
 
     $qr_activity = $o_db->query('SELECT * FROM ca_objects_x_occurrences ORDER BY edatetime DESC LIMIT 8');
 ?>
-          
-<!--  Owl carousel -->
-<div class="owl-carousel counter-carousel owl-theme">
-    <div class="item">
-        <div class="card border-0 zoom-in bg-primary-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-swords fs-15"></i>
-                    <p class="fw-semibold fs-3 text-primary mt-3 mb-1">Objects</p>
-                    <h5 class="fw-semibold text-primary mb-0"><?php print $vn_count; ?></h5>
+<!-- Hero Image -->
+<div class="card">
+    <div class="position-relative">
+        <div class="opacity-50">
+            <img class="card-img-top" src="/themes/caiTS/assets/img/IMG_0255.JPG" alt="Card image cap" style="max-height: 450px">
+        </div>
+        <div class="card-img-overlay p-4">
+            <div class="text-white mt-3">
+                <div class="mb-2 mt-4">
+                    <span class="display-6">iToysoldiers</span>
+                </div>
+                <p class="fs-3 mb-0 opacity-75">The canonical archive of my wargaming collection</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-bg-white">
+        <div class="row">
+            <div class="col-12">
+                <div class="row text-center">
+                    <div class="col-6 col-md-3 border-end">
+                        <div class="mb-2">Objects</div>
+                        <i class="ti ti-swords fs-9 mb-2"></i>
+                        <div>
+                            <?php print $vn_count; ?>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 border-end">
+                        <div class="mb-2">Pile of Shame</div>
+                        <i class="ti ti-certificate-2-off fs-9 mb-2"></i>
+                        <div>
+                            <?php print $vn_shame; ?>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 border-end">
+                        <div class="mb-2">Completeness</div>
+                        <i class="ti ti-archive fs-9 mb-2"></i>
+                        <div>
+                            1%
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="mb-2">Cost</div>
+                        <i class="ti ti-currency-dollar-canadian fs-9 mb-2"></i>
+                        <div>
+                            $<?php print number_format((float)$vn_cost, 2, '.', ','); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="item">
-        <div class="card border-0 zoom-in bg-warning-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-certificate-2-off fs-15"></i>
-                    <p class="fw-semibold fs-3 text-warning mt-3 mb-1">Pile of Shame</p>
-                    <h5 class="fw-semibold text-warning mb-0"><?php print $vn_shame; ?></h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="card border-0 zoom-in bg-primary-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-progress-help fs-15"></i>
-                    <p class="fw-semibold fs-3 text-primary mt-3 mb-1">Redacted</p>
-                    <h5 class="fw-semibold text-primary mb-0">XXX</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="card border-0 zoom-in bg-danger-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-archive fs-15"></i>
-                    <p class="fw-semibold fs-3 text-danger mt-3 mb-1">Completeness</p>
-                    <h5 class="fw-semibold text-danger mb-0">1%</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="card border-0 zoom-in bg-success-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-currency-dollar-canadian fs-15"></i>
-                    <p class="fw-semibold fs-3 mt-3 mb-1">Cost</p>
-                    <h5 class="fw-semibold text-success mb-0">$<?php print number_format((float)$vn_cost, 2, '.', ','); ?></h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="card border-0 zoom-in bg-info-subtle shadow-none">
-            <div class="card-body">
-                <div class="text-center">
-                    <i class="ti ti-progress-help fs-15"></i>
-                    <p class="fw-semibold fs-3 text-info mt-3 mb-1">Redacted</p>
-                    <h5 class="fw-semibold text-info mb-0">XXX</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</div>    
+
 
 <!--  Row 1 -->
 <div class="row">

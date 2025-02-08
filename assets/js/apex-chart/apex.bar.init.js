@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Basic Bar Chart -------> BAR CHART
+  // Basic Bar Chart -------> BAR CHART 
   var options_basic = {
     series: [
       {

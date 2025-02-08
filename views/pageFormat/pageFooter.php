@@ -6,7 +6,7 @@
 ?>
 
 <?php 
-	if ($this->request->getController() == "Front" OR $this->request->getController() == "Contact" OR $this->request->getController() == "About") {
+	if ($this->request->getController() == "Contact" OR $this->request->getController() == "About") {
 ?>
     </div>
     <!-- ------------------------------------- -->
@@ -58,26 +58,29 @@
     <script src="/themes/caiTS/assets/js/theme/theme.js"></script>
     <script src="/themes/caiTS/assets/js/theme/app.min.js"></script>
     <script src="/themes/caiTS/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="/themes/caiTS/assets/js/frontend-landingpage/homepage.js"></script>
     <script src="/themes/caiTS/assets/js/theme/sidebarmenu.js"></script>
     <script src="/themes/caiTS/assets/js/apps/productDetail.js"></script>
     <script src="/themes/caiTS/assets/js/jquery.timeago.js"></script>
     <script src="/themes/caiTS/assets/js/lity/dist/lity.min.js"></script>
     <script src="/themes/caiTS/assets/js/apps/notes.js"></script>
+    <script src="/assets/ca/js/ca.utils.js"></script>
+    <script src="/assets/jquery/js/jquery.jscroll.js"></script>
     <script>
         jQuery(document).ready(function() {
         jQuery("time.timeago").timeago();
         });
 	</script>
 <?php 
-if ($this->request->getController() == "Dashboard") {
+if ($this->request->getController() == "Front") {
 	print $this->render("Front/dashboard_stats_html.php");
 ?>
-    <script src="/themes/caiTS/assets/js/dashboards/dashboard.js"></script>
+    <script src="/themes/caiTS/assets/js/homepage.js"></script>
 
 <?php
 }
 ?>
+
+<?= $this->render("Cookies/banner_html.php"); ?>
 
 </body>
 </html>

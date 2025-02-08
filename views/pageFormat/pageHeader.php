@@ -28,7 +28,7 @@
 </head>
 
 <?php 
-	if ($this->request->getController() == "Front" OR $this->request->getController() == "Contact" OR $this->request->getController() == "About") {
+	if ($this->request->getController() == "Contact" OR $this->request->getController() == "About") {
 ?>
 <body>
 	<!-- ------------------------------------- -->
