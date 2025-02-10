@@ -5,9 +5,6 @@
   */
 ?>
 
-<?php 
-	if ($this->request->getController() == "Contact" OR $this->request->getController() == "About") {
-?>
     </div>
     <!-- ------------------------------------- -->
     <!-- Footer Start -->
@@ -33,21 +30,6 @@
     <a href="javascript:void(0)" class="top-btn btn btn-primary d-flex align-items-center justify-content-center round-54 p-0 rounded-circle">
         <i class="ti ti-arrow-up fs-7"></i>
     </a>
-<?php
-    } else {
-?>
-<!-- Start Page footer -->
-</div>
-            </div>
-        </div>
-
-        <div class="dark-transparent sidebartoggler"></div>
-
-    </div>  
-
-<?php
-    }
-?>
     
     <script src="/themes/caiTS/assets/js/vendor.min.js"></script>
     <!-- Import Js Files -->
@@ -58,7 +40,6 @@
     <script src="/themes/caiTS/assets/js/theme/theme.js"></script>
     <script src="/themes/caiTS/assets/js/theme/app.min.js"></script>
     <script src="/themes/caiTS/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="/themes/caiTS/assets/js/theme/sidebarmenu.js"></script>
     <script src="/themes/caiTS/assets/js/apps/productDetail.js"></script>
     <script src="/themes/caiTS/assets/js/jquery.timeago.js"></script>
     <script src="/themes/caiTS/assets/js/lity/dist/lity.min.js"></script>

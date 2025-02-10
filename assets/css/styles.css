@@ -41866,7 +41866,7 @@ html[data-layout=horizontal] .body-wrapper>.container-md,
 html[data-layout=horizontal] .body-wrapper>.container-sm,
 html[data-layout=horizontal] .body-wrapper>.container-xl,
 html[data-layout=horizontal] .body-wrapper>.container-xxl {
-    padding-top: 115px !important;
+    padding-top: 15px !important;
     padding: 15px
 }
 
