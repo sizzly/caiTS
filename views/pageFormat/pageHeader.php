@@ -27,98 +27,47 @@
 	<link rel="stylesheet" href="/themes/caiTS/assets/js/lity/dist/lity.min.css" />
 </head>
 
-<body class="link-sidebar">
+<body>
+	<!--  Header Start -->
+	<div class="fixed-top">
+		<nav class="navbar navbar-expand-lg bg-body fixed-top">
+  			<div class="container-fluid">
+    			<a class="navbar-brand" href="/">iToysoldiers</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbartoggle" aria-controls="navbartoggle" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbartoggle">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="/Collections/index">Order of Battle</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Browse</a>
+							<ul class="dropdown-menu">
+            					<li><a class="dropdown-item" href="/Browse/objects">Objects</a></li>
+          					</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Info</a>
+							<ul class="dropdown-menu">
+            					<li><a class="dropdown-item" href="/About/Index">About</a></li>
+								<li><a class="dropdown-item" href="/Contact/form">Contact</a></li>
+								<li><a class="dropdown-item" href="https://blog.itoysoldiers.com">Blog</a></li>
+          					</ul>
+						</li>
+					</ul>
+					<form class="d-flex" role="search" action="<?php print caNavUrl($this->request, '', 'MultiSearch', 'Index'); ?>">
+						<input type="text" class="form-control me-2" id="headerSearchInput" placeholder="Search" name="search" autocomplete="off" />
+						<button class="btn btn btn-outline-primary" type="submit">Search</button>
+					</form>
+				</div>
+  			</div>
+		</nav>
+	</div>
+	<!--  Header End -->
 
-<div id="main-wrapper">
-	<div class="page-wrapper">
-		<!--  Header Start -->
-		<header class="topbar">
-			<!-- Horizontal config -->
-			<div class="app-header with-horizontal">
-
-<nav class="navbar navbar-expand-xl container-fluid p-0">
-    <ul class="navbar-nav align-items-center">
-        <li class="nav-item nav-icon-hover-bg rounded-circle d-flex d-xl-none ms-n2">
-            <a class="nav-link sidebartoggler" id="sidebarCollapse" href="javascript:void(0)">
-                <i class="ti ti-menu-2"></i>
-            </a>
-        </li>
-        <li class="nav-item d-none d-xl-block">
-            <a href="/" class="text-nowrap nav-link navbar-brand">
-				<span class="navbar-brand mb-0 h1">iToysoldiers</span>
-            </a>
-        </li>
-        <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-xl-flex">
-            <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="ti ti-search"></i>
-            </a>
-        </li>
-    </ul>
-    <ul class="navbar-nav quick-links d-none d-lg-flex align-items-center">
-        <li class="nav-item dropdown-hover d-none d-lg-block">
-            <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item dropdown-hover d-none d-lg-block">
-            <a class="nav-link" href="/Collections/index">Collections</a>
-        </li>
-        <li class="nav-item dropdown-hover d-none d-lg-block">
-            <a class="nav-link dropdown-toggle" href="#">Browse</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/Browse/objects">Objects</a></li>
-            </ul>
-        </li>
-    </ul>
-    <div class="d-block d-xl-none">
-        <a href="/" class="text-nowrap nav-link">
-            <img src="/themes/caiTS/assets/images/logos/dark-logo.png" width="180" alt="modernize-img" />
-        </a>
-    </div>
-    <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="p-2">
-            <i class="ti ti-dots fs-7"></i>
-        </span>
-    </a>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="d-flex align-items-center justify-content-between px-0 px-xl-8">
-            <a href="javascript:void(0)" class="nav-link round-40 p-1 ps-0 d-flex d-xl-none align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar" aria-controls="offcanvasWithBothOptions">
-                <i class="ti ti-align-justified fs-7"></i>
-            </a>
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                <!-- ------------------------------- -->
-                <!-- start Theme Toggle -->
-                <!-- ------------------------------- -->
-                <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link moon dark-layout" href="javascript:void(0)">
-                        <i class="ti ti-moon moon"></i>
-                    </a>
-                    <a class="nav-link sun light-layout" href="javascript:void(0)">
-                        <i class="ti ti-sun sun"></i>
-                    </a>
-                </li>
-                <!-- ------------------------------- -->
-                <!-- end Theme Toggle -->
-                <!-- ------------------------------- -->
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-			</div>
-		</header>
-		<!--  Header End -->
-
-		<div class="body-wrapper">
-			<div class="container-fluid">
-<!-- End pageheader -->
+	<div id="main-wrapper">
+		<div class="page-wrapper">
+			<div class="body-wrapper">
+				<div class="container-fluid">
+	<!-- End pageheader -->
