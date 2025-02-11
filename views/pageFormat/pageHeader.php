@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Favicon icon-->
-	<link rel="shortcut icon" type="image/png" href="/themes/caiTS/assets/images/logos/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="/themes/caiTS/assets/img/favicon.png" />
 
 	<!-- Core Css -->
 	<link rel="stylesheet" href="/themes/caiTS/assets/css/styles.css" />

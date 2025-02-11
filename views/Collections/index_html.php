@@ -3,50 +3,66 @@
 	$qr_collections = $this->getVar("collection_results");
 	MetaTagManager::setWindowTitle($this->request->config->get("app_display_name").": Order of Battle");
 ?>
-<ul class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item" aria-current="page">Order of Battle</li>
-</ul>
-<h1 class="page-header">Order of Battle
-    <small>The organization structure of my collection</small>
-</h1>
-<hr class="mb-4" />
 
-<div class="card">
-	<div class="card-header fw-bold small bg-white bg-opacity-15">FACTIONS AND UNITS</div>
-	<div class="list-group">
+<div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+    <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+            <div class="col-9">
+                <h4 class="fw-semibold mb-8">Order of Battle</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a class="text-muted text-decoration-none" href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item" aria-current="page">Order of Battle</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-3">
+                <div class="text-center mb-n5">
+                    <!-- Future home of nav: prev/next/etc -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<?php	
-		if($qr_collections && $qr_collections->numHits()) {
-			while($qr_collections->nextHit()) {
-				if(!($col_img_url = $qr_collections->get('ca_collections.collection_media.media.tiny.url'))) {
-					$col_img = '<i class="ti ti-sitemap display-5 rounded-circle"></i>';
-				
-				}else{
-					$col_img = '<img src="'.$col_img_url.'" class="rounded-circle">';
-				
-				}
+<div class="row el-element-overlay">
+    
+
+
+					<?php	
+        if($qr_collections && $qr_collections->numHits()) {
+            while($qr_collections->nextHit()) {
+                if(!($col_img_url = $qr_collections->get('ca_collections.collection_media.media.widepreview.url'))) {
+                    $col_img = '<img src="/themes/caiTS/assets/img/Locked_wide.png" class="d-block position-relative w-100">';
+                
+                }else{
+                    $col_img = '<img src="'.$col_img_url.'" class="d-block position-relative w-100">';
+                
+                }
 ?>
-				<a href="/index.php/Detail/collections/<?php print $qr_collections->get("ca_collections.collection_id"); ?>" class="d-flex list-group-item list-group-item-action">
-					<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-theme bg-opacity-15 rounded-circle">
-						<?php print $col_img; ?>
-					</div>
-					<div class="flex-fill ps-3">
-						<h4 class="mb-0"><?php print $qr_collections->get("ca_collections.preferred_labels.name"); ?></h4>
-						<p class="mb-0 d-none d-sm-block"><?php print $qr_collections->get("ca_collections.description"); ?></p>
-					</div>
-				</a>
+<div class="col-lg-3 col-md-6">
+        <div class="card overflow-hidden">
+            <div class="el-card-item pb-3">
+                <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center">
+                    <?php print $col_img; ?>
+                </div>
+                <div class="el-card-content text-center">
+                    <a href="/index.php/Detail/collections/<?php print $qr_collections->get("ca_collections.collection_id"); ?>">    
+                        <h4 class="mb-0 card-title"><?php print $qr_collections->get("ca_collections.preferred_labels.name"); ?></h4>
+                    </a>
+                    <p class="card-subtitle">&nbsp</p>
+                </div>
+            </div>
+        </div>
+			</div>
 <?php
 			}
 		} else {
 			print _t('No collections available');
 		}
 ?>
-	</div>
-	<div class='card-arrow'>
-		<div class='card-arrow-top-left'></div>
-		<div class='card-arrow-top-right'></div>
-		<div class='card-arrow-bottom-left'></div>
-		<div class='card-arrow-bottom-right'></div>
-	</div>
+
+
 </div>

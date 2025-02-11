@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between py-7 flex-md-nowrap flex-wrap gap-sm-0 gap-3">
                 <div class="d-flex gap-3 align-items-center">
-                    <img src="/themes/caiTS/assets/images/logos/favicon.png" alt="icon">
+                    <img src="/themes/caiTS/assets/img/favicon.png" alt="icon">
                     <p class="fs-4 mb-0">All rights reserved by iToysoldiers. </p>
                 </div>
                 <div>
