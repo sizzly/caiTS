@@ -51,7 +51,12 @@
         jQuery("time.timeago").timeago();
         });
 	</script>
-<?php 
+<?php
+if ($this->request->getController() == "About") {
+    ?>
+     <script src="/themes/caiTS/assets/js/homepage.js"></script>
+     <?php
+}
 if ($this->request->getController() == "Front") {
 	print $this->render("Front/dashboard_stats_html.php");
 ?>
