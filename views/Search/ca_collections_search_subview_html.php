@@ -30,11 +30,7 @@
 			}else{
 				print '<h5 class="card-title">'.$va_block_info['displayName'].' ('.$qr_results->numHits().')'.'</h5>';
 			}
-?>
-			<div class='blockResults mb-3'>
-				<div id='{{{block}}}Results' class='multiSearchResults'>
-					<div class='list-group mb-3'>
-<?php
+
 		}
 		
 						$va_collection_ids = array();
@@ -47,9 +43,6 @@
 			
 						$vn_count = 0;
 						while($qr_results->nextHit()) {
-?>
-							<div class='{{{block}}}Result multisearchResult'>
-<?php
 								$vs_image_tag = "";
 								if (sizeof($va_images) > 0){
 									$vs_image = $va_images[$qr_results->get('ca_collections.collection_id')];
@@ -61,27 +54,31 @@
 									$vs_image_tag = $qr_results->getWithTemplate("{$vs_placeholder_tag}");
 								}
 ?>
-								<a href="/index.php/Detail/collections/<?php print $qr_results->get('ca_collections.collection_id'); ?>" class="list-group-item list-group-item-action d-flex align-items-center text-white">
-									<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-dark rounded-circle">
-										<i class="ti ti-sitemap display-5"></i>
-									</div>
-									<div class="flex-fill ps-3">
-										<div class="fw-bold">
-											<?php print $qr_results->get('ca_collections.preferred_labels.name', array('returnAsLink' => false)); ?>
-										</div>
-									</div>
-								</a>								
-							</div>
+<div class="col-md-6 d-flex align-items-stretch">
+	<div class="card w-100">
+		<div class="p-4 align-items-stretch h-100">
+			<div class="row">
+				<div class="col-4 col-md-3 d-flex align-items-center">
+					<i class="ti ti-sitemap display-4"></i>
+				</div>
+				<div class="col-8 col-md-9 d-flex align-items-center">
+					<a href="/index.php/Detail/collections/<?php print $qr_results->get('ca_collections.collection_id'); ?>" class="card-title link-primary fw-semibold text-dark">
+						<?php print $qr_results->get('ca_collections.preferred_labels.name', array('returnAsLink' => false)); ?>
+					</a>
+					<p class="card-subtitle mt-1">
+						&nbsp;
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 							$vn_count++;
 							if ((!$vn_init_with_start && ($vn_count == $vn_hits_per_block)) || ($vn_init_with_start && ($vn_count >= $vn_init_with_start))) {break;} 
 						}
 						if (!$this->request->isAjax()) {
-?>
-					</div><!-- end blockResultsScroller -->
-				</div>
-			</div><!-- end blockResults -->
-<?php
+
 		}else{
 			# --- need to change sort direction to catch default setting for direction when sort order has changed
 			if($this->getVar("sortDirection") == "desc"){

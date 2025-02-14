@@ -2,28 +2,6 @@
 /* ----------------------------------------------------------------------
  * themes/default/views/Search/ca_occurrences_search_subview_html.php : 
  * ----------------------------------------------------------------------
- * CollectiveAccess
- * Open-source collections management software
- * ----------------------------------------------------------------------
- *
- * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2013-2014 Whirl-i-Gig
- *
- * For more information visit http://www.CollectiveAccess.org
- *
- * This program is free software; you may redistribute it and/or modify it under
- * the terms of the provided license as published by Whirl-i-Gig
- *
- * CollectiveAccess is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTIES whatsoever, including any implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- *
- * This source code is free and modifiable under the terms of 
- * GNU General Public License. (http://www.gnu.org/copyleft/gpl.html). See
- * the "license.txt" file for details, or visit the CollectiveAccess web site at
- * http://www.CollectiveAccess.org
- *
- * ----------------------------------------------------------------------
  */
  
 	$qr_results 		= $this->getVar('result');
@@ -46,22 +24,9 @@
 	
 	if ($qr_results->numHits() > 0) {
 		if (!$this->request->isAjax()) {
-?>
-			<small class="pull-right sortValues">
-<?php
-				if(in_array($vs_block, $va_browse_types)){
-?>
-				<span class='multisearchFullResults'><?php print caNavLink($this->request, '<span class="glyphicon glyphicon-list" aria-label="list icon" role="graphics-document"></span> '._t('Full results'), '', '', 'Search', '{{{block}}}', array('search' => str_replace("/", "", $vs_search))); ?></span> | 
-<?php
-				}
-?>
-				<span class='multisearchSort'><?php print _t("sort by:"); ?> {{{sortByControl}}}</span>
-				{{{sortDirectionControl}}}
-			</small>
-<?php
 			if(in_array($vs_block, $va_browse_types)){
 ?>
-				<?php print '<H2>'.caNavLink($this->request, $va_block_info['displayName'].' ('.$qr_results->numHits().')', '', '', 'Search', '{{{block}}}', array('search' => $vs_search)).'</H2>'; ?>
+				<?php print '<h5 class="card-title">'.caNavLink($this->request, $va_block_info['displayName'].' ('.$qr_results->numHits().')', '', '', 'Search', '{{{block}}}', array('search' => $vs_search)).'</H5>'; ?>
 <?php
 			}else{
 ?>
@@ -69,18 +34,40 @@
 <?php
 			}
 ?>
-			<div class='blockResults authorityBlock'>
-				<div id="{{{block}}}scrollButtonPrevious" class="scrollButtonPrevious" aria-label="previous" role="link" tabindex="0"><i class="fa fa-angle-left"></i></div><div id="{{{block}}}scrollButtonNext" class="scrollButtonNext" aria-label="next" role="link" tabindex="0"><i class="fa fa-angle-right"></i></div>
-				<div id='{{{block}}}Results' class='multiSearchResults'>
-					<div class='blockResultsScroller'>
+			<div class="row">
 <?php
 		}
 		$vn_count = 0;
 		$vn_i = 0;
 		$vb_div_open = false;
 		while($qr_results->nextHit()) {
-			if ($vn_i == 0) { print "<div class='{{{block}}}Set authoritySet'>\n"; $vb_div_open = true; }
-				print "<div class='{{{block}}}Result authorityResult'>".$qr_results->getWithTemplate($vs_caption_template, array("checkAccess" => $va_access_values))."</div>";
+?>
+
+<div class="col-md-6 d-flex align-items-stretch">
+	<div class="card w-100">
+		<div class="p-4 align-items-stretch h-100">
+			<div class="row">
+				<div class="col-4 col-md-3 d-flex align-items-center">
+					<div class="d-flex align-items-center justify-content-center">
+						<i class="ti ti-calendar-event display-4"></i>
+					</div>
+				</div>
+				<div class="col-8 col-md-9 d-flex align-items-center">
+					<div>
+						<a href="/index.php/Detail/occurrences/<?php print $qr_results->get('ca_occurrences.occurrence_id'); ?>" class="card-title link-primary fw-semibold text-dark">
+							<?php print $qr_results->get('ca_occurrences.preferred_labels.name', array('returnAsLink' => false)); ?>
+						</a>
+						<p class="card-subtitle mt-1">
+							&nbsp;
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php
 			$vn_count++;
 			$vn_i++;
 			if ($vn_i == $vn_items_per_column) {
@@ -90,64 +77,15 @@
 			}
 			if ((!$vn_init_with_start && ($vn_count == $vn_hits_per_block)) || ($vn_init_with_start && ($vn_count >= $vn_init_with_start))) {break;} 
 		}
-		
-		if ($vb_div_open) {print "</div><!-- end set -->";}
-		
-		if (!$this->request->isAjax()) {
 ?>
-					</div><!-- end blockResultsScroller -->
-				</div>
-			</div><!-- end blockResults -->
+
+			</div>
 <?php
 			if ($qr_results->numHits() > 3) {
 ?>			
-				<div class='allLink'><?php print caNavLink($this->request, 'See '.($qr_results->numHits() - 3)." more ".$va_block_info['displayName'].($qr_results->numHits() == 4 ? ' result' : ' results'), '', '', 'Search', '{{{block}}}', array('search' => $vs_search));?></div>
+				<div class='allLink mb-4'><?php print caNavLink($this->request, 'See '.($qr_results->numHits() - 3)." more ".$va_block_info['displayName'].($qr_results->numHits() == 4 ? ' result' : ' results'), '', '', 'Search', '{{{block}}}', array('search' => $vs_search));?></div>
 <?php
-			}
-?>
-			<script type="text/javascript">
-				jQuery(document).ready(function() {
-					jQuery('#{{{block}}}Results').hscroll({
-						name: '{{{block}}}',
-						itemCount: <?php print $qr_results->numHits(); ?>,
-						preloadCount: <?php print $vn_count; ?>,
-						
-						itemsPerColumn: <?php print $vn_items_per_column; ?>,
-						itemWidth: jQuery('.{{{block}}}Set').outerWidth(true),
-						itemsPerLoad: <?php print $vn_hits_per_block; ?>,
-						itemLoadURL: '<?php print caNavUrl($this->request, '*', '*', '*', array('block' => $vs_block, 'search'=> $vs_search)); ?>',
-						itemContainerSelector: '.blockResultsScroller',
-						
-						sortParameter: '{{{block}}}Sort',
-						sortControlSelector: '#{{{block}}}_sort',
-						
-						sortDirection: '{{{sortDirection}}}',
-						sortDirectionParameter: '{{{block}}}SortDirection',
-						sortDirectionSelector: '#{{{block}}}_sort_direction',
-						
-						scrollPreviousControlSelector: '#{{{block}}}scrollButtonPrevious',
-						scrollNextControlSelector: '#{{{block}}}scrollButtonNext',
-						cacheKey: '{{{cacheKey}}}'
-					});
-				});
-			</script>
-<?php
-		}else{
-			# --- need to change sort direction to catch default setting for direction when sort order has changed
-			if($this->getVar("sortDirection") == "desc"){
-?>
-				<script type="text/javascript">
-					jQuery('#<?php print $vs_block; ?>_sort_direction').find('span').removeClass('glyphicon-sort-by-alphabet').addClass('glyphicon-sort-by-alphabet-alt');
-				</script>
-<?php
-			}else{
-?>
-				<script type="text/javascript">
-					jQuery('#<?php print $vs_block; ?>_sort_direction').find('span').removeClass('glyphicon-sort-by-alphabet-alt').addClass('glyphicon-sort-by-alphabet');
-				</script>
-<?php
-			}
-		}
+			}	
 	}
 ?>
 

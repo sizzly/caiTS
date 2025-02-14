@@ -26,70 +26,52 @@
 	if ($qr_results->numHits() > 0) {
 		if (!$this->request->isAjax()) {
 			if(in_array($vs_block, $va_browse_types)){
-				print '<h5 class="card-title">'.$va_block_info['displayName'].' ('.$qr_results->numHits().')'.'</h5>';
+				?>
+				<?php print '<h5 class="card-title">'.caNavLink($this->request, $va_block_info['displayName'].' ('.$qr_results->numHits().')', '', '', 'Search', '{{{block}}}', array('search' => $vs_search)).'</H5>'; ?>
+			<?php
 			}else{
 				print '<h5 class="card-title">'.$va_block_info['displayName'].' ('.$qr_results->numHits().')'.'</h5>';
 			}
-?>
-			<div class='blockResults objects'>
-				<div id='{{{block}}}Results' class='multiSearchResults'>
-					<div class='list-group mb-3'>
-<?php
 		}
 		$vn_count = 0;
 		$t_list_item = new ca_list_items();
 		while($qr_results->nextHit()) {
+			$vs_image = $qr_results->get('ca_object_representations.media.icon.url', array("checkAccess" => $va_access_values));
+			if(!$vs_image){
+				$t_list_item->load($qr_results->get("type_id"));
+				$vs_typecode = $t_list_item->get("idno");
+				if($vs_type_placeholder = caGetPlaceholder($vs_typecode, "placeholder_media_icon")){
+					$vs_image = "/themes/caiTS/assets/img/Locked_icon.png";
+				}else{
+					$vs_image = "/themes/caiTS/assets/img/Locked_icon.png";
+				}
+			}			
 ?>
-			<div class='{{{block}}}Result multisearchResult'>
-<?php 
-				$vs_image = $qr_results->get('ca_object_representations.media.iconlarge.url', array("checkAccess" => $va_access_values));
-				if(!$vs_image){
-					$t_list_item->load($qr_results->get("type_id"));
-					$vs_typecode = $t_list_item->get("idno");
-					if($vs_type_placeholder = caGetPlaceholder($vs_typecode, "placeholder_media_icon")){
-						$vs_image = "<div class='multisearchImgPlaceholder'>".$vs_type_placeholder."</div>";
-					}else{
-						$vs_image = $vs_default_placeholder_tag;
-					}
-				}			
-?>
-				<a href="/index.php/Detail/objects/<?php print $qr_results->get('ca_objects.object_id'); ?>" class="list-group-item list-group-item-action d-flex align-items-center text-white">
-    				<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1">
-      					<img src="<?php print $vs_image; ?>" class="ms-100 mh-100 rounded-circle" />
-    				</div>
-    				<div class="flex-fill ps-3">
-    					<div class="fw-bold">
+<div class="col-md-6 d-flex align-items-stretch">
+	<div class="card w-100">
+		<div class="p-4 align-items-stretch h-100">
+			<div class="row">
+				<div class="col-4 col-md-3 d-flex align-items-center">
+					<img src="<?php print $vs_image; ?>" class="rounded img-fluid w-80px h-80px">
+				</div>
+				<div class="col-8 col-md-9 d-flex align-items-center">
+					<div>
+						<a href="/index.php/Detail/objects/<?php print $qr_results->get('ca_objects.object_id'); ?>" class="card-title link-primary fw-semibold text-dark">
 							<?php print $qr_results->get('ca_objects.preferred_labels.name', array('returnAsLink' => false)); ?>
-      					</div>
-    				</div>
-				</a>	
-			</div><!-- end blockResult -->
+						</a>
+						<p class="card-subtitle mt-1">
+							&nbsp;
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 			$vn_count++;
 			if ((!$vn_init_with_start && ($vn_count == $vn_hits_per_block)) || ($vn_init_with_start && ($vn_count >= $vn_init_with_start))) {break;} 
 		}
-?>
-
-
-<!-- Where the code for AJAX Goes -->
-<?php	
-		if (!$this->request->isAjax()) {
-?>
-			</div><!-- end blockResultsScroller -->
-		</div>
-	</div><!-- end blockResults -->
-<?php
-		}else{
-			# --- need to change sort direction to catch default setting for direction when sort order has changed
-			if($this->getVar("sortDirection") == "desc"){
-?>
-				
-<?php
-			}else{
-?>
-				
-<?php
-			}
-		}
 	}
 ?>
+

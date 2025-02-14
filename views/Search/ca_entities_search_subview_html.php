@@ -34,16 +34,29 @@
 		while($qr_results->nextHit()) {
 			$vs_id = $qr_results->get('ca_entities.entity_id', array("checkAccess" => $va_access_values));
 ?>
-			<a href="/index.php/Detail/entities/<?php print $vs_id; ?>" class="list-group-item list-group-item-action d-flex align-items-center text-white">
-				<div class="w-80px h-80px d-flex align-items-center justify-content-center ms-n1 bg-dark rounded-circle">
-					<i class="ti ti-affiliate display-5"></i>
-				</div>
-				<div class="flex-fill ps-3">
-					<div class="fw-bold">
-						<?php print $qr_results->get('ca_entities.preferred_labels.displayname', array("checkAccess" => $va_access_values)); ?>
+<div class="col-md-6 d-flex align-items-stretch">
+	<div class="card w-100">
+		<div class="p-4 align-items-stretch h-100">
+			<div class="row">
+				<div class="col-4 col-md-3 d-flex align-items-center">
+					<div class="d-flex align-items-center justify-content-center">
+						<i class="ti ti-affiliate display-4"></i>
 					</div>
 				</div>
-			</a>
+				<div class="col-8 col-md-9 d-flex align-items-center">
+					<div>
+						<a href="/index.php/Detail/entities/<?php print $vs_id; ?>" class="card-title link-primary fw-semibold text-dark">
+							<?php print $qr_results->get('ca_entities.preferred_labels.displayname', array("checkAccess" => $va_access_values)); ?>
+						</a>
+						<p class="card-subtitle mt-1">
+							&nbsp;
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 		}
 	}

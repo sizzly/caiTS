@@ -143,7 +143,7 @@
 					$vs_result_output = "
 <div class='col-md-6 d-flex align-items-stretch'>
     <div class='card w-100'>
-        <div class='p-4 d-flex align-items-stretch h-100'>
+        <div class='p-4 align-items-stretch h-100'>
             <div class='row'>
                 <div class='col-4 col-md-3 d-flex align-items-center'>
                     {$vs_rep_detail_link}
