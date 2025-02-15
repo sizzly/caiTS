@@ -6,127 +6,178 @@
 	$vn_pdf_enabled = 		$this->getVar("pdfEnabled");
 ?>
 
-<ul class="breadcrumb">
-	<li class="breadcrumb-item"><a href="/">Home</a></li>
-	<li class="breadcrumb-item" aria-current="page">{{{^ca_list_items.preferred_labels.name_singular}}}</li>
-</ul>
-
-<h1 class="page-header">{{{^ca_list_items.preferred_labels.name_singular}}}
-    <small>Term</small>
-</h1>
-<hr class="mb-4" />
+<div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+    <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+            <div class="col-9">
+                <h4 class="fw-semibold mb-8">{{{^ca_list_items.preferred_labels.name_singular}}}</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">{{{^ca_list_items.preferred_labels.name_singular}}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
-	<div class="col-md-3 mb-3">
-		<div class='card'>
-  			<div class='card-header fw-bold small bg-white bg-opacity-15'>Details</div>
-  			<div class='card-body'>
-			  	{{{<ifdef code="ca_list_items.preferred_labels.description"><p class='card-subtitle'>^ca_list_items.preferred_labels.description</p><hr></ifdef>}}}
-				<!-- Collections -->
-				{{{<ifdef code="ca_collections">
-					<div class='list-group'>
-						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Collections</h5>
-						<unit relativeTo="ca_collections" delimiter="">
-							<a href='/index.php/Detail/collections/^ca_collections.collection_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-								<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-									<i class='ti ti-sitemap fa-lg'></i>
-								</div>
-								<div class='flex-fill px-3'>
-									<div class='fw-bold'>^ca_collections.preferred_labels.name</div>
-									<div class='small text-white text-opacity-50'>^relationship_typename</div>
-								</div>
-							</a>
-						</unit>
+	<div class="col-lg-4">
+		<div class="card">
+			<div class='card-body'>
+				{{{<ifdef code="ca_list_items.collection_media">
+					<div class="mb-3">
+						<img src="^ca_list_items.collection_media.iconlarge.url" class="w-50 h-50 rounded-circle mx-auto d-block">
 					</div>
 				</ifdef>}}}
-				<!-- Entities -->
-				{{{<ifdef code="ca_entities.related">
-					<div class='list-group'>
-						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Entities</h5>
-						<unit relativeTo="ca_entities.related" delimiter="">
-						<a href='/index.php/Detail/entities/^ca_entities.entity_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-							<i class='ti ti-affiliate fa-lg'></i>
-						</div>
-						<div class='flex-fill px-3'>
-							<div class='fw-bold'>^ca_entities.preferred_labels.displayname</div>
-							<div class='small text-white text-opacity-50'>^relationship_typename</div>
-						</div>
-					</a>
-						</unit>
-					</div>
-				</ifdef>}}}
-				<!-- Occurances -->
-				{{{<ifdef code="ca_occurrences">
-					<div class='list-group'>
-						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Occurrences</h5>
-						<unit relativeTo="ca_occurences.related" delimiter="">
-						<a href='/index.php/Detail/occurrences/^ca_occurrences.occurrence_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-							<i class='ti ti-affiliates fa-lg'></i>
-						</div>
-						<div class='flex-fill px-3'>
-							<div class='fw-bold'>^ca_occurrences.preferred_labels.displayname</div>
-							<div class='small text-white text-opacity-50'>^relationship_typename</div>
-						</div>
-					</a>
-						</unit>
-					</div>
-				</ifdef>}}}
-				<!-- Places -->
-				{{{<ifdef code="ca_places">
-					<div class='list-group'>
-						<h5 class='card-title text-white text-opacity-60 mt-3'>Related Places</h5>
-						<unit relativeTo="ca_places.related" delimiter="">
-						<a href='/index.php/Detail/places/^ca_places.place_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-						<div class='w-40px h-40px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-							<i class='ti ti-affiliates fa-lg'></i>
-						</div>
-						<div class='flex-fill px-3'>
-							<div class='fw-bold'>^ca_places.preferred_labels.displayname</div>
-							<div class='small text-white text-opacity-50'>^relationship_typename</div>
-						</div>
-					</a>
-						</unit>
-					</div>
-				</ifdef>}}}
-  			</div>
-  			<div class='card-arrow'>
-				<div class='card-arrow-top-left'></div>
-				<div class='card-arrow-top-right'></div>
-				<div class='card-arrow-bottom-left'></div>
-				<div class='card-arrow-bottom-right'></div>
-  			</div>
-		</div>
-	</div>
+				
+				<p class="card-subtitle">
+					{{{<ifdef code="ca_list_items.description">^ca_list_items.description</ifdef>}}}
+				</p>
 
-	<div class="col-md-9 mb-3">
-		<div class='card'>
-  			<div class='card-header fw-bold small bg-white bg-opacity-15'>Related Objects</div>
-  			<div class='card-body'>
-			  	{{{<ifcount code="ca_objects" min="1">
-					<unit relativeTo="ca_objects" delimiter=" ">
-						<a href='/index.php/Detail/objects/^ca_objects.object_id' class='list-group-item list-group-item-action d-flex align-items-center'>
-							<div class='w-70px h-70px d-flex align-items-center justify-content-center bg-theme bg-opacity-15 text-white rounded-2 ms-n1'>
-								<img class='rounded-2' src='^ca_object_representations.media.icon.url' alt=''>
+				
+            </div>
+		</div>
+		<!-- Collections -->
+		{{{<ifdef code="ca_collections.related">
+			<unit relativeTo="ca_collections.related" delimiter="">
+				<div class=' col-md-12 col-xl-12'>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-sitemap fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/collections/^ca_collections.collection_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_collections.preferred_labels.name</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
 							</div>
-							<div class='flex-fill px-3'>
-								<div class='fw-bold'>^ca_objects.preferred_labels.name</div>
-								<div class='small text-white text-opacity-50'>^relationship_typename</div>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+		<!-- Entities -->
+		{{{<ifdef code="ca_entities.related">
+			<div class>
+				<div class='card'>
+					<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+						<i class='ti ti-affiliate fs-6 me-2'></i>
+						<div>
+							<a href='/index.php/Detail/entities/^ca_entities.entity_id' class=''>
+								<h5 class='fw-semibold mb-0'>^ca_entities.preferred_labels.displayname</h5>
+							</a>
+							<span class='fs-2 d-flex align-items-center'>
+								^relationship_typename
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ifdef>}}}
+		<!-- Occurances -->
+		{{{<ifdef code="ca_occurrences">
+			<unit relativeTo="ca_occurences.related" delimiter="">
+				<div>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-calendar fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/occurrences/^ca_occurrences.occurrence_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_occurrences.preferred_labels.displayname</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
 							</div>
-						</a>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+		<!-- Places -->
+		{{{<ifdef code="ca_places">
+			<unit relativeTo="ca_places.related" delimiter="">
+				<div>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-building-community fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/places/^ca_places.place_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_places.preferred_labels.displayname</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+
+	</div>
+	<div class="col-lg-8">
+		<ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
+    		<li class="nav-item">
+      			<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3 active" id="all-category">
+					<i class="ti ti-vocabulary fill-white"></i>
+					<span class="d-none d-md-block fw-medium">All Elements</span>
+      			</a>
+    		</li>
+			<li class="nav-item">
+				<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-business">
+					<i class="ti ti-chevron-up fill-white"></i>
+					<span class="d-none d-md-block fw-medium">Parent</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-social">
+					<i class="ti ti-chevron-down fill-white"></i>
+					<span class="d-none d-md-block fw-medium">Children</span>
+				</a>
+			</li>
+			<li class="nav-item">
+			<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-important">
+				<i class="ti ti-swords fill-white"></i>
+				<span class="d-none d-md-block fw-medium">Members</span>
+			</a>
+			</li>
+  		</ul>
+  		<div class="tab-content">
+    		<div id="note-full-container" class="note-has-grid row">
+				<!-- Members -->
+				{{{<ifcount code="ca_objects" min="1">
+					<unit relativeTo="ca_objects" delimiter="">
+						<div class='col-md-4 single-note-item all-category note-important'>
+							<div class='card hover-img overflow-hidden'>
+								<div class='position-relative'>
+									<a href='/Detail/objects/^ca_objects.object_id'>
+										<ifdef code="ca_object_representations.media.widepreview.url">
+											<img src='^ca_object_representations.media.widepreview.url' class='card-img-top' alt='modernize-img'>
+										</ifdef>
+										<ifnotdef code="ca_object_representations.media.widepreview.url">
+											<img src='/themes/caiTS/assets/img/Locked_wide.png' class='card-img-top' alt='modernize-img'>
+										</ifnotdef>
+									</a>
+									<a href='javascript:void(0)' class='text-bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3'>
+										<i class='ti ti-swords fs-4'></i>
+									</a>
+								</div>
+								<div class='card-body pt-3 p-4'>
+									<h6 class='fs-4'>^ca_objects.preferred_labels.name</h6>
+								</div>
+							</div>
+						</div>
 					</unit>
 				</ifcount>}}}
-				{{{<ifcount code="ca_objects" max="0">
-					<h1>No Related Objects</h1>
-				</ifcount>}}}
-  			</div>
-  			<div class='card-arrow'>
-    			<div class='card-arrow-top-left'></div>
-    			<div class='card-arrow-top-right'></div>
-    			<div class='card-arrow-bottom-left'></div>
-    			<div class='card-arrow-bottom-right'></div>
-  			</div>
+			</div>
 		</div>
 	</div>
 </div>
