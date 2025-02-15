@@ -3,7 +3,7 @@
  * themes/default/views/bundles/ca_collections_default_html.php : 
  * ----------------------------------------------------------------------
  */
-   
+    
 	$t_item = $this->getVar("item");
 	$va_comments = $this->getVar("comments");
 	$vn_comments_enabled = 	$this->getVar("commentsEnabled");

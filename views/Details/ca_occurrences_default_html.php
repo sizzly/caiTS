@@ -2,127 +2,239 @@
 /* ----------------------------------------------------------------------
  * themes/default/views/bundles/ca_occurrences_default_html.php : 
  * ----------------------------------------------------------------------
- * CollectiveAccess
- * Open-source collections management software
- * ----------------------------------------------------------------------
- *
- * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2013-2022 Whirl-i-Gig
- *
- * For more information visit http://www.CollectiveAccess.org
- *
- * This program is free software; you may redistribute it and/or modify it under
- * the terms of the provided license as published by Whirl-i-Gig
- *
- * CollectiveAccess is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTIES whatsoever, including any implied warranty of 
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- *
- * This source code is free and modifiable under the terms of 
- * GNU General Public License. (http://www.gnu.org/copyleft/gpl.html). See
- * the "license.txt" file for details, or visit the CollectiveAccess web site at
- * http://www.CollectiveAccess.org
- *
- * ----------------------------------------------------------------------
  */
- 
+	$o_db = new Db();
 	$t_item = $this->getVar("item");
 	$va_comments = $this->getVar("comments");
 	$vn_comments_enabled = 	$this->getVar("commentsEnabled");
-	$vn_share_enabled = 	$this->getVar("shareEnabled");	
-?>
-<div class="row">
-	<div class='col-xs-12 navTop'><!--- only shown at small screen size -->
-		{{{previousLink}}}{{{resultsLink}}}{{{nextLink}}}
-	</div><!-- end detailTop -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgLeft">
-			{{{previousLink}}}{{{resultsLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-	<div class='col-xs-12 col-sm-10 col-md-10 col-lg-10'>
-		<div class="container">
-			<div class="row">
-				<div class='col-md-12 col-lg-12'>
-					<H1>{{{^ca_occurrences.preferred_labels.name}}}</H1>
-					<H2>{{{^ca_occurrences.type_id}}}{{{<ifdef code="ca_occurrences.idno">, ^ca_occurrences.idno</ifdef>}}}</H2>
-				</div><!-- end col -->
-			</div><!-- end row -->
-			<div class="row">			
-				<div class='col-sm-6 col-md-6 col-lg-6'>
-					{{{<ifdef code="ca_occurrences.description"><label>About</label>^ca_occurrences.description<br/></ifdef>}}}
-					{{{<ifcount code="ca_objects" min="1" max="1"><div class='unit'><unit relativeTo="ca_objects" delimiter=" "><l>^ca_object_representations.media.large</l><div class='caption'>Related Object: <l>^ca_objects.preferred_labels.name</l></div></unit></div></ifcount>}}}
+	$vn_share_enabled = 	$this->getVar("shareEnabled");
+	$qr_muster = $o_db->query('SELECT t1.* FROM ca_objects_x_occurrences t1 INNER JOIN (SELECT object_id, MAX(edatetime) AS max_date FROM ca_objects_x_occurrences GROUP BY object_id) t2 ON t1.object_id = t2.object_id AND t1.edatetime = t2.max_date WHERE type_id = 201');
 
-<?php
-				# Comment and Share Tools
-				if ($vn_comments_enabled | $vn_share_enabled) {
-						
-					print '<div id="detailTools">';
-					if ($vn_comments_enabled) {
-?>				
-						<div class="detailTool"><a href='#' onclick='jQuery("#detailComments").slideToggle(); return false;'><span class="glyphicon glyphicon-comment" aria-label="<?php print _t("Comments and tags"); ?>"></span>Comments (<?php print sizeof($va_comments); ?>)</a></div><!-- end detailTool -->
-						<div id='detailComments'><?php print $this->getVar("itemComments");?></div><!-- end itemComments -->
-<?php				
-					}
-					if ($vn_share_enabled) {
-						print '<div class="detailTool"><span class="glyphicon glyphicon-share-alt" aria-label="'._t("Share").'"></span>'.$this->getVar("shareLink").'</div><!-- end detailTool -->';
-					}
-					print '</div><!-- end detailTools -->';
-				}				
 ?>
-					
-				</div><!-- end col -->
-				<div class='col-md-6 col-lg-6'>
-					{{{<ifcount code="ca_collections" min="1" max="1"><label>Related collection</label></ifcount>}}}
-					{{{<ifcount code="ca_collections" min="2"><label>Related collections</label></ifcount>}}}
-					{{{<unit relativeTo="ca_collections" delimiter="<br/>"><l>^ca_collections.preferred_labels.name</l> (^relationship_typename)</unit>}}}
-					
-					{{{<ifcount code="ca_entities" min="1" max="1"><label>Related person</label></ifcount>}}}
-					{{{<ifcount code="ca_entities" min="2"><label>Related people</label></ifcount>}}}
-					{{{<unit relativeTo="ca_entities" delimiter="<br/>"><l>^ca_entities.preferred_labels.displayname</l> (^relationship_typename)</unit>}}}
-					
-					{{{<ifcount code="ca_occurrences.related" min="1" max="1"><label>Related occurrence</label></ifcount>}}}
-					{{{<ifcount code="ca_occurrences.related" min="2"><label>Related occurrences</label></ifcount>}}}
-					{{{<unit relativeTo="ca_occurrences.related" delimiter="<br/>"><l>^ca_occurrences.related.preferred_labels.name</l> (^relationship_typename)</unit>}}}
-					
-					{{{<ifcount code="ca_places" min="1" max="1"><label>Related place</label></ifcount>}}}
-					{{{<ifcount code="ca_places" min="2"><label>Related places</label></ifcount>}}}
-					{{{<unit relativeTo="ca_places" delimiter="<br/>"><l>^ca_places.preferred_labels.name</l> (^relationship_typename)</unit>}}}					
-				</div><!-- end col -->
-			</div><!-- end row -->
-{{{<ifcount code="ca_objects" min="2">
-			<div class="row">
-				<div id="browseResultsContainer">
-					<?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?>
-				</div><!-- end browseResultsContainer -->
-			</div><!-- end row -->
-			<script type="text/javascript">
-				jQuery(document).ready(function() {
-					jQuery("#browseResultsContainer").load("<?php print caNavUrl($this->request, '', 'Search', 'objects', array('search' => 'occurrence_id:^ca_occurrences.occurrence_id'), array('dontURLEncodeParameters' => true)); ?>", function() {
-						jQuery('#browseResultsContainer').jscroll({
-							autoTrigger: true,
-							loadingHtml: '<?php print caBusyIndicatorIcon($this->request).' '.addslashes(_t('Loading...')); ?>',
-							padding: 20,
-							nextSelector: 'a.jscroll-next'
-						});
-					});
-					
-					
-				});
-			</script>
-</ifcount>}}}		</div><!-- end container -->
-	</div><!-- end col -->
-	<div class='navLeftRight col-xs-1 col-sm-1 col-md-1 col-lg-1'>
-		<div class="detailNavBgRight">
-			{{{nextLink}}}
-		</div><!-- end detailNavBgLeft -->
-	</div><!-- end col -->
-</div><!-- end row -->
-<script type='text/javascript'>
-	jQuery(document).ready(function() {
-		$('.trimText').readmore({
-		  speed: 75,
-		  maxHeight: 120
-		});
-	});
-</script>
+<div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+    <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+            <div class="col-9">
+                <h4 class="fw-semibold mb-8">{{{^ca_occurrences.preferred_labels.name}}}</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+						<li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" href="/Browse/occurrences">Events</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">{{{^ca_occurrences.preferred_labels.name}}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-4">
+		<div class="card">
+			<div class='card-body'>
+				<h6>{{{^ca_occurrences.type_id}}}</h6
+				{{{<ifdef code="ca_occurrences.collection_media">
+					<div class="mb-3">
+						<img src="^ca_occurrences.collection_media.iconlarge.url" class="w-50 h-50 rounded-circle mx-auto d-block">
+					</div>
+				</ifdef>}}}
+				
+				<p class="card-subtitle">
+					{{{<ifdef code="ca_occurrences.description">^ca_occurrences.description</ifdef>}}}
+				</p>
+
+				
+            </div>
+		</div>
+		<!-- Collections -->
+		{{{<ifdef code="ca_collections.related">
+			<unit relativeTo="ca_collections.related" delimiter="">
+				<div class=' col-md-12 col-xl-12'>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-sitemap fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/collections/^ca_collections.collection_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_collections.preferred_labels.name</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+		<!-- Entities -->
+		{{{<ifdef code="ca_entities.related">
+			<div class>
+				<div class='card'>
+					<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+						<i class='ti ti-affiliate fs-6 me-2'></i>
+						<div>
+							<a href='/index.php/Detail/entities/^ca_entities.entity_id' class=''>
+								<h5 class='fw-semibold mb-0'>^ca_entities.preferred_labels.displayname</h5>
+							</a>
+							<span class='fs-2 d-flex align-items-center'>
+								^relationship_typename
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ifdef>}}}
+		<!-- Occurances -->
+		{{{<ifdef code="ca_occurrences">
+			<unit relativeTo="ca_occurences.related" delimiter="">
+				<div>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-calendar fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/occurrences/^ca_occurrences.occurrence_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_occurrences.preferred_labels.displayname</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+		<!-- Places -->
+		{{{<ifdef code="ca_places">
+			<unit relativeTo="ca_places.related" delimiter="">
+				<div>
+					<div class='card'>
+						<div class='card-body p-4 d-flex align-items-center gap-6 flex-wrap'>
+							<i class='ti ti-building-community fs-6 me-2'></i>
+							<div>
+								<a href='/Detail/places/^ca_places.place_id' class=''>
+									<h5 class='fw-semibold mb-0'>^ca_places.preferred_labels.displayname</h5>
+								</a>
+								<span class='fs-2 d-flex align-items-center'>
+									^relationship_typename
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</unit>
+		</ifdef>}}}
+
+	</div>
+	<div class="col-lg-8">
+		<ul class="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
+    		<li class="nav-item">
+      			<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3 active" id="all-category">
+					<i class="ti ti-calendar-event fill-white"></i>
+					<span class="d-none d-md-block fw-medium">All Elements</span>
+      			</a>
+    		</li>
+			<li class="nav-item">
+				<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-business">
+					<i class="ti ti-chevron-up fill-white"></i>
+					<span class="d-none d-md-block fw-medium">Parent</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-social">
+					<i class="ti ti-chevron-down fill-white"></i>
+					<span class="d-none d-md-block fw-medium">Children</span>
+				</a>
+			</li>
+			<li class="nav-item">
+			<a href="javascript:void(0)" class="nav-link gap-6 note-link d-flex align-items-center justify-content-center px-3 px-md-3" id="note-important">
+				<i class="ti ti-swords fill-white"></i>
+				<span class="d-none d-md-block fw-medium">Members</span>
+			</a>
+			</li>
+  		</ul>
+  		<div class="tab-content">
+    		<div id="note-full-container" class="note-has-grid row">
+				<!-- Parents -->
+				{{{<ifdef code="ca_occurrences.parent_id">
+					<unit relativeTo="ca_occurrences.parent" delimiter="">
+						<div class='col-md-4 single-note-item all-category note-business'>
+							<div class='card hover-img overflow-hidden'>
+								<div class='position-relative'>
+									<a href='/index.php/Detail/occurrences/^ca_occurrences.collection_id'>
+										<ifdef code="ca_occurrences.collection_media">
+											<img src='^ca_occurrences.collection_media.media.widepreview.url' class='card-img-top' alt='modernize-img'>
+										</ifdefcode>
+										<ifnotdef code="ca_occurrences.collection_media">
+											<img src='/themes/caiTS/assets/img/Locked_wide.png' class='card-img-top' alt='modernize-img'>
+										</ifnotdef>
+									</a>
+									<a href='javascript:void(0)' class='text-bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3'>
+										<i class='ti ti-hierarchy fs-4'></i>
+									</a>
+								</div>
+								<div class='card-body pt-3 p-4'>
+									<h6 class='fs-4'>^ca_occurrences.preferred_labels</h6>
+								</div>
+							</div>
+						</div>
+					</unit>
+				</ifdef>}}}
+
+				<!-- Children -->
+				{{{
+					<unit relativeTo="ca_occurrences.children" delimiter="">
+						<div class='col-md-4 single-note-item all-category note-social'>
+							<div class='card hover-img overflow-hidden'>
+								<div class='position-relative'>
+									<a href='/index.php/Detail/occurrences/^ca_occurrences.collection_id'>
+										<ifnotdef code="ca_occurrences.collection_media.media.widepreview.url"><img src='/themes/caiTS/assets/img/Locked_wide.png' class='card-img-top' alt='modernize-img'></ifnotdef>
+										<ifdef code="ca_occurrences.collection_media.media.widepreview.url"><img src='^ca_occurrences.collection_media.media.widepreview.url' class='card-img-top' alt='modernize-img'></ifdef>
+									</a>
+									<a href='javascript:void(0)' class='text-bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3'>
+										<i class='ti ti-sitemap fs-4'></i>
+									</a>
+								</div>
+								<div class='card-body pt-3 p-4'>
+									<h6 class='fs-4'>^ca_occurrences.preferred_labels</h6>
+								</div>
+							</div>
+						</div>
+					</unit>
+				}}}
+
+				<!-- Members -->
+<?php
+	while ($qr_muster->nextRow()) {
+		if ($qr_muster->get("ca_occurrences.occurrence_id") == $t_item->get("ca_occurrences.occurrence_id")) {
+			$qr_object = new ca_objects($qr_muster->get('object_id'));
+?>
+<div class='col-md-4 single-note-item all-category note-important'>
+	<div class='card hover-img overflow-hidden'>
+		<div class='position-relative'>
+			<a href='/Detail/objects/<?php print $qr_object->get("ca_objects.object_id"); ?>'>
+				<img src='<?php print $qr_object->get("ca_object_representations.media.widepreview.url"); ?>' class='card-img-top' alt='modernize-img'>
+			</a>
+			<a href='javascript:void(0)' class='text-bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3'>
+				<i class='ti ti-swords fs-4'></i>
+			</a>
+		</div>
+		<div class='card-body pt-3 p-4'>
+			<h6 class='fs-4'><?php print $qr_object->get("ca_objects.preferred_labels.name"); ?></h6>
+		</div>
+	</div>
+</div>
+<?php
+		}
+	}
+?>
+			</div>
+		</div>
+	</div>
+</div>
