@@ -187,10 +187,10 @@
                             <!-- Put new version block here -->
                             <div class="item">
                                 <div class='card mb-3'>
-                                    <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-04: 1.3.1</div>
+                                    <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-15: 1.3.18</div>
                                     <div class='card-body'>
                                         <h5 class="card-title">New Skin</h5>
-                                        New theme that's easier to read and less finicky to update. 
+                                        New theme that's easier to read and less finicky to update. There's also a whole whack of new stats. I'm really happy with this update.
                                     </div>
                                 </div>
                             </div>
