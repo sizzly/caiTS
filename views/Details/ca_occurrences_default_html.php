@@ -212,14 +212,19 @@
 				<!-- Members -->
 <?php
 	while ($qr_muster->nextRow()) {
-		if ($qr_muster->get("ca_occurrences.occurrence_id") == $t_item->get("ca_occurrences.occurrence_id")) {
+		if ($qr_muster->get("occurrence_id") == $t_item->get("ca_occurrences.occurrence_id")) {
 			$qr_object = new ca_objects($qr_muster->get('object_id'));
+			if (!$qr_object->get('ca_object_representations.media.widepreview.url')) {
+				$object_image = "/themes/caiTS/assets/img/Locked_wide.png";
+			} else {
+				$object_image = $qr_object->get('ca_object_representations.media.widepreview.url');
+			}
 ?>
 <div class='col-md-4 single-note-item all-category note-important'>
 	<div class='card hover-img overflow-hidden'>
 		<div class='position-relative'>
 			<a href='/Detail/objects/<?php print $qr_object->get("ca_objects.object_id"); ?>'>
-				<img src='<?php print $qr_object->get("ca_object_representations.media.widepreview.url"); ?>' class='card-img-top' alt='modernize-img'>
+				<img src='<?php print $object_image; ?>' class='card-img-top' alt='modernize-img'>
 			</a>
 			<a href='javascript:void(0)' class='text-bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3'>
 				<i class='ti ti-swords fs-4'></i>
