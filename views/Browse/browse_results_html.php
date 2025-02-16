@@ -138,37 +138,6 @@
 				}		
 ?>
             </div>
-			<!-- Pagination -->
-			<div class="m-3">
-<?php
-				$page_count = intval($vn_result_size/$vn_hits_per_block);
-?>
-				<ul class="pagination mb-0">
-<?php
-					if ($page_count < 1) {
-?>
-						<li class="page-item active"><a class="page-link">1</a></li>
-<?php
-					} else {
-						$page_count++;
-						$count = 1;
-						while ($count <= $page_count) {
-							$pag_start = ($count-1)*$vn_hits_per_block;
-							if ($pag_start == $vn_start + $vn_results_output) {
-								print '<li class="page-item active">';
-							} else {
-								print '<li class="page-item">';
-							}
-							print caNavLink($this->request, _t($count), 'page-link', '*', '*', '*', array('s' => ($count -1) * $vn_hits_per_block, 'key' => $vs_browse_key, 'view' => $vs_current_view, 'sort' => $vs_current_sort, '_advanced' => $this->getVar('is_advanced') ? 1  : 0));
-							print '</li>';
-							$count++;
-						}
-					}
-?>
-				</ul>
-			</div>
-			<!-- end Pagination -->
-
 						<!-- Pagination -->
 						<div class="m-3">
 <?php

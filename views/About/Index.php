@@ -187,6 +187,16 @@
                             <!-- Put new version block here -->
                             <div class="item">
                                 <div class='card mb-3'>
+                                    <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-15: 1.3.19</div>
+                                    <div class='card-body'>
+                                        <h5 class="card-title">Pagination Fix</h5>
+                                        Sorted the pagination issue on the browse page.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class='card mb-3'>
                                     <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-15: 1.3.18</div>
                                     <div class='card-body'>
                                         <h5 class="card-title">New Skin</h5>
