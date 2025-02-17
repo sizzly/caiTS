@@ -187,6 +187,16 @@
                             <!-- Put new version block here -->
                             <div class="item">
                                 <div class='card mb-3'>
+                                    <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-17: 1.3.22</div>
+                                    <div class='card-body'>
+                                        <h5 class="card-title">Bug Fix Release</h5>
+                                        Fixed Search results page and the Arms distribution chart. Also addressed a security vulnerability.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class='card mb-3'>
                                     <div class='card-header fw-bold small bg-white bg-opacity-15'>2025-02-15: 1.3.19</div>
                                     <div class='card-body'>
                                         <h5 class="card-title">Pagination Fix</h5>

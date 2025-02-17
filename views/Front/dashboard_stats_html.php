@@ -7,7 +7,10 @@
   
     $qr_counter = $o_db->query('SELECT count(object_id) AS c, type_id FROM ca_objects WHERE deleted=0 GROUP BY type_id ORDER BY type_id');
 
-    $qr_arms = $o_db->query('with recursive cte (item_id, type_id, parent_id) as (select item_id, type_id, parent_id from ca_list_items where parent_id = 202 union all select p.item_id, p.type_id, p.parent_id from ca_list_items p inner join cte on p.parent_id = cte.item_id) select * from cte WHERE type_id = 2');
+    $qr_element = $o_db->query('SELECT item_id FROM ca_list_item_labels WHERE name_singular = "Element Type"');
+    $qr_element->nextRow();
+    $element_id = $qr_element->get('item_id');
+    $qr_arms = $o_db->query('with recursive cte (item_id, type_id, parent_id) as (select item_id, type_id, parent_id from ca_list_items where parent_id = '.$element_id.' union all select p.item_id, p.type_id, p.parent_id from ca_list_items p inner join cte on p.parent_id = cte.item_id) select * from cte WHERE type_id = 2');
     $arms_label = "";
     $arms_count = "";
     while ($qr_arms->nextRow()){
