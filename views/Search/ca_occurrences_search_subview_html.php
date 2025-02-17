@@ -70,22 +70,14 @@
 <?php
 			$vn_count++;
 			$vn_i++;
-			if ($vn_i == $vn_items_per_column) {
-				print "</div><!-- end set -->";
-				$vb_div_open = false;
-				$vn_i = 0;
-			}
+
 			if ((!$vn_init_with_start && ($vn_count == $vn_hits_per_block)) || ($vn_init_with_start && ($vn_count >= $vn_init_with_start))) {break;} 
 		}
 ?>
 
 			</div>
 <?php
-			if ($qr_results->numHits() > 3) {
-?>			
-				<div class='allLink mb-4'><?php print caNavLink($this->request, 'See '.($qr_results->numHits() - 3)." more ".$va_block_info['displayName'].($qr_results->numHits() == 4 ? ' result' : ' results'), '', '', 'Search', '{{{block}}}', array('search' => $vs_search));?></div>
-<?php
-			}	
+
 	}
 ?>
 
